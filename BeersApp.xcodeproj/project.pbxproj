@@ -13,6 +13,7 @@
 		4C6F6D1E254E0263004FD828 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D1C254E0263004FD828 /* Main.storyboard */; };
 		4C6F6D20254E0263004FD828 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D1F254E0263004FD828 /* Assets.xcassets */; };
 		4C6F6D23254E0263004FD828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D21254E0263004FD828 /* LaunchScreen.storyboard */; };
+		DB6EA38F044BC48654710FBD /* Pods_BeersApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C868D3C906E863A4AA5A2F95 /* Pods_BeersApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		4C6F6D1F254E0263004FD828 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C6F6D22254E0263004FD828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C6F6D24254E0263004FD828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		907782CB85B8F49CD978D2C6 /* Pods-BeersApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeersApp.debug.xcconfig"; path = "Target Support Files/Pods-BeersApp/Pods-BeersApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B0AD11786F9D8F1FBBC71633 /* Pods-BeersApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeersApp.release.xcconfig"; path = "Target Support Files/Pods-BeersApp/Pods-BeersApp.release.xcconfig"; sourceTree = "<group>"; };
+		C868D3C906E863A4AA5A2F95 /* Pods_BeersApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeersApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB6EA38F044BC48654710FBD /* Pods_BeersApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EABC3B8EE5BFDB8B732AC7D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				907782CB85B8F49CD978D2C6 /* Pods-BeersApp.debug.xcconfig */,
+				B0AD11786F9D8F1FBBC71633 /* Pods-BeersApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4C6F6D0A254E0263004FD828 = {
 			isa = PBXGroup;
 			children = (
 				4C6F6D15254E0263004FD828 /* BeersApp */,
 				4C6F6D14254E0263004FD828 /* Products */,
+				2EABC3B8EE5BFDB8B732AC7D /* Pods */,
+				A44E75369B1D9B8F3CEDF933 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +84,14 @@
 			path = BeersApp;
 			sourceTree = "<group>";
 		};
+		A44E75369B1D9B8F3CEDF933 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C868D3C906E863A4AA5A2F95 /* Pods_BeersApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C6F6D27254E0263004FD828 /* Build configuration list for PBXNativeTarget "BeersApp" */;
 			buildPhases = (
+				4DA133846446A7B7B088123A /* [CP] Check Pods Manifest.lock */,
 				4C6F6D0F254E0263004FD828 /* Sources */,
 				4C6F6D10254E0263004FD828 /* Frameworks */,
 				4C6F6D11254E0263004FD828 /* Resources */,
+				1D0F4039320BBA5D244AEB54 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D0F4039320BBA5D244AEB54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeersApp/Pods-BeersApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeersApp/Pods-BeersApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeersApp/Pods-BeersApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4DA133846446A7B7B088123A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeersApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4C6F6D0F254E0263004FD828 /* Sources */ = {
@@ -283,6 +352,7 @@
 		};
 		4C6F6D28254E0263004FD828 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 907782CB85B8F49CD978D2C6 /* Pods-BeersApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +372,7 @@
 		};
 		4C6F6D29254E0263004FD828 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0AD11786F9D8F1FBBC71633 /* Pods-BeersApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
