@@ -3,28 +3,62 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C11CD57254F16AF006E960C /* FavoriteBeersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD56254F16AE006E960C /* FavoriteBeersVM.swift */; };
+		4C11CD5D254F17CB006E960C /* BeerDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD5C254F17CB006E960C /* BeerDetailsVC.swift */; };
+		4C11CD62254F17E7006E960C /* BeerDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD61254F17E7006E960C /* BeerDetailsVM.swift */; };
+		4C11CD6E254F20EE006E960C /* NavigatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD6D254F20EE006E960C /* NavigatorType.swift */; };
+		4C11CD73254F224D006E960C /* TabBarDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD72254F224D006E960C /* TabBarDataProvider.swift */; };
+		4C11CD7A254F3456006E960C /* Contexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD79254F3456006E960C /* Contexts.swift */; };
+		4C11CD7D254F3545006E960C /* ContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD7C254F3545006E960C /* ContextProvider.swift */; };
+		4C11CD88254F4486006E960C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C11CD8A254F4486006E960C /* Localizable.strings */; };
 		4C6F6D17254E0263004FD828 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D16254E0263004FD828 /* AppDelegate.swift */; };
-		4C6F6D19254E0263004FD828 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D18254E0263004FD828 /* SceneDelegate.swift */; };
 		4C6F6D1B254E0263004FD828 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D1A254E0263004FD828 /* ViewController.swift */; };
 		4C6F6D1E254E0263004FD828 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D1C254E0263004FD828 /* Main.storyboard */; };
 		4C6F6D20254E0263004FD828 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D1F254E0263004FD828 /* Assets.xcassets */; };
 		4C6F6D23254E0263004FD828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D21254E0263004FD828 /* LaunchScreen.storyboard */; };
+		4C6F6D34254E0F19004FD828 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D33254E0F19004FD828 /* RootTabBarController.swift */; };
+		4C6F6D39254E12F8004FD828 /* ControlTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D38254E12F8004FD828 /* ControlTower.swift */; };
+		4C6F6D3D254E1462004FD828 /* ControlTowerCommonContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D3C254E1462004FD828 /* ControlTowerCommonContext.swift */; };
+		4C6F6DA4254F0477004FD828 /* AppNavigationContainerKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6DA3254F0477004FD828 /* AppNavigationContainerKind.swift */; };
+		4C6F6DA8254F0957004FD828 /* NavigationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6DA7254F0957004FD828 /* NavigationContainer.swift */; };
+		4C6F6DB8254F11E2004FD828 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6DB7254F11E2004FD828 /* AppNavigator.swift */; };
+		4C6F6DBB254F1318004FD828 /* ScreensFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6DBA254F1318004FD828 /* ScreensFactory.swift */; };
+		4C6F6DBF254F14D0004FD828 /* BeersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6DBE254F14D0004FD828 /* BeersListVC.swift */; };
+		4C6F6DC3254F14DC004FD828 /* BeersListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6DC2254F14DC004FD828 /* BeersListVM.swift */; };
+		4C6F6DCB254F1540004FD828 /* FavoriteBeersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6DCA254F1540004FD828 /* FavoriteBeersVC.swift */; };
 		DB6EA38F044BC48654710FBD /* Pods_BeersApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C868D3C906E863A4AA5A2F95 /* Pods_BeersApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C11CD56254F16AE006E960C /* FavoriteBeersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersVM.swift; sourceTree = "<group>"; };
+		4C11CD5C254F17CB006E960C /* BeerDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsVC.swift; sourceTree = "<group>"; };
+		4C11CD61254F17E7006E960C /* BeerDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsVM.swift; sourceTree = "<group>"; };
+		4C11CD6D254F20EE006E960C /* NavigatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorType.swift; sourceTree = "<group>"; };
+		4C11CD72254F224D006E960C /* TabBarDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDataProvider.swift; sourceTree = "<group>"; };
+		4C11CD79254F3456006E960C /* Contexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contexts.swift; sourceTree = "<group>"; };
+		4C11CD7C254F3545006E960C /* ContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvider.swift; sourceTree = "<group>"; };
+		4C11CD89254F4486006E960C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C6F6D13254E0263004FD828 /* BeersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6F6D16254E0263004FD828 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C6F6D18254E0263004FD828 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4C6F6D1A254E0263004FD828 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4C6F6D1D254E0263004FD828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C6F6D1F254E0263004FD828 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C6F6D22254E0263004FD828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C6F6D24254E0263004FD828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C6F6D33254E0F19004FD828 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		4C6F6D38254E12F8004FD828 /* ControlTower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlTower.swift; sourceTree = "<group>"; };
+		4C6F6D3C254E1462004FD828 /* ControlTowerCommonContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlTowerCommonContext.swift; sourceTree = "<group>"; };
+		4C6F6DA3254F0477004FD828 /* AppNavigationContainerKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationContainerKind.swift; sourceTree = "<group>"; };
+		4C6F6DA7254F0957004FD828 /* NavigationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationContainer.swift; sourceTree = "<group>"; };
+		4C6F6DB7254F11E2004FD828 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
+		4C6F6DBA254F1318004FD828 /* ScreensFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreensFactory.swift; sourceTree = "<group>"; };
+		4C6F6DBE254F14D0004FD828 /* BeersListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListVC.swift; sourceTree = "<group>"; };
+		4C6F6DC2254F14DC004FD828 /* BeersListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListVM.swift; sourceTree = "<group>"; };
+		4C6F6DCA254F1540004FD828 /* FavoriteBeersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersVC.swift; sourceTree = "<group>"; };
 		907782CB85B8F49CD978D2C6 /* Pods-BeersApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeersApp.debug.xcconfig"; path = "Target Support Files/Pods-BeersApp/Pods-BeersApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B0AD11786F9D8F1FBBC71633 /* Pods-BeersApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeersApp.release.xcconfig"; path = "Target Support Files/Pods-BeersApp/Pods-BeersApp.release.xcconfig"; sourceTree = "<group>"; };
 		C868D3C906E863A4AA5A2F95 /* Pods_BeersApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeersApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,14 +82,42 @@
 				907782CB85B8F49CD978D2C6 /* Pods-BeersApp.debug.xcconfig */,
 				B0AD11786F9D8F1FBBC71633 /* Pods-BeersApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		4C11CD5A254F16F8006E960C /* RootTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				4C6F6D33254E0F19004FD828 /* RootTabBarController.swift */,
+				4C11CD72254F224D006E960C /* TabBarDataProvider.swift */,
+			);
+			path = RootTabBar;
+			sourceTree = "<group>";
+		};
+		4C11CD5B254F17BE006E960C /* BeerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4C11CD61254F17E7006E960C /* BeerDetailsVM.swift */,
+				4C11CD5C254F17CB006E960C /* BeerDetailsVC.swift */,
+			);
+			path = BeerDetails;
+			sourceTree = "<group>";
+		};
+		4C11CD70254F2207006E960C /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				4C6F6DBA254F1318004FD828 /* ScreensFactory.swift */,
+				4C11CD6D254F20EE006E960C /* NavigatorType.swift */,
+				4C6F6DB7254F11E2004FD828 /* AppNavigator.swift */,
+			);
+			path = Navigator;
 			sourceTree = "<group>";
 		};
 		4C6F6D0A254E0263004FD828 = {
 			isa = PBXGroup;
 			children = (
 				4C6F6D15254E0263004FD828 /* BeersApp */,
+				4C6F6D16254E0263004FD828 /* AppDelegate.swift */,
 				4C6F6D14254E0263004FD828 /* Products */,
 				2EABC3B8EE5BFDB8B732AC7D /* Pods */,
 				A44E75369B1D9B8F3CEDF933 /* Frameworks */,
@@ -73,15 +135,91 @@
 		4C6F6D15254E0263004FD828 /* BeersApp */ = {
 			isa = PBXGroup;
 			children = (
-				4C6F6D16254E0263004FD828 /* AppDelegate.swift */,
-				4C6F6D18254E0263004FD828 /* SceneDelegate.swift */,
+				4C6F6DCD254F1580004FD828 /* Common */,
+				4C6F6DCE254F1586004FD828 /* Internal */,
 				4C6F6D1A254E0263004FD828 /* ViewController.swift */,
 				4C6F6D1C254E0263004FD828 /* Main.storyboard */,
-				4C6F6D1F254E0263004FD828 /* Assets.xcassets */,
-				4C6F6D21254E0263004FD828 /* LaunchScreen.storyboard */,
-				4C6F6D24254E0263004FD828 /* Info.plist */,
+				4C6F6D32254E0CD9004FD828 /* Resources */,
 			);
 			path = BeersApp;
+			sourceTree = "<group>";
+		};
+		4C6F6D32254E0CD9004FD828 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4C6F6D1F254E0263004FD828 /* Assets.xcassets */,
+				4C6F6D24254E0263004FD828 /* Info.plist */,
+				4C6F6D21254E0263004FD828 /* LaunchScreen.storyboard */,
+				4C11CD8A254F4486006E960C /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4C6F6D37254E12D8004FD828 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				4C6F6D38254E12F8004FD828 /* ControlTower.swift */,
+				4C6F6D3C254E1462004FD828 /* ControlTowerCommonContext.swift */,
+				4C11CD79254F3456006E960C /* Contexts.swift */,
+				4C11CD7C254F3545006E960C /* ContextProvider.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		4C6F6D40254E19C5004FD828 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				4C11CD70254F2207006E960C /* Navigator */,
+				4C6F6DA6254F0942004FD828 /* NavigationContainer */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		4C6F6DA6254F0942004FD828 /* NavigationContainer */ = {
+			isa = PBXGroup;
+			children = (
+				4C6F6DA3254F0477004FD828 /* AppNavigationContainerKind.swift */,
+				4C6F6DA7254F0957004FD828 /* NavigationContainer.swift */,
+			);
+			path = NavigationContainer;
+			sourceTree = "<group>";
+		};
+		4C6F6DBD254F14BD004FD828 /* BeersList */ = {
+			isa = PBXGroup;
+			children = (
+				4C6F6DC2254F14DC004FD828 /* BeersListVM.swift */,
+				4C6F6DBE254F14D0004FD828 /* BeersListVC.swift */,
+			);
+			path = BeersList;
+			sourceTree = "<group>";
+		};
+		4C6F6DC6254F1516004FD828 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				4C11CD56254F16AE006E960C /* FavoriteBeersVM.swift */,
+				4C6F6DCA254F1540004FD828 /* FavoriteBeersVC.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		4C6F6DCD254F1580004FD828 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4C6F6D37254E12D8004FD828 /* Context */,
+				4C6F6D40254E19C5004FD828 /* Navigation */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4C6F6DCE254F1586004FD828 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				4C11CD5A254F16F8006E960C /* RootTabBar */,
+				4C6F6DBD254F14BD004FD828 /* BeersList */,
+				4C6F6DC6254F1516004FD828 /* Favorites */,
+				4C11CD5B254F17BE006E960C /* BeerDetails */,
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 		A44E75369B1D9B8F3CEDF933 /* Frameworks */ = {
@@ -152,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6F6D23254E0263004FD828 /* LaunchScreen.storyboard in Resources */,
+				4C11CD88254F4486006E960C /* Localizable.strings in Resources */,
 				4C6F6D20254E0263004FD828 /* Assets.xcassets in Resources */,
 				4C6F6D1E254E0263004FD828 /* Main.storyboard in Resources */,
 			);
@@ -206,15 +345,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6F6DA4254F0477004FD828 /* AppNavigationContainerKind.swift in Sources */,
+				4C11CD62254F17E7006E960C /* BeerDetailsVM.swift in Sources */,
 				4C6F6D1B254E0263004FD828 /* ViewController.swift in Sources */,
+				4C11CD6E254F20EE006E960C /* NavigatorType.swift in Sources */,
+				4C11CD7D254F3545006E960C /* ContextProvider.swift in Sources */,
+				4C6F6DBB254F1318004FD828 /* ScreensFactory.swift in Sources */,
+				4C11CD5D254F17CB006E960C /* BeerDetailsVC.swift in Sources */,
+				4C6F6D34254E0F19004FD828 /* RootTabBarController.swift in Sources */,
+				4C6F6D3D254E1462004FD828 /* ControlTowerCommonContext.swift in Sources */,
+				4C6F6DA8254F0957004FD828 /* NavigationContainer.swift in Sources */,
+				4C6F6DC3254F14DC004FD828 /* BeersListVM.swift in Sources */,
+				4C11CD57254F16AF006E960C /* FavoriteBeersVM.swift in Sources */,
+				4C11CD73254F224D006E960C /* TabBarDataProvider.swift in Sources */,
+				4C6F6DBF254F14D0004FD828 /* BeersListVC.swift in Sources */,
+				4C11CD7A254F3456006E960C /* Contexts.swift in Sources */,
 				4C6F6D17254E0263004FD828 /* AppDelegate.swift in Sources */,
-				4C6F6D19254E0263004FD828 /* SceneDelegate.swift in Sources */,
+				4C6F6DB8254F11E2004FD828 /* AppNavigator.swift in Sources */,
+				4C6F6DCB254F1540004FD828 /* FavoriteBeersVC.swift in Sources */,
+				4C6F6D39254E12F8004FD828 /* ControlTower.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4C11CD8A254F4486006E960C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C11CD89254F4486006E960C /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		4C6F6D1C254E0263004FD828 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -358,7 +521,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AVUC8VQ6A7;
-				INFOPLIST_FILE = BeersApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BeersApp/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,7 +541,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AVUC8VQ6A7;
-				INFOPLIST_FILE = BeersApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BeersApp/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
