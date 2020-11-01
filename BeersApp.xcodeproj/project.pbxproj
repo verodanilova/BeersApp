@@ -16,8 +16,6 @@
 		4C11CD7D254F3545006E960C /* ContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD7C254F3545006E960C /* ContextProvider.swift */; };
 		4C11CD88254F4486006E960C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C11CD8A254F4486006E960C /* Localizable.strings */; };
 		4C6F6D17254E0263004FD828 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D16254E0263004FD828 /* AppDelegate.swift */; };
-		4C6F6D1B254E0263004FD828 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D1A254E0263004FD828 /* ViewController.swift */; };
-		4C6F6D1E254E0263004FD828 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D1C254E0263004FD828 /* Main.storyboard */; };
 		4C6F6D20254E0263004FD828 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D1F254E0263004FD828 /* Assets.xcassets */; };
 		4C6F6D23254E0263004FD828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D21254E0263004FD828 /* LaunchScreen.storyboard */; };
 		4C6F6D34254E0F19004FD828 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D33254E0F19004FD828 /* RootTabBarController.swift */; };
@@ -44,8 +42,6 @@
 		4C11CD89254F4486006E960C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C6F6D13254E0263004FD828 /* BeersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6F6D16254E0263004FD828 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C6F6D1A254E0263004FD828 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4C6F6D1D254E0263004FD828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C6F6D1F254E0263004FD828 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C6F6D22254E0263004FD828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C6F6D24254E0263004FD828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,8 +133,6 @@
 			children = (
 				4C6F6DCD254F1580004FD828 /* Common */,
 				4C6F6DCE254F1586004FD828 /* Internal */,
-				4C6F6D1A254E0263004FD828 /* ViewController.swift */,
-				4C6F6D1C254E0263004FD828 /* Main.storyboard */,
 				4C6F6D32254E0CD9004FD828 /* Resources */,
 			);
 			path = BeersApp;
@@ -292,7 +286,6 @@
 				4C6F6D23254E0263004FD828 /* LaunchScreen.storyboard in Resources */,
 				4C11CD88254F4486006E960C /* Localizable.strings in Resources */,
 				4C6F6D20254E0263004FD828 /* Assets.xcassets in Resources */,
-				4C6F6D1E254E0263004FD828 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +340,6 @@
 			files = (
 				4C6F6DA4254F0477004FD828 /* AppNavigationContainerKind.swift in Sources */,
 				4C11CD62254F17E7006E960C /* BeerDetailsVM.swift in Sources */,
-				4C6F6D1B254E0263004FD828 /* ViewController.swift in Sources */,
 				4C11CD6E254F20EE006E960C /* NavigatorType.swift in Sources */,
 				4C11CD7D254F3545006E960C /* ContextProvider.swift in Sources */,
 				4C6F6DBB254F1318004FD828 /* ScreensFactory.swift in Sources */,
@@ -376,14 +368,6 @@
 				4C11CD89254F4486006E960C /* en */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		4C6F6D1C254E0263004FD828 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4C6F6D1D254E0263004FD828 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		4C6F6D21254E0263004FD828 /* LaunchScreen.storyboard */ = {
