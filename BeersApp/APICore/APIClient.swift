@@ -47,14 +47,15 @@ private extension APIClient {
         let headers = headersForRequest(request)
         let uri = objectURI(path: request.path)
         let parameters = request.parameters
-        return executeInsertableObjectRequest(method: request.method, URL: uri,
-            parameters: parameters, headers: headers,
+        return executeInsertableObjectRequest(context: managedObjectContext,
+            method: request.method, URL: uri, parameters: parameters, headers: headers,
             objectType: type, envelope: request.envelope, serializer: request.serializer,
             encoding: request.encoding, completionHandler: completionHandler)
     }
     
     func executeInsertableObjectRequest<Object: InsertableFromJSON>(
-        method: HTTPMethod, URL: URLConvertible, parameters: Parameters,
+        context: NSManagedObjectContext, method: HTTPMethod,
+        URL: URLConvertible, parameters: Parameters,
         headers: HTTPHeaders?, objectType: Object.Type, envelope: ResponseEnvelopeType,
         serializer: DataResponseSerializer<Any>, encoding: ParameterEncoding,
         completionHandler: @escaping (Result<Object>) -> Void) -> Request {
@@ -64,7 +65,7 @@ private extension APIClient {
 
         request.resume()
 
-        return request.responseInsertable(serializer: serializer,
+        return request.responseInsertable(context: context, serializer: serializer,
             objectType: objectType, envelope: envelope) { response in
                 completionHandler(response.result)
             }
