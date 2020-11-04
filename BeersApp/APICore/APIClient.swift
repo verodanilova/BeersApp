@@ -8,19 +8,22 @@
 import Foundation
 import Alamofire
 import RxSwift
+import CoreData
 
 
 final class APIClient {
     private let baseURL: URL
+    private let managedObjectContext: NSManagedObjectContext
     private let networkSession: SessionManager
 
-    init(baseURL: URL) {
+    init(baseURL: URL, managedObjectContext: NSManagedObjectContext) {
         let sessionConfiguration = URLSessionConfiguration.default
         let policyManager = ServerTrustPolicyManager(policies: [:])
         self.networkSession = SessionManager(configuration: sessionConfiguration,
             serverTrustPolicyManager: policyManager)
         self.networkSession.startRequestsImmediately = false
         self.baseURL = baseURL
+        self.managedObjectContext = managedObjectContext
     }
 }
 

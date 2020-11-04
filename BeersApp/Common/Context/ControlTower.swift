@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 
 final class ControlTower {
@@ -18,13 +19,19 @@ final class ControlTower {
         /* Create a navigator. */
         let navigator = AppNavigator(contextProvider: contextProvider)
         
+        /* Persistent stack */
+        let coreDataStack = CoreDataStack(modelName: appConfiguration.persistentStackModelName)
+        
         /* API */
-        let apiClient = APIClient(baseURL: appConfiguration.apiBaseURL)
+        let apiClient = APIClient(
+            baseURL: appConfiguration.apiBaseURL,
+            managedObjectContext: coreDataStack.apiManagedObjectContext)
         
         /* Create the context object. */
         self.context = ControlTowerCommonContext(
             navigator: navigator,
-            beersAPI: apiClient)
+            beersAPI: apiClient,
+            persistentStack: coreDataStack)
         
         /* Update the context provider with the fresh context. */
         contextProvider.context = self.context

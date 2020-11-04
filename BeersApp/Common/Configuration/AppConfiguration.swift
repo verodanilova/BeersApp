@@ -10,10 +10,12 @@ import Foundation
 
 enum ConfigurationStrings: String {
     case apiBaseURI = "https://api.punkapi.com/v2"
+    case persistentStackModelName = "Model"
 }
 
 struct AppConfiguration {
     let apiBaseURL: URL = fetchURL(.apiBaseURI)
+    let persistentStackModelName = ConfigurationStrings.persistentStackModelName.rawValue
 }
 
 private extension AppConfiguration {
