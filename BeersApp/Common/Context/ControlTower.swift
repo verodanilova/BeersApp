@@ -18,8 +18,13 @@ final class ControlTower {
         /* Create a navigator. */
         let navigator = AppNavigator(contextProvider: contextProvider)
         
+        /* API */
+        let apiClient = APIClient(baseURL: appConfiguration.apiBaseURL)
+        
         /* Create the context object. */
-        self.context = ControlTowerCommonContext(navigator: navigator)
+        self.context = ControlTowerCommonContext(
+            navigator: navigator,
+            beersAPI: apiClient)
         
         /* Update the context provider with the fresh context. */
         contextProvider.context = self.context

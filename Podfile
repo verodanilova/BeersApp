@@ -10,5 +10,8 @@ target 'BeersApp' do
 
   # Autolayout
   pod 'SnapKit', '~> 5.0.1'
+
+  # Data loading
+  pod 'Alamofire', '~> 4.7.3'
   
 end

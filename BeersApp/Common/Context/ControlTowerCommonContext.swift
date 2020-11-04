@@ -8,11 +8,13 @@
 import Foundation
 
 
-protocol CommonContext: NavigatorContext {
+protocol CommonContext: NavigatorContext,
+    BeersAPIContext {
 }
 
 struct ControlTowerCommonContext {
     let navigator: NavigatorType
+    let beersAPI: BeersAPI
 }
 
 extension ControlTowerCommonContext: CommonContext {

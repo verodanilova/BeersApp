@@ -11,3 +11,7 @@ import Foundation
 protocol NavigatorContext {
     var navigator: NavigatorType {get}
 }
+
+protocol BeersAPIContext {
+    var beersAPI: BeersAPI {get}
+}
