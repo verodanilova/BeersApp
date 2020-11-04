@@ -24,6 +24,9 @@ final class ControlTower {
         /* Update the context provider with the fresh context. */
         contextProvider.context = self.context
         
+        /* Set navigation containers */
+        navigator.setContainers()
+        
         /* Set root controller items */
         let tabBarDataProvider = TabBarDataProvider(rootControllers: navigator.rootControllers)
         rootController.configureItems(with: tabBarDataProvider)

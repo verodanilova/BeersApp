@@ -15,6 +15,17 @@
 		4C11CD7A254F3456006E960C /* Contexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD79254F3456006E960C /* Contexts.swift */; };
 		4C11CD7D254F3545006E960C /* ContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD7C254F3545006E960C /* ContextProvider.swift */; };
 		4C11CD88254F4486006E960C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C11CD8A254F4486006E960C /* Localizable.strings */; };
+		4C11CD90254F50D9006E960C /* BeersListStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD8F254F50D9006E960C /* BeersListStyle.swift */; };
+		4C11CD94254F51E5006E960C /* BeersListItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD93254F51E5006E960C /* BeersListItemVM.swift */; };
+		4C11CD99254F5351006E960C /* WeakCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD98254F5351006E960C /* WeakCapture.swift */; };
+		4C11CD9D254F558D006E960C /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD9C254F558D006E960C /* ButtonStyle.swift */; };
+		4C11CDA8254F6050006E960C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CDA7254F6050006E960C /* AppColors.swift */; };
+		4C60B727254F620F0075DDE1 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */; };
+		4C60B72B254F63A70075DDE1 /* BeersListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */; };
+		4C60B72C254F63A70075DDE1 /* BeersListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C60B72A254F63A70075DDE1 /* BeersListItemCell.xib */; };
+		4C60B72F254F68180075DDE1 /* BeersListItemStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B72E254F68180075DDE1 /* BeersListItemStyle.swift */; };
+		4C60B733254F68550075DDE1 /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B732254F68550075DDE1 /* LabelStyle.swift */; };
+		4C60B737254F6C140075DDE1 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B736254F6C140075DDE1 /* UITableView+Extensions.swift */; };
 		4C6F6D17254E0263004FD828 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D16254E0263004FD828 /* AppDelegate.swift */; };
 		4C6F6D20254E0263004FD828 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D1F254E0263004FD828 /* Assets.xcassets */; };
 		4C6F6D23254E0263004FD828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D21254E0263004FD828 /* LaunchScreen.storyboard */; };
@@ -40,6 +51,17 @@
 		4C11CD79254F3456006E960C /* Contexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contexts.swift; sourceTree = "<group>"; };
 		4C11CD7C254F3545006E960C /* ContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvider.swift; sourceTree = "<group>"; };
 		4C11CD89254F4486006E960C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C11CD8F254F50D9006E960C /* BeersListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListStyle.swift; sourceTree = "<group>"; };
+		4C11CD93254F51E5006E960C /* BeersListItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListItemVM.swift; sourceTree = "<group>"; };
+		4C11CD98254F5351006E960C /* WeakCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakCapture.swift; sourceTree = "<group>"; };
+		4C11CD9C254F558D006E960C /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		4C11CDA7254F6050006E960C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListItemCell.swift; sourceTree = "<group>"; };
+		4C60B72A254F63A70075DDE1 /* BeersListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeersListItemCell.xib; sourceTree = "<group>"; };
+		4C60B72E254F68180075DDE1 /* BeersListItemStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListItemStyle.swift; sourceTree = "<group>"; };
+		4C60B732254F68550075DDE1 /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
+		4C60B736254F6C140075DDE1 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		4C6F6D13254E0263004FD828 /* BeersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6F6D16254E0263004FD828 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C6F6D1F254E0263004FD828 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +129,37 @@
 				4C6F6DB7254F11E2004FD828 /* AppNavigator.swift */,
 			);
 			path = Navigator;
+			sourceTree = "<group>";
+		};
+		4C11CD92254F51D2006E960C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4C60B72E254F68180075DDE1 /* BeersListItemStyle.swift */,
+				4C11CD93254F51E5006E960C /* BeersListItemVM.swift */,
+				4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */,
+				4C60B72A254F63A70075DDE1 /* BeersListItemCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4C11CD97254F530F006E960C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C11CD98254F5351006E960C /* WeakCapture.swift */,
+				4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */,
+				4C60B736254F6C140075DDE1 /* UITableView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C11CD9B254F556B006E960C /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				4C11CD9C254F558D006E960C /* ButtonStyle.swift */,
+				4C60B732254F68550075DDE1 /* LabelStyle.swift */,
+				4C11CDA7254F6050006E960C /* AppColors.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		4C6F6D0A254E0263004FD828 = {
@@ -181,6 +234,8 @@
 		4C6F6DBD254F14BD004FD828 /* BeersList */ = {
 			isa = PBXGroup;
 			children = (
+				4C11CD92254F51D2006E960C /* Cell */,
+				4C11CD8F254F50D9006E960C /* BeersListStyle.swift */,
 				4C6F6DC2254F14DC004FD828 /* BeersListVM.swift */,
 				4C6F6DBE254F14D0004FD828 /* BeersListVC.swift */,
 			);
@@ -199,6 +254,8 @@
 		4C6F6DCD254F1580004FD828 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4C11CD9B254F556B006E960C /* Styles */,
+				4C11CD97254F530F006E960C /* Extensions */,
 				4C6F6D37254E12D8004FD828 /* Context */,
 				4C6F6D40254E19C5004FD828 /* Navigation */,
 			);
@@ -285,6 +342,7 @@
 			files = (
 				4C6F6D23254E0263004FD828 /* LaunchScreen.storyboard in Resources */,
 				4C11CD88254F4486006E960C /* Localizable.strings in Resources */,
+				4C60B72C254F63A70075DDE1 /* BeersListItemCell.xib in Resources */,
 				4C6F6D20254E0263004FD828 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,19 +397,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6F6DA4254F0477004FD828 /* AppNavigationContainerKind.swift in Sources */,
+				4C60B72F254F68180075DDE1 /* BeersListItemStyle.swift in Sources */,
 				4C11CD62254F17E7006E960C /* BeerDetailsVM.swift in Sources */,
+				4C11CD99254F5351006E960C /* WeakCapture.swift in Sources */,
 				4C11CD6E254F20EE006E960C /* NavigatorType.swift in Sources */,
+				4C11CD94254F51E5006E960C /* BeersListItemVM.swift in Sources */,
+				4C11CDA8254F6050006E960C /* AppColors.swift in Sources */,
 				4C11CD7D254F3545006E960C /* ContextProvider.swift in Sources */,
 				4C6F6DBB254F1318004FD828 /* ScreensFactory.swift in Sources */,
+				4C11CD90254F50D9006E960C /* BeersListStyle.swift in Sources */,
 				4C11CD5D254F17CB006E960C /* BeerDetailsVC.swift in Sources */,
+				4C11CD9D254F558D006E960C /* ButtonStyle.swift in Sources */,
 				4C6F6D34254E0F19004FD828 /* RootTabBarController.swift in Sources */,
 				4C6F6D3D254E1462004FD828 /* ControlTowerCommonContext.swift in Sources */,
 				4C6F6DA8254F0957004FD828 /* NavigationContainer.swift in Sources */,
+				4C60B737254F6C140075DDE1 /* UITableView+Extensions.swift in Sources */,
 				4C6F6DC3254F14DC004FD828 /* BeersListVM.swift in Sources */,
+				4C60B733254F68550075DDE1 /* LabelStyle.swift in Sources */,
 				4C11CD57254F16AF006E960C /* FavoriteBeersVM.swift in Sources */,
 				4C11CD73254F224D006E960C /* TabBarDataProvider.swift in Sources */,
+				4C60B72B254F63A70075DDE1 /* BeersListItemCell.swift in Sources */,
 				4C6F6DBF254F14D0004FD828 /* BeersListVC.swift in Sources */,
 				4C11CD7A254F3456006E960C /* Contexts.swift in Sources */,
+				4C60B727254F620F0075DDE1 /* UIColor+Extensions.swift in Sources */,
 				4C6F6D17254E0263004FD828 /* AppDelegate.swift in Sources */,
 				4C6F6DB8254F11E2004FD828 /* AppNavigator.swift in Sources */,
 				4C6F6DCB254F1540004FD828 /* FavoriteBeersVC.swift in Sources */,

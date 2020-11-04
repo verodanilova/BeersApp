@@ -8,3 +8,6 @@
 
 "Tab bar.List item.Title" = "List";
 "Tab bar.Favorites item.Title" = "Favorites";
+
+"Beers list.Navigation bar.Title" = "Beers";
+"Beers list.Sort button.Title" = "Sort options";
