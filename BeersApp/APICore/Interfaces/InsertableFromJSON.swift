@@ -8,6 +8,7 @@
 import CoreData
 
 
+let insertableFromJSONErrorDomain = "InsertableFromJSONErrorDomain"
 enum InsertableFromJSONError: Error {
     case invalidJSON
     case serializingError(Error)
@@ -18,4 +19,18 @@ enum InsertableFromJSONError: Error {
   object context from JSON representation. */
 protocol InsertableFromJSON {
     static func insertObject(fromJSON JSON: Any) throws -> Self
+}
+
+extension Array: InsertableFromJSON where Element: InsertableFromJSON {
+    static func insertObject(fromJSON JSON: Any) throws -> Array<Element> {
+        guard let array = JSON as? [[String: Any]] else {
+            let error = NSError(domain: insertableFromJSONErrorDomain, code: 0,
+                userInfo: [NSLocalizedDescriptionKey: "Expected the JSON object of Array type"])
+            throw error
+        }
+
+        return array.compactMap { elementJSON -> Element? in
+            try? Element.insertObject(fromJSON: elementJSON)
+        }
+    }
 }
