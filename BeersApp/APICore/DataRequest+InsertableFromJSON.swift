@@ -41,7 +41,7 @@ private extension DataRequest {
                     }
 
                     do {
-                        let object = try T.insertObject(fromJSON: unpackedValue)
+                        let object = try T.insertObject(fromJSON: unpackedValue, to: context)
                         try DataRequest.saveInsertedObjects(in: context)
                         return .success(object)
                     } catch {

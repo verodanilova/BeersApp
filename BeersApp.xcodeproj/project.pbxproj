@@ -28,7 +28,6 @@
 		4C340A4325530F5800EE54EA /* InsertableFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A4225530F5800EE54EA /* InsertableFromJSON.swift */; };
 		4C340A482553160D00EE54EA /* DataRequest+InsertableFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A472553160D00EE54EA /* DataRequest+InsertableFromJSON.swift */; };
 		4C340A4B2553259400EE54EA /* GetBeersListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A4A2553259400EE54EA /* GetBeersListRequest.swift */; };
-		4C340A4E2553290000EE54EA /* NoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A4D2553290000EE54EA /* NoContent.swift */; };
 		4C340A5225532B9500EE54EA /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A5125532B9500EE54EA /* AppConfiguration.swift */; };
 		4C340A56255338EB00EE54EA /* ResponseRootArrayEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A55255338EB00EE54EA /* ResponseRootArrayEnvelope.swift */; };
 		4C340A592553390500EE54EA /* ResponseEnvelopeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A582553390500EE54EA /* ResponseEnvelopeType.swift */; };
@@ -38,6 +37,8 @@
 		4C340A6C25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A6B25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift */; };
 		4C340A6F25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A6E25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift */; };
 		4C340A732553524600EE54EA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A712553524600EE54EA /* Model.xcdatamodeld */; };
+		4C340A772553618A00EE54EA /* BeerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A762553618A00EE54EA /* BeerInfo.swift */; };
+		4C340A9D25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */; };
 		4C60B727254F620F0075DDE1 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */; };
 		4C60B72B254F63A70075DDE1 /* BeersListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */; };
 		4C60B72C254F63A70075DDE1 /* BeersListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C60B72A254F63A70075DDE1 /* BeersListItemCell.xib */; };
@@ -82,7 +83,6 @@
 		4C340A4225530F5800EE54EA /* InsertableFromJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableFromJSON.swift; sourceTree = "<group>"; };
 		4C340A472553160D00EE54EA /* DataRequest+InsertableFromJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataRequest+InsertableFromJSON.swift"; sourceTree = "<group>"; };
 		4C340A4A2553259400EE54EA /* GetBeersListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBeersListRequest.swift; sourceTree = "<group>"; };
-		4C340A4D2553290000EE54EA /* NoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContent.swift; sourceTree = "<group>"; };
 		4C340A5125532B9500EE54EA /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		4C340A55255338EB00EE54EA /* ResponseRootArrayEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRootArrayEnvelope.swift; sourceTree = "<group>"; };
 		4C340A582553390500EE54EA /* ResponseEnvelopeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseEnvelopeType.swift; sourceTree = "<group>"; };
@@ -92,6 +92,8 @@
 		4C340A6B25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Inserting.swift"; sourceTree = "<group>"; };
 		4C340A6E25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Deleting.swift"; sourceTree = "<group>"; };
 		4C340A722553524600EE54EA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4C340A762553618A00EE54EA /* BeerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerInfo.swift; sourceTree = "<group>"; };
+		4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeerInfo+InsertableFromJSON.swift"; sourceTree = "<group>"; };
 		4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListItemCell.swift; sourceTree = "<group>"; };
 		4C60B72A254F63A70075DDE1 /* BeersListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeersListItemCell.xib; sourceTree = "<group>"; };
@@ -218,7 +220,6 @@
 				4C340A262552F8F000EE54EA /* APIClient.swift */,
 				4C340A302553006400EE54EA /* APIRequest.swift */,
 				4C340A472553160D00EE54EA /* DataRequest+InsertableFromJSON.swift */,
-				4C340A4D2553290000EE54EA /* NoContent.swift */,
 			);
 			path = APICore;
 			sourceTree = "<group>";
@@ -255,10 +256,20 @@
 		4C340A662553450900EE54EA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4C340A752553603900EE54EA /* PersistentModel */,
 				4C340A68255348AA00EE54EA /* CoreDataStack.swift */,
 				4C340A712553524600EE54EA /* Model.xcdatamodeld */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		4C340A752553603900EE54EA /* PersistentModel */ = {
+			isa = PBXGroup;
+			children = (
+				4C340A762553618A00EE54EA /* BeerInfo.swift */,
+				4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */,
+			);
+			path = PersistentModel;
 			sourceTree = "<group>";
 		};
 		4C6F6D0A254E0263004FD828 = {
@@ -514,7 +525,6 @@
 				4C340A4025530E7800EE54EA /* CommonAPI.swift in Sources */,
 				4C11CD90254F50D9006E960C /* BeersListStyle.swift in Sources */,
 				4C340A4B2553259400EE54EA /* GetBeersListRequest.swift in Sources */,
-				4C340A4E2553290000EE54EA /* NoContent.swift in Sources */,
 				4C11CD5D254F17CB006E960C /* BeerDetailsVC.swift in Sources */,
 				4C11CD9D254F558D006E960C /* ButtonStyle.swift in Sources */,
 				4C340A6C25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift in Sources */,
@@ -535,12 +545,14 @@
 				4C6F6DBF254F14D0004FD828 /* BeersListVC.swift in Sources */,
 				4C11CD7A254F3456006E960C /* Contexts.swift in Sources */,
 				4C340A272552F8F000EE54EA /* APIClient.swift in Sources */,
+				4C340A772553618A00EE54EA /* BeerInfo.swift in Sources */,
 				4C340A4325530F5800EE54EA /* InsertableFromJSON.swift in Sources */,
 				4C60B727254F620F0075DDE1 /* UIColor+Extensions.swift in Sources */,
 				4C340A3C255303E400EE54EA /* RequestParametersConvertible.swift in Sources */,
 				4C6F6D17254E0263004FD828 /* AppDelegate.swift in Sources */,
 				4C340A312553006400EE54EA /* APIRequest.swift in Sources */,
 				4C6F6DB8254F11E2004FD828 /* AppNavigator.swift in Sources */,
+				4C340A9D25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift in Sources */,
 				4C6F6DCB254F1540004FD828 /* FavoriteBeersVC.swift in Sources */,
 				4C340A63255342D000EE54EA /* CancelableTask.swift in Sources */,
 				4C6F6D39254E12F8004FD828 /* ControlTower.swift in Sources */,

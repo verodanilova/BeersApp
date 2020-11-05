@@ -11,13 +11,13 @@ import Alamofire
 
 
 protocol BeersAPI: CommonAPI {
-    func getBeersList(_ input: GetBeersListRequest) -> Observable<NoContent>
+    func getBeersList(_ input: GetBeersListRequest) -> Observable<[BeerInfo]>
 }
 
 extension APIClient: BeersAPI {}
 
 extension BeersAPI {
-    func getBeersList(_ input: GetBeersListRequest) -> Observable<NoContent> {
+    func getBeersList(_ input: GetBeersListRequest) -> Observable<[BeerInfo]> {
         var request = APIRequest(method: .get, path: "/beers")
         request.parameters = APIRequest.requestParameters(input)
         request.envelope = ResponseRootArrayEnvelope()
