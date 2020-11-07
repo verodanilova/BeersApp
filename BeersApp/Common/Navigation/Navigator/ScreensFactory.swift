@@ -41,10 +41,12 @@ extension ScreensFactory {
         return pack(controller, viewModel)
     }
     
-    func makeBeerDetails() -> Pack<BeerDetailsViewController, BeerDetailsViewModelType> {
-        let viewModel = BeerDetailsViewModel()
+    func makeBeerDetails(for id: Int) -> Pack<BeerDetailsViewController, BeerDetailsViewModelType> {
+        let viewModel = BeerDetailsViewModel(context: context, id: id)
+        let style = BeerDetailsStyle()
         let controller = BeerDetailsViewController()
         controller.viewModel = viewModel
+        controller.style = style
         return pack(controller, viewModel)
     }
 }

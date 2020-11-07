@@ -9,7 +9,7 @@ import Foundation
 
 
 enum NavigationTarget {
-    case beerDetails
+    case beerDetails(id: Int)
 }
 
 protocol NavigatorType {
@@ -19,15 +19,15 @@ protocol NavigatorType {
 extension AppNavigator: NavigatorType {
     func navigate(to target: NavigationTarget, in containerKind: AppNavigationContainerKind) {
         switch target {
-            case .beerDetails:
-                navigateToBeerDetails(containerKind)
+            case let .beerDetails(id):
+                navigateToBeerDetails(containerKind, itemId: id)
         }
     }
 }
 
 private extension AppNavigator {
-    func navigateToBeerDetails(_ containerKind: AppNavigationContainerKind) {
-        let controller = screensFactory.makeBeerDetails().controller
+    func navigateToBeerDetails(_ containerKind: AppNavigationContainerKind, itemId: Int) {
+        let controller = screensFactory.makeBeerDetails(for: itemId).controller
         let container = containerForKind(containerKind)
         container.push(controller)
     }

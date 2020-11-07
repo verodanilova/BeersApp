@@ -11,6 +11,7 @@ import CoreData
 
 protocol BeersDataSourceType {
     func makeBaseBeersFRC() -> MultiFetchedResultsControllerDelegate<BeerInfo>
+    func makeBeerInfoFRC(withID id: Int) -> FetchedResultsControllerDelegate<BeerInfo>
 }
 
 final class BeersDataSource: BeersDataSourceType {
@@ -24,5 +25,10 @@ final class BeersDataSource: BeersDataSourceType {
         request.sortDescriptors = [NSSortDescriptor(
             keyPath: \BeerInfo.id, ascending: true)]
         return MultiFetchedResultsControllerDelegate(context: context, request: request)
+    }
+    
+    func makeBeerInfoFRC(withID id: Int) -> FetchedResultsControllerDelegate<BeerInfo> {
+        let request:  NSFetchRequest<BeerInfo> = BeerInfo.fetchRequest(id: id)
+        return FetchedResultsControllerDelegate(context: context, request: request)
     }
 }

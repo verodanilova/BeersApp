@@ -96,7 +96,8 @@ private extension BeersListViewModel {
 // MARK: - Navigation
 private extension BeersListViewModel {
     func itemSelected(at indexPath: IndexPath) {
-        // TODO: Add navigation to item screen
+        let id = beersFRC.currentItem[indexPath.item].id
+        context.navigator.navigate(to: .beerDetails(id: Int(id)), in: .list)
     }
     
     func showSortOptions() {

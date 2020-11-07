@@ -13,3 +13,10 @@
 "Beers list.Sort button.Title" = "Sort options";
 "Beers list.Footer.Initial loading.Title" = "Loading beers list...";
 "Beers list.Footer.Loading more info.Title" = "Loading more beers...";
+
+"Beer details.Info.About.Title" = "About";
+"Beer details.Info.Figures.Title" = "Figures";
+"Beer details.Info.Figures.Alcohol.Format" = "alc. %@%% vol.";
+"Beer details.Info.Figures.Bitterness.Format" = "%@ IBU";
+"Beer details.Info.Figures.Color.Format" = "%@ EBC";
+"Beer details.Add to favorites button.Title" = "Add to favorites";

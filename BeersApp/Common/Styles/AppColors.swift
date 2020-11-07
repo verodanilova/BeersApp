@@ -14,7 +14,9 @@ struct AppColors {
 
     let alto = UIColor(int: 0xd3d3d3)
     let sandDune = UIColor(int: 0x7e6f66)
+    let mineShaft = UIColor(int: 0x383838)
     let bostonBlue = UIColor(int: 0x307ebb)
+    let gold = UIColor(int: 0xffd700)
     
     init() {
     }
