@@ -14,32 +14,30 @@ protocol BeersListViewModelType {
     var items: Driver<[BeersListItemViewModelType]> {get}
     
     func bindViewEvents(itemSelected: Signal<IndexPath>, sortTap: Signal<Void>)
+    func prepare()
 }
 
 final class BeersListViewModel: BeersListViewModelType {
-    typealias Context = NavigatorContext
+    typealias Context = NavigatorContext & BeersAPIContext & DataContext
     
     let items: Driver<[BeersListItemViewModelType]>
     private let itemsRelay = BehaviorRelay<[BeersListItemViewModelType]>(value: [])
     
     private let context: Context
+    private let dataSource: BeersDataSourceType
+    private let beersFRC: MultiFetchedResultsControllerDelegate<BeerInfo>
     private let disposeBag = DisposeBag()
     
     init(context: Context) {
         self.context = context
+        self.dataSource = BeersDataSource(context: context)
+        self.beersFRC = dataSource.makeBaseBeersFRC()
         self.items = itemsRelay.asDriver()
-        
-        // Temporary items for testing
-        let items: [BeersListItem] = [
-            BeersListItem(name: "Item 1", tagline: "Tagline 1", imageName: "beer_ic"),
-            BeersListItem(name: "Item 2", tagline: "Tagline 2", imageName: "beer_ic"),
-            BeersListItem(name: "Item 2 Long title", tagline: "Tagline 2 long long long long long long long long long long long long long long long long long long long long long long long long text tagline", imageName: "beer_ic"),
-            BeersListItem(name: "Item 3", tagline: "Tagline 3", imageName: "beer_ic"),
-            BeersListItem(name: "Item 4", tagline: "Tagline 4", imageName: "beer_ic"),
-            BeersListItem(name: "Item 5", tagline: "Tagline Tagline Tagline Tagline Tagline Tagline Tagline 5", imageName: "beer_ic")
-        ]
-        let cellModels = items.map { BeersListItemViewModel(item: $0) }
-        itemsRelay.accept(cellModels)
+
+        beersFRC.fetchedItem
+            .map { $0.map { BeersListItemViewModel(item: $0) } }
+            .drive(itemsRelay)
+            .disposed(by: disposeBag)
     }
     
     func bindViewEvents(itemSelected: Signal<IndexPath>, sortTap: Signal<Void>) {
@@ -49,6 +47,13 @@ final class BeersListViewModel: BeersListViewModelType {
         
         sortTap
             .emit(onNext: weakly(self, type(of: self).showSortOptions))
+            .disposed(by: disposeBag)
+    }
+    
+    func prepare() {
+        let request = GetBeersListRequest()
+        context.beersAPI.getBeersList(request)
+            .subscribe()
             .disposed(by: disposeBag)
     }
 }

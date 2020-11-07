@@ -9,26 +9,16 @@ import Foundation
 
 
 protocol BeersListItemViewModelType {
-    var name: String {get}
-    var tagline: String {get}
-    var imageName: String {get}
+    var name: String? {get}
+    var tagline: String? {get}
 }
 
 final class BeersListItemViewModel: BeersListItemViewModelType {
-    let name: String
-    let tagline: String
-    let imageName: String
-    
-    init(item: BeersListItem) {
+    let name: String?
+    let tagline: String?
+
+    init(item: BeerInfo) {
         self.name = item.name
         self.tagline = item.tagline
-        self.imageName = item.imageName
     }
-}
-
-// Temporary struct
-struct BeersListItem {
-    var name: String
-    var tagline: String
-    var imageName: String
 }

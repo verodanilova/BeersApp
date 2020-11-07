@@ -33,6 +33,12 @@ class BeersListViewController: UIViewController {
         configureViewComponents()
         bindViewModel()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel?.prepare()
+    }
 }
 
 // MARK: - View configuration

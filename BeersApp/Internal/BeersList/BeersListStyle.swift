@@ -27,13 +27,13 @@ struct BeersListStyle: BeersListStyleType {
     var tableViewBackgroundColor: UIColor {
         return appColors.white
     }
-    public var separatorInset: UIEdgeInsets {
+    var separatorInset: UIEdgeInsets {
         return .init(top: 0, left: 16, bottom: 0, right: 16)
     }
-    public var separatorColor: UIColor {
+    var separatorColor: UIColor {
         return appColors.alto
     }
-    public var itemStyle: BeersListItemStyleType {
+    var itemStyle: BeersListItemStyleType {
         return BeersListItemStyle()
     }
 }

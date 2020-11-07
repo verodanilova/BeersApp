@@ -10,7 +10,8 @@ import CoreData
 
 
 protocol CommonContext: NavigatorContext,
-    BeersAPIContext {
+    BeersAPIContext,
+    DataContext {
 }
 
 struct ControlTowerCommonContext {
@@ -24,6 +25,6 @@ extension ControlTowerCommonContext: CommonContext {
 
 extension ControlTowerCommonContext: DataContext {
     var managedObjectContext: NSManagedObjectContext {
-        return persistentStack.managedObjectContext
+        return persistentStack.apiManagedObjectContext
     }
 }

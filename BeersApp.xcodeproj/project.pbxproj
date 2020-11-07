@@ -40,6 +40,7 @@
 		4C340A772553618A00EE54EA /* BeerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A762553618A00EE54EA /* BeerInfo.swift */; };
 		4C340A9D25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */; };
 		4C340AA32554A38300EE54EA /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AA22554A38300EE54EA /* FetchedResultsControllerDelegate.swift */; };
+		4C340AA72556E16A00EE54EA /* BeersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AA62556E16A00EE54EA /* BeersDataSource.swift */; };
 		4C340AAA2556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AA92556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift */; };
 		4C60B727254F620F0075DDE1 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */; };
 		4C60B72B254F63A70075DDE1 /* BeersListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */; };
@@ -97,6 +98,7 @@
 		4C340A762553618A00EE54EA /* BeerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerInfo.swift; sourceTree = "<group>"; };
 		4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeerInfo+InsertableFromJSON.swift"; sourceTree = "<group>"; };
 		4C340AA22554A38300EE54EA /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
+		4C340AA62556E16A00EE54EA /* BeersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersDataSource.swift; sourceTree = "<group>"; };
 		4C340AA92556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiFetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
 		4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListItemCell.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				4C340AA12554A33E00EE54EA /* Fetching */,
 				4C340A752553603900EE54EA /* PersistentModel */,
 				4C340A68255348AA00EE54EA /* CoreDataStack.swift */,
+				4C340AA62556E16A00EE54EA /* BeersDataSource.swift */,
 				4C340A712553524600EE54EA /* Model.xcdatamodeld */,
 			);
 			path = Data;
@@ -567,6 +570,7 @@
 				4C340A3C255303E400EE54EA /* RequestParametersConvertible.swift in Sources */,
 				4C6F6D17254E0263004FD828 /* AppDelegate.swift in Sources */,
 				4C340A312553006400EE54EA /* APIRequest.swift in Sources */,
+				4C340AA72556E16A00EE54EA /* BeersDataSource.swift in Sources */,
 				4C6F6DB8254F11E2004FD828 /* AppNavigator.swift in Sources */,
 				4C340A9D25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift in Sources */,
 				4C6F6DCB254F1540004FD828 /* FavoriteBeersVC.swift in Sources */,

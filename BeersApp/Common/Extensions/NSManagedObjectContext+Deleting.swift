@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 
-public extension NSManagedObjectContext {
+extension NSManagedObjectContext {
     func deleteAllObjects(associatedWith theClass: AnyClass) {
         let className = String(describing: theClass.self)
 

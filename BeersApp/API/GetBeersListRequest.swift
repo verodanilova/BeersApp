@@ -8,11 +8,11 @@
 import Foundation
 
 
-public struct GetBeersListRequest {
+struct GetBeersListRequest {
     private let perPage: Int = 30
     private let page: Int
 
-    public init(page: Int = 1) {
+    init(page: Int = 1) {
         self.page = page
     }
 }

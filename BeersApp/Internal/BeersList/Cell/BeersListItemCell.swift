@@ -45,7 +45,9 @@ private extension BeersListItemCell {
     func bindViewModel() {
         guard let viewModel = viewModel else { return }
         
-        beerImageView.image = UIImage(named: viewModel.imageName)
+        // Temporary image
+        beerImageView.image = UIImage(named: "beer_ic")
+        
         beerNameLabel.text = viewModel.name
         beerTaglineLabel.text = viewModel.tagline
     }
