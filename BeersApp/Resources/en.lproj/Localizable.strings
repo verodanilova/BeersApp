@@ -11,3 +11,5 @@
 
 "Beers list.Navigation bar.Title" = "Beers";
 "Beers list.Sort button.Title" = "Sort options";
+"Beers list.Footer.Initial loading.Title" = "Loading beers list...";
+"Beers list.Footer.Loading more info.Title" = "Loading more beers...";

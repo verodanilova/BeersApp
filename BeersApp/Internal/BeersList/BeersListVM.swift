@@ -12,9 +12,11 @@ import RxCocoa
 
 protocol BeersListViewModelType {
     var items: Driver<[BeersListItemViewModelType]> {get}
+    var isInActivity: Driver<Bool> {get}
     
     func bindViewEvents(itemSelected: Signal<IndexPath>, sortTap: Signal<Void>)
     func prepare()
+    func loadMoreData()
 }
 
 final class BeersListViewModel: BeersListViewModelType {
@@ -22,6 +24,9 @@ final class BeersListViewModel: BeersListViewModelType {
     
     let items: Driver<[BeersListItemViewModelType]>
     private let itemsRelay = BehaviorRelay<[BeersListItemViewModelType]>(value: [])
+    
+    let isInActivity: Driver<Bool>
+    private let isLoadingInProgressRelay = BehaviorRelay<Bool>(value: false)
     
     private let context: Context
     private let dataSource: BeersDataSourceType
@@ -33,6 +38,7 @@ final class BeersListViewModel: BeersListViewModelType {
         self.dataSource = BeersDataSource(context: context)
         self.beersFRC = dataSource.makeBaseBeersFRC()
         self.items = itemsRelay.asDriver()
+        self.isInActivity = isLoadingInProgressRelay.asDriver()
 
         beersFRC.fetchedItem
             .map { $0.map { BeersListItemViewModel(item: $0) } }
@@ -51,9 +57,38 @@ final class BeersListViewModel: BeersListViewModelType {
     }
     
     func prepare() {
-        let request = GetBeersListRequest()
+        if beersFRC.currentItem.isEmpty {
+            loadBeersList()
+        }
+    }
+    
+    func loadMoreData() {
+        guard !isLoadingInProgressRelay.value else { return }
+        
+        let itemsCount = beersFRC.currentItem.count
+        let dataFetchLimit = appConfiguration.dataFetchLimit
+        let loadingPage = (itemsCount / dataFetchLimit) + 1
+        
+        loadBeersList(loadingPage)
+    }
+}
+
+// MARK: - Data loading
+private extension BeersListViewModel {
+    func loadBeersList(_ page: Int? = nil) {
+        isLoadingInProgressRelay.accept(true)
+        
+        var request = GetBeersListRequest()
+        if let loadingPage = page {
+            request = GetBeersListRequest(page: loadingPage)
+        }
         context.beersAPI.getBeersList(request)
-            .subscribe()
+            .subscribe(onSuccess: { [weak self] _ in
+                self?.isLoadingInProgressRelay.accept(false)
+            }, onError: { [weak self] error in
+                self?.isLoadingInProgressRelay.accept(false)
+                print("Error while loading beers list: \(error)")
+            })
             .disposed(by: disposeBag)
     }
 }

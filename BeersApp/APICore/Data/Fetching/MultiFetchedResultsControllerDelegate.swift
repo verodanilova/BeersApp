@@ -13,7 +13,7 @@ import RxCocoa
 
 protocol MultiFetchedResultsControllerDelegateType {
     associatedtype Item: NSManagedObject
-    var currentItem: [Item]? {get}
+    var currentItem: [Item] {get}
     var fetchedItem: Driver<[Item]> {get}
 }
 
@@ -22,7 +22,7 @@ final class MultiFetchedResultsControllerDelegate<Item: NSManagedObject>: NSObje
     MultiFetchedResultsControllerDelegateType {
     typealias Context = DataContext
 
-    var currentItem: [Item]?
+    var currentItem: [Item] = []
     let fetchedItem: Driver<[Item]>
 
     private let request: NSFetchRequest<Item>
@@ -55,7 +55,7 @@ final class MultiFetchedResultsControllerDelegate<Item: NSManagedObject>: NSObje
             currentItem = fetchedObject
             sendFetchedObject(fetchedObject)
         } else {
-            currentItem = nil
+            currentItem = []
         }
     }
     

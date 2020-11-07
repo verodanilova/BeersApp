@@ -15,6 +15,7 @@ protocol BeersListStyleType {
     var separatorInset: UIEdgeInsets {get}
     var separatorColor: UIColor {get}
     var itemStyle: BeersListItemStyleType {get}
+    var footerStyle: BeersListFooterStyleType {get}
 }
 
 struct BeersListStyle: BeersListStyleType {
@@ -35,6 +36,9 @@ struct BeersListStyle: BeersListStyleType {
     }
     var itemStyle: BeersListItemStyleType {
         return BeersListItemStyle()
+    }
+    var footerStyle: BeersListFooterStyleType {
+        return BeersListFooterStyle()
     }
 }
 

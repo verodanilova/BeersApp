@@ -9,7 +9,7 @@ import Foundation
 
 
 struct GetBeersListRequest {
-    private let perPage: Int = 30
+    private let perPage: Int = appConfiguration.dataFetchLimit
     private let page: Int
 
     init(page: Int = 1) {

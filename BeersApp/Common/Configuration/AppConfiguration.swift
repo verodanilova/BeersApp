@@ -16,6 +16,7 @@ enum ConfigurationStrings: String {
 struct AppConfiguration {
     let apiBaseURL: URL = fetchURL(.apiBaseURI)
     let persistentStackModelName = ConfigurationStrings.persistentStackModelName.rawValue
+    let dataFetchLimit: Int = 30
 }
 
 private extension AppConfiguration {
