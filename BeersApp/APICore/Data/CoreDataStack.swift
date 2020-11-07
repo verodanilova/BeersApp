@@ -9,22 +9,12 @@ import CoreData
 
 
 protocol PersistentStack {
-    /** Main queue managed object context */
-    var managedObjectContext: NSManagedObjectContext {get}
-    
     /** A background managed object context */
-    var apiManagedObjectContext: NSManagedObjectContext {get}
+    var managedObjectContext: NSManagedObjectContext {get}
 }
 
 final class CoreDataStack: PersistentStack {
-  
     private(set) lazy var managedObjectContext: NSManagedObjectContext = {
-        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        context.persistentStoreCoordinator = coordinator
-        return context
-    }()
-    
-    private(set) lazy var apiManagedObjectContext: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = coordinator
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy

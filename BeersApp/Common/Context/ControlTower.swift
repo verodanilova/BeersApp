@@ -25,7 +25,7 @@ final class ControlTower {
         /* API */
         let apiClient = APIClient(
             baseURL: appConfiguration.apiBaseURL,
-            managedObjectContext: coreDataStack.apiManagedObjectContext)
+            managedObjectContext: coreDataStack.managedObjectContext)
         
         /* Create the context object. */
         self.context = ControlTowerCommonContext(

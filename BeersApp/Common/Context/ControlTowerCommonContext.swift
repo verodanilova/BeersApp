@@ -25,6 +25,6 @@ extension ControlTowerCommonContext: CommonContext {
 
 extension ControlTowerCommonContext: DataContext {
     var managedObjectContext: NSManagedObjectContext {
-        return persistentStack.apiManagedObjectContext
+        return persistentStack.managedObjectContext
     }
 }
