@@ -13,5 +13,8 @@ target 'BeersApp' do
 
   # Data loading
   pod 'Alamofire', '~> 4.7.3'
+
+  #Image loading
+  pod 'Kingfisher', '~> 5.0'
   
 end
