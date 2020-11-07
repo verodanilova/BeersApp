@@ -9,18 +9,28 @@ import Foundation
 
 
 final class ScreensFactory {
-    typealias Pack<Controller, Model> = (controller: Controller, model: Model)
+    private let contextProvider: ContextProvider
     
-    func pack<Controller, Model>(_ controller: Controller, _ model: Model) -> Pack<Controller, Model> {
-        return (controller: controller, model: model)
+    private var context: CommonContext {
+        guard let context: CommonContext = contextProvider.provideContext() else {
+            fatalError("The context provider must supply a valid context")
+        }
+
+        return context
+    }
+    
+    init(contextProvider: ContextProvider) {
+        self.contextProvider = contextProvider
     }
 }
 
 extension ScreensFactory {
     func makeBeersList() -> Pack<BeersListViewController, BeersListViewModelType> {
-        let viewModel = BeersListViewModel()
+        let viewModel = BeersListViewModel(context: context)
+        let style = BeersListStyle()
         let controller = BeersListViewController()
         controller.viewModel = viewModel
+        controller.style = style
         return pack(controller, viewModel)
     }
     
@@ -36,5 +46,13 @@ extension ScreensFactory {
         let controller = BeerDetailsViewController()
         controller.viewModel = viewModel
         return pack(controller, viewModel)
+    }
+}
+
+extension ScreensFactory {
+    typealias Pack<Controller, Model> = (controller: Controller, model: Model)
+    
+    func pack<Controller, Model>(_ controller: Controller, _ model: Model) -> Pack<Controller, Model> {
+        return (controller: controller, model: model)
     }
 }

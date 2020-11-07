@@ -10,15 +10,14 @@ import Foundation
 
 final class AppNavigator {
     private let contextProvider: ContextProvider
-    let screensFactory = ScreensFactory()
+    let screensFactory: ScreensFactory
     
     var containers: [AppNavigationContainerKind: NavigationContainerType] = [:]
     var rootControllers: [RootControllerPack] = []
     
     init(contextProvider: ContextProvider) {
         self.contextProvider = contextProvider
-        
-        setContainers()
+        self.screensFactory = ScreensFactory(contextProvider: contextProvider)
     }
     
     func setContainers() {

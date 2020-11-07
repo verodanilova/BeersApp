@@ -15,6 +15,42 @@
 		4C11CD7A254F3456006E960C /* Contexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD79254F3456006E960C /* Contexts.swift */; };
 		4C11CD7D254F3545006E960C /* ContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD7C254F3545006E960C /* ContextProvider.swift */; };
 		4C11CD88254F4486006E960C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C11CD8A254F4486006E960C /* Localizable.strings */; };
+		4C11CD90254F50D9006E960C /* BeersListStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD8F254F50D9006E960C /* BeersListStyle.swift */; };
+		4C11CD94254F51E5006E960C /* BeersListItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD93254F51E5006E960C /* BeersListItemVM.swift */; };
+		4C11CD99254F5351006E960C /* WeakCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD98254F5351006E960C /* WeakCapture.swift */; };
+		4C11CD9D254F558D006E960C /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD9C254F558D006E960C /* ButtonStyle.swift */; };
+		4C11CDA8254F6050006E960C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CDA7254F6050006E960C /* AppColors.swift */; };
+		4C340A272552F8F000EE54EA /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A262552F8F000EE54EA /* APIClient.swift */; };
+		4C340A312553006400EE54EA /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A302553006400EE54EA /* APIRequest.swift */; };
+		4C340A352553009200EE54EA /* BeersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A342553009200EE54EA /* BeersAPI.swift */; };
+		4C340A3C255303E400EE54EA /* RequestParametersConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A3B255303E400EE54EA /* RequestParametersConvertible.swift */; };
+		4C340A4025530E7800EE54EA /* CommonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A3F25530E7800EE54EA /* CommonAPI.swift */; };
+		4C340A4325530F5800EE54EA /* InsertableFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A4225530F5800EE54EA /* InsertableFromJSON.swift */; };
+		4C340A482553160D00EE54EA /* DataRequest+InsertableFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A472553160D00EE54EA /* DataRequest+InsertableFromJSON.swift */; };
+		4C340A4B2553259400EE54EA /* GetBeersListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A4A2553259400EE54EA /* GetBeersListRequest.swift */; };
+		4C340A5225532B9500EE54EA /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A5125532B9500EE54EA /* AppConfiguration.swift */; };
+		4C340A56255338EB00EE54EA /* ResponseRootArrayEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A55255338EB00EE54EA /* ResponseRootArrayEnvelope.swift */; };
+		4C340A592553390500EE54EA /* ResponseEnvelopeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A582553390500EE54EA /* ResponseEnvelopeType.swift */; };
+		4C340A5C2553396300EE54EA /* ResponseDataEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A5B2553396300EE54EA /* ResponseDataEnvelope.swift */; };
+		4C340A63255342D000EE54EA /* CancelableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A62255342D000EE54EA /* CancelableTask.swift */; };
+		4C340A69255348AA00EE54EA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A68255348AA00EE54EA /* CoreDataStack.swift */; };
+		4C340A6C25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A6B25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift */; };
+		4C340A6F25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A6E25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift */; };
+		4C340A732553524600EE54EA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A712553524600EE54EA /* Model.xcdatamodeld */; };
+		4C340A772553618A00EE54EA /* BeerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A762553618A00EE54EA /* BeerInfo.swift */; };
+		4C340A9D25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */; };
+		4C340AA32554A38300EE54EA /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AA22554A38300EE54EA /* FetchedResultsControllerDelegate.swift */; };
+		4C340AA72556E16A00EE54EA /* BeersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AA62556E16A00EE54EA /* BeersDataSource.swift */; };
+		4C340AAA2556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AA92556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift */; };
+		4C340AB82556F23300EE54EA /* UIImageView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AB72556F23300EE54EA /* UIImageView+Loading.swift */; };
+		4C340ABE255707FB00EE54EA /* BeersListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340ABD255707FB00EE54EA /* BeersListFooterView.swift */; };
+		4C340AC1255708BF00EE54EA /* BeersListFooterStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AC0255708BF00EE54EA /* BeersListFooterStyle.swift */; };
+		4C60B727254F620F0075DDE1 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */; };
+		4C60B72B254F63A70075DDE1 /* BeersListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */; };
+		4C60B72C254F63A70075DDE1 /* BeersListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C60B72A254F63A70075DDE1 /* BeersListItemCell.xib */; };
+		4C60B72F254F68180075DDE1 /* BeersListItemStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B72E254F68180075DDE1 /* BeersListItemStyle.swift */; };
+		4C60B733254F68550075DDE1 /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B732254F68550075DDE1 /* LabelStyle.swift */; };
+		4C60B737254F6C140075DDE1 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C60B736254F6C140075DDE1 /* UITableView+Extensions.swift */; };
 		4C6F6D17254E0263004FD828 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6D16254E0263004FD828 /* AppDelegate.swift */; };
 		4C6F6D20254E0263004FD828 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D1F254E0263004FD828 /* Assets.xcassets */; };
 		4C6F6D23254E0263004FD828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6F6D21254E0263004FD828 /* LaunchScreen.storyboard */; };
@@ -40,6 +76,42 @@
 		4C11CD79254F3456006E960C /* Contexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contexts.swift; sourceTree = "<group>"; };
 		4C11CD7C254F3545006E960C /* ContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvider.swift; sourceTree = "<group>"; };
 		4C11CD89254F4486006E960C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C11CD8F254F50D9006E960C /* BeersListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListStyle.swift; sourceTree = "<group>"; };
+		4C11CD93254F51E5006E960C /* BeersListItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListItemVM.swift; sourceTree = "<group>"; };
+		4C11CD98254F5351006E960C /* WeakCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakCapture.swift; sourceTree = "<group>"; };
+		4C11CD9C254F558D006E960C /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		4C11CDA7254F6050006E960C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		4C340A262552F8F000EE54EA /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		4C340A302553006400EE54EA /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		4C340A342553009200EE54EA /* BeersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersAPI.swift; sourceTree = "<group>"; };
+		4C340A3B255303E400EE54EA /* RequestParametersConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestParametersConvertible.swift; sourceTree = "<group>"; };
+		4C340A3F25530E7800EE54EA /* CommonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAPI.swift; sourceTree = "<group>"; };
+		4C340A4225530F5800EE54EA /* InsertableFromJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableFromJSON.swift; sourceTree = "<group>"; };
+		4C340A472553160D00EE54EA /* DataRequest+InsertableFromJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataRequest+InsertableFromJSON.swift"; sourceTree = "<group>"; };
+		4C340A4A2553259400EE54EA /* GetBeersListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBeersListRequest.swift; sourceTree = "<group>"; };
+		4C340A5125532B9500EE54EA /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		4C340A55255338EB00EE54EA /* ResponseRootArrayEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRootArrayEnvelope.swift; sourceTree = "<group>"; };
+		4C340A582553390500EE54EA /* ResponseEnvelopeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseEnvelopeType.swift; sourceTree = "<group>"; };
+		4C340A5B2553396300EE54EA /* ResponseDataEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDataEnvelope.swift; sourceTree = "<group>"; };
+		4C340A62255342D000EE54EA /* CancelableTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelableTask.swift; sourceTree = "<group>"; };
+		4C340A68255348AA00EE54EA /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		4C340A6B25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Inserting.swift"; sourceTree = "<group>"; };
+		4C340A6E25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Deleting.swift"; sourceTree = "<group>"; };
+		4C340A722553524600EE54EA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4C340A762553618A00EE54EA /* BeerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerInfo.swift; sourceTree = "<group>"; };
+		4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeerInfo+InsertableFromJSON.swift"; sourceTree = "<group>"; };
+		4C340AA22554A38300EE54EA /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
+		4C340AA62556E16A00EE54EA /* BeersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersDataSource.swift; sourceTree = "<group>"; };
+		4C340AA92556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiFetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
+		4C340AB72556F23300EE54EA /* UIImageView+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Loading.swift"; sourceTree = "<group>"; };
+		4C340ABD255707FB00EE54EA /* BeersListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListFooterView.swift; sourceTree = "<group>"; };
+		4C340AC0255708BF00EE54EA /* BeersListFooterStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListFooterStyle.swift; sourceTree = "<group>"; };
+		4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListItemCell.swift; sourceTree = "<group>"; };
+		4C60B72A254F63A70075DDE1 /* BeersListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeersListItemCell.xib; sourceTree = "<group>"; };
+		4C60B72E254F68180075DDE1 /* BeersListItemStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListItemStyle.swift; sourceTree = "<group>"; };
+		4C60B732254F68550075DDE1 /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
+		4C60B736254F6C140075DDE1 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		4C6F6D13254E0263004FD828 /* BeersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6F6D16254E0263004FD828 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C6F6D1F254E0263004FD828 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +181,130 @@
 			path = Navigator;
 			sourceTree = "<group>";
 		};
+		4C11CD92254F51D2006E960C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4C60B72E254F68180075DDE1 /* BeersListItemStyle.swift */,
+				4C11CD93254F51E5006E960C /* BeersListItemVM.swift */,
+				4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */,
+				4C60B72A254F63A70075DDE1 /* BeersListItemCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4C11CD97254F530F006E960C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C11CD98254F5351006E960C /* WeakCapture.swift */,
+				4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */,
+				4C60B736254F6C140075DDE1 /* UITableView+Extensions.swift */,
+				4C340AB72556F23300EE54EA /* UIImageView+Loading.swift */,
+				4C340A6B25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift */,
+				4C340A6E25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C11CD9B254F556B006E960C /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				4C11CD9C254F558D006E960C /* ButtonStyle.swift */,
+				4C60B732254F68550075DDE1 /* LabelStyle.swift */,
+				4C11CDA7254F6050006E960C /* AppColors.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		4C340A202552F69300EE54EA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4C340A342553009200EE54EA /* BeersAPI.swift */,
+				4C340A4A2553259400EE54EA /* GetBeersListRequest.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4C340A332553007F00EE54EA /* APICore */ = {
+			isa = PBXGroup;
+			children = (
+				4C340A662553450900EE54EA /* Data */,
+				4C340A602553417200EE54EA /* Interfaces */,
+				4C340A54255338D900EE54EA /* Envelopes */,
+				4C340A262552F8F000EE54EA /* APIClient.swift */,
+				4C340A302553006400EE54EA /* APIRequest.swift */,
+				4C340A472553160D00EE54EA /* DataRequest+InsertableFromJSON.swift */,
+			);
+			path = APICore;
+			sourceTree = "<group>";
+		};
+		4C340A5025532B8B00EE54EA /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				4C340A5125532B9500EE54EA /* AppConfiguration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		4C340A54255338D900EE54EA /* Envelopes */ = {
+			isa = PBXGroup;
+			children = (
+				4C340A582553390500EE54EA /* ResponseEnvelopeType.swift */,
+				4C340A5B2553396300EE54EA /* ResponseDataEnvelope.swift */,
+				4C340A55255338EB00EE54EA /* ResponseRootArrayEnvelope.swift */,
+			);
+			path = Envelopes;
+			sourceTree = "<group>";
+		};
+		4C340A602553417200EE54EA /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				4C340A3F25530E7800EE54EA /* CommonAPI.swift */,
+				4C340A62255342D000EE54EA /* CancelableTask.swift */,
+				4C340A3B255303E400EE54EA /* RequestParametersConvertible.swift */,
+				4C340A4225530F5800EE54EA /* InsertableFromJSON.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		4C340A662553450900EE54EA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4C340AA12554A33E00EE54EA /* Fetching */,
+				4C340A752553603900EE54EA /* PersistentModel */,
+				4C340A68255348AA00EE54EA /* CoreDataStack.swift */,
+				4C340AA62556E16A00EE54EA /* BeersDataSource.swift */,
+				4C340A712553524600EE54EA /* Model.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4C340A752553603900EE54EA /* PersistentModel */ = {
+			isa = PBXGroup;
+			children = (
+				4C340A762553618A00EE54EA /* BeerInfo.swift */,
+				4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */,
+			);
+			path = PersistentModel;
+			sourceTree = "<group>";
+		};
+		4C340AA12554A33E00EE54EA /* Fetching */ = {
+			isa = PBXGroup;
+			children = (
+				4C340AA22554A38300EE54EA /* FetchedResultsControllerDelegate.swift */,
+				4C340AA92556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift */,
+			);
+			path = Fetching;
+			sourceTree = "<group>";
+		};
+		4C340ABC255707ED00EE54EA /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				4C340AC0255708BF00EE54EA /* BeersListFooterStyle.swift */,
+				4C340ABD255707FB00EE54EA /* BeersListFooterView.swift */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
 		4C6F6D0A254E0263004FD828 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +327,8 @@
 		4C6F6D15254E0263004FD828 /* BeersApp */ = {
 			isa = PBXGroup;
 			children = (
+				4C340A332553007F00EE54EA /* APICore */,
+				4C340A202552F69300EE54EA /* API */,
 				4C6F6DCD254F1580004FD828 /* Common */,
 				4C6F6DCE254F1586004FD828 /* Internal */,
 				4C6F6D32254E0CD9004FD828 /* Resources */,
@@ -181,6 +379,9 @@
 		4C6F6DBD254F14BD004FD828 /* BeersList */ = {
 			isa = PBXGroup;
 			children = (
+				4C340ABC255707ED00EE54EA /* Footer */,
+				4C11CD92254F51D2006E960C /* Cell */,
+				4C11CD8F254F50D9006E960C /* BeersListStyle.swift */,
 				4C6F6DC2254F14DC004FD828 /* BeersListVM.swift */,
 				4C6F6DBE254F14D0004FD828 /* BeersListVC.swift */,
 			);
@@ -199,6 +400,9 @@
 		4C6F6DCD254F1580004FD828 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4C340A5025532B8B00EE54EA /* Configuration */,
+				4C11CD9B254F556B006E960C /* Styles */,
+				4C11CD97254F530F006E960C /* Extensions */,
 				4C6F6D37254E12D8004FD828 /* Context */,
 				4C6F6D40254E19C5004FD828 /* Navigation */,
 			);
@@ -285,6 +489,7 @@
 			files = (
 				4C6F6D23254E0263004FD828 /* LaunchScreen.storyboard in Resources */,
 				4C11CD88254F4486006E960C /* Localizable.strings in Resources */,
+				4C60B72C254F63A70075DDE1 /* BeersListItemCell.xib in Resources */,
 				4C6F6D20254E0263004FD828 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,22 +544,57 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6F6DA4254F0477004FD828 /* AppNavigationContainerKind.swift in Sources */,
+				4C340A732553524600EE54EA /* Model.xcdatamodeld in Sources */,
+				4C60B72F254F68180075DDE1 /* BeersListItemStyle.swift in Sources */,
 				4C11CD62254F17E7006E960C /* BeerDetailsVM.swift in Sources */,
+				4C340A5225532B9500EE54EA /* AppConfiguration.swift in Sources */,
+				4C11CD99254F5351006E960C /* WeakCapture.swift in Sources */,
+				4C340A6F25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift in Sources */,
 				4C11CD6E254F20EE006E960C /* NavigatorType.swift in Sources */,
+				4C11CD94254F51E5006E960C /* BeersListItemVM.swift in Sources */,
+				4C11CDA8254F6050006E960C /* AppColors.swift in Sources */,
 				4C11CD7D254F3545006E960C /* ContextProvider.swift in Sources */,
 				4C6F6DBB254F1318004FD828 /* ScreensFactory.swift in Sources */,
+				4C340A56255338EB00EE54EA /* ResponseRootArrayEnvelope.swift in Sources */,
+				4C340A4025530E7800EE54EA /* CommonAPI.swift in Sources */,
+				4C11CD90254F50D9006E960C /* BeersListStyle.swift in Sources */,
+				4C340AC1255708BF00EE54EA /* BeersListFooterStyle.swift in Sources */,
+				4C340A4B2553259400EE54EA /* GetBeersListRequest.swift in Sources */,
 				4C11CD5D254F17CB006E960C /* BeerDetailsVC.swift in Sources */,
+				4C11CD9D254F558D006E960C /* ButtonStyle.swift in Sources */,
+				4C340A6C25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift in Sources */,
 				4C6F6D34254E0F19004FD828 /* RootTabBarController.swift in Sources */,
 				4C6F6D3D254E1462004FD828 /* ControlTowerCommonContext.swift in Sources */,
+				4C340A592553390500EE54EA /* ResponseEnvelopeType.swift in Sources */,
 				4C6F6DA8254F0957004FD828 /* NavigationContainer.swift in Sources */,
+				4C340A482553160D00EE54EA /* DataRequest+InsertableFromJSON.swift in Sources */,
+				4C340AA32554A38300EE54EA /* FetchedResultsControllerDelegate.swift in Sources */,
+				4C60B737254F6C140075DDE1 /* UITableView+Extensions.swift in Sources */,
 				4C6F6DC3254F14DC004FD828 /* BeersListVM.swift in Sources */,
+				4C340AB82556F23300EE54EA /* UIImageView+Loading.swift in Sources */,
+				4C340A5C2553396300EE54EA /* ResponseDataEnvelope.swift in Sources */,
+				4C60B733254F68550075DDE1 /* LabelStyle.swift in Sources */,
 				4C11CD57254F16AF006E960C /* FavoriteBeersVM.swift in Sources */,
 				4C11CD73254F224D006E960C /* TabBarDataProvider.swift in Sources */,
+				4C340AAA2556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift in Sources */,
+				4C340A352553009200EE54EA /* BeersAPI.swift in Sources */,
+				4C60B72B254F63A70075DDE1 /* BeersListItemCell.swift in Sources */,
+				4C340ABE255707FB00EE54EA /* BeersListFooterView.swift in Sources */,
+				4C340A69255348AA00EE54EA /* CoreDataStack.swift in Sources */,
 				4C6F6DBF254F14D0004FD828 /* BeersListVC.swift in Sources */,
 				4C11CD7A254F3456006E960C /* Contexts.swift in Sources */,
+				4C340A272552F8F000EE54EA /* APIClient.swift in Sources */,
+				4C340A772553618A00EE54EA /* BeerInfo.swift in Sources */,
+				4C340A4325530F5800EE54EA /* InsertableFromJSON.swift in Sources */,
+				4C60B727254F620F0075DDE1 /* UIColor+Extensions.swift in Sources */,
+				4C340A3C255303E400EE54EA /* RequestParametersConvertible.swift in Sources */,
 				4C6F6D17254E0263004FD828 /* AppDelegate.swift in Sources */,
+				4C340A312553006400EE54EA /* APIRequest.swift in Sources */,
+				4C340AA72556E16A00EE54EA /* BeersDataSource.swift in Sources */,
 				4C6F6DB8254F11E2004FD828 /* AppNavigator.swift in Sources */,
+				4C340A9D25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift in Sources */,
 				4C6F6DCB254F1540004FD828 /* FavoriteBeersVC.swift in Sources */,
+				4C340A63255342D000EE54EA /* CancelableTask.swift in Sources */,
 				4C6F6D39254E12F8004FD828 /* ControlTower.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +799,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4C340A712553524600EE54EA /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4C340A722553524600EE54EA /* Model.xcdatamodel */,
+			);
+			currentVersion = 4C340A722553524600EE54EA /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4C6F6D0B254E0263004FD828 /* Project object */;
 }

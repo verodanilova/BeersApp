@@ -6,8 +6,17 @@
 //
 
 import Foundation
+import CoreData
 
 
 protocol NavigatorContext {
     var navigator: NavigatorType {get}
+}
+
+protocol DataContext {
+    var managedObjectContext: NSManagedObjectContext {get}
+}
+
+protocol BeersAPIContext {
+    var beersAPI: BeersAPI {get}
 }

@@ -6,15 +6,25 @@
 //
 
 import Foundation
+import CoreData
 
 
-protocol CommonContext: NavigatorContext {
+protocol CommonContext: NavigatorContext,
+    BeersAPIContext,
+    DataContext {
 }
 
 struct ControlTowerCommonContext {
     let navigator: NavigatorType
+    let beersAPI: BeersAPI
+    let persistentStack: PersistentStack
 }
 
 extension ControlTowerCommonContext: CommonContext {
 }
 
+extension ControlTowerCommonContext: DataContext {
+    var managedObjectContext: NSManagedObjectContext {
+        return persistentStack.managedObjectContext
+    }
+}
