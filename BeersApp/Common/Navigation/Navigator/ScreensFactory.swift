@@ -35,9 +35,11 @@ extension ScreensFactory {
     }
     
     func makeFavoriteBeers() -> Pack<FavoriteBeersViewController, FavoriteBeersViewModelType> {
-        let viewModel = FavoriteBeersViewModel()
+        let viewModel = FavoriteBeersViewModel(context: context)
+        let style = FavoriteBeersStyle()
         let controller = FavoriteBeersViewController()
         controller.viewModel = viewModel
+        controller.style = style
         return pack(controller, viewModel)
     }
     

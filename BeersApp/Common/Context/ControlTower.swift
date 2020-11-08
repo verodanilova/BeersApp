@@ -27,11 +27,19 @@ final class ControlTower {
             baseURL: appConfiguration.apiBaseURL,
             managedObjectContext: coreDataStack.managedObjectContext)
         
+        /* Setting storage */
+        let favoriteBeersStorage = FavoriteBeersStorage()
+        
+        /* Data source */
+        let beersDataSource = BeersDataSource(contextProvider: contextProvider)
+        
         /* Create the context object. */
         self.context = ControlTowerCommonContext(
             navigator: navigator,
             beersAPI: apiClient,
-            persistentStack: coreDataStack)
+            persistentStack: coreDataStack,
+            favoriteBeersStorage: favoriteBeersStorage,
+            beersDataSource: beersDataSource)
         
         /* Update the context provider with the fresh context. */
         contextProvider.context = self.context

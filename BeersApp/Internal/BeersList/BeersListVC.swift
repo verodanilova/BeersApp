@@ -27,6 +27,7 @@ class BeersListViewController: UIViewController {
     var viewModel: BeersListViewModelType?
     var style: BeersListStyleType?
     
+    private let itemAddedToFavorites = PublishRelay<IndexPath>()
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -117,6 +118,7 @@ private extension BeersListViewController {
         
         viewModel.bindViewEvents(
             itemSelected: tableView.rx.itemSelected.asSignal(),
+            itemAddedToFavorites: itemAddedToFavorites.asSignal(),
             sortTap: sortButton.rx.tap.asSignal())
     }
     
@@ -136,5 +138,23 @@ extension BeersListViewController: UITableViewDelegate {
         if delta <= 0 {
             viewModel?.loadMoreData()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt
+        indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let title = viewModel?.swipeActionTitle(at: indexPath) else {
+            return nil
+        }
+        
+        let addToFavorites = UIContextualAction(style: .normal, title: title) {
+            [weak self] (_, _, completion) in
+                self?.itemAddedToFavorites.accept(indexPath)
+                completion(true)
+        }
+        addToFavorites.backgroundColor = style?.swipeActionBackgroundColor
+
+        let configuration = UISwipeActionsConfiguration(actions: [addToFavorites])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
 }

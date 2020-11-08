@@ -14,6 +14,7 @@ protocol BeersListStyleType {
     var tableViewBackgroundColor: UIColor {get}
     var separatorInset: UIEdgeInsets {get}
     var separatorColor: UIColor {get}
+    var swipeActionBackgroundColor: UIColor {get}
     var itemStyle: BeersListItemStyleType {get}
     var footerStyle: BeersListFooterStyleType {get}
 }
@@ -33,6 +34,9 @@ struct BeersListStyle: BeersListStyleType {
     }
     var separatorColor: UIColor {
         return appColors.alto
+    }
+    var swipeActionBackgroundColor: UIColor {
+        return appColors.sandDune.withAlphaComponent(0.7)
     }
     var itemStyle: BeersListItemStyleType {
         return BeersListItemStyle()

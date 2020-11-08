@@ -20,3 +20,11 @@ protocol DataContext {
 protocol BeersAPIContext {
     var beersAPI: BeersAPI {get}
 }
+
+protocol FavoriteBeersStorageContext {
+    var favoriteBeersStorage: FavoriteBeersStorageType {get}
+}
+
+protocol BeersDataSourceContext {
+    var beersDataSource: BeersDataSourceType {get}
+}
