@@ -12,6 +12,7 @@ import CoreData
 protocol BeersDataSourceType {
     func makeBaseBeersFRC() -> MultiFetchedResultsControllerDelegate<BeerInfo>
     func makeBeerInfoFRC(withID id: Int) -> FetchedResultsControllerDelegate<BeerInfo>
+    func makeBeersFRC(withIDs ids: Set<Int>) -> MultiFetchedResultsControllerDelegate<BeerInfo>
 }
 
 final class BeersDataSource: BeersDataSourceType {
@@ -28,7 +29,12 @@ final class BeersDataSource: BeersDataSourceType {
     }
     
     func makeBeerInfoFRC(withID id: Int) -> FetchedResultsControllerDelegate<BeerInfo> {
-        let request:  NSFetchRequest<BeerInfo> = BeerInfo.fetchRequest(id: id)
+        let request: NSFetchRequest<BeerInfo> = BeerInfo.fetchRequest(id: id)
         return FetchedResultsControllerDelegate(context: context, request: request)
+    }
+    
+    func makeBeersFRC(withIDs ids: Set<Int>) -> MultiFetchedResultsControllerDelegate<BeerInfo> {
+        let request: NSFetchRequest<BeerInfo> = BeerInfo.fetchRequest(ids: ids)
+        return MultiFetchedResultsControllerDelegate(context: context, request: request)
     }
 }

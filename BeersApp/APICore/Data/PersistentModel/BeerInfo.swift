@@ -35,4 +35,12 @@ extension BeerInfo {
         request.fetchLimit = 1
         return request
     }
+    
+    class func fetchRequest(ids: Set<Int>) -> NSFetchRequest<BeerInfo> {
+        let request: NSFetchRequest<BeerInfo> = fetchRequest()
+        request.predicate = NSPredicate(format: "id IN %@", ids)
+        request.sortDescriptors = [NSSortDescriptor(
+            keyPath: \BeerInfo.id, ascending: true)]
+        return request
+    }
 }

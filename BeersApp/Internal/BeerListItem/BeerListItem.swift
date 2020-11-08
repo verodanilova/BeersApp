@@ -14,7 +14,7 @@ struct BeerListItem {
     var imageURL: URL?
     var isFavorite: Bool
     
-    init(beerInfo: BeerInfo, isFavorite: Bool) {
+    init(beerInfo: BeerInfo, isFavorite: Bool = false) {
         self.name = beerInfo.name
         self.tagline = beerInfo.tagline
         self.imageURL = beerInfo.imageURL

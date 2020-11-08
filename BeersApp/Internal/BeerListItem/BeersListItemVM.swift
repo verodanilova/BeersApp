@@ -13,6 +13,7 @@ protocol BeersListItemViewModelType {
     var tagline: String? {get}
     var imageURL: URL? {get}
     var isFavoriteBeer: Bool {get}
+    var showFavoriteIcons: Bool {get}
 }
 
 final class BeersListItemViewModel: BeersListItemViewModelType {
@@ -20,11 +21,13 @@ final class BeersListItemViewModel: BeersListItemViewModelType {
     let tagline: String?
     let imageURL: URL?
     let isFavoriteBeer: Bool
+    let showFavoriteIcons: Bool
 
-    init(item: BeerListItem) {
+    init(item: BeerListItem, showFavoriteIcons: Bool = true) {
         self.name = item.name
         self.tagline = item.tagline
         self.imageURL = item.imageURL
         self.isFavoriteBeer = item.isFavorite
+        self.showFavoriteIcons = showFavoriteIcons
     }
 }

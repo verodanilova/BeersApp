@@ -59,5 +59,6 @@ private extension BeersListItemCell {
         } else {
             favoritesImageView.image = style.starImage
         }
+        favoritesImageView.isHidden = !viewModel.showFavoriteIcons
     }
 }
