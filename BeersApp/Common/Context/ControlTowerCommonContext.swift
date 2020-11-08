@@ -11,13 +11,15 @@ import CoreData
 
 protocol CommonContext: NavigatorContext,
     BeersAPIContext,
-    DataContext {
+    DataContext,
+    FavoriteBeersStorageContext {
 }
 
 struct ControlTowerCommonContext {
     let navigator: NavigatorType
     let beersAPI: BeersAPI
     let persistentStack: PersistentStack
+    let favoriteBeersStorage: FavoriteBeersStorageType
 }
 
 extension ControlTowerCommonContext: CommonContext {
