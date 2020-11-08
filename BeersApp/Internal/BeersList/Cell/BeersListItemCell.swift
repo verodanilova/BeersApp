@@ -9,9 +9,10 @@ import UIKit
 
 class BeersListItemCell: UITableViewCell {
     
-    @IBOutlet var beerImageView: UIImageView!
-    @IBOutlet var beerNameLabel: UILabel!
-    @IBOutlet var beerTaglineLabel: UILabel!
+    @IBOutlet private var beerImageView: UIImageView!
+    @IBOutlet private var beerNameLabel: UILabel!
+    @IBOutlet private var beerTaglineLabel: UILabel!
+    @IBOutlet private var favoritesImageView: UIImageView!
     
     static var reuseId: String {
         return String(describing: self)
@@ -27,6 +28,7 @@ class BeersListItemCell: UITableViewCell {
         }
     }
    
+    /* Style should be set first */
     var style: BeersListItemStyleType? {
         didSet {
             applyStyle()
@@ -44,12 +46,18 @@ private extension BeersListItemCell {
     }
     
     func bindViewModel() {
-        guard let viewModel = viewModel else { return }
+        guard let viewModel = viewModel, let style = style else { return }
         
         let placeholder = UIImage(named: "beer_placeholder")
         beerImageView.setImage(from: viewModel.imageURL, placeholder: placeholder)
         
         beerNameLabel.text = viewModel.name
         beerTaglineLabel.text = viewModel.tagline
+        
+        if viewModel.isFavoriteBeer {
+            favoritesImageView.image = style.highlightedStarImage
+        } else {
+            favoritesImageView.image = style.starImage
+        }
     }
 }
