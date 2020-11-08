@@ -12,7 +12,8 @@ import CoreData
 protocol CommonContext: NavigatorContext,
     BeersAPIContext,
     DataContext,
-    FavoriteBeersStorageContext {
+    FavoriteBeersStorageContext,
+    BeersDataSourceContext {
 }
 
 struct ControlTowerCommonContext {
@@ -20,6 +21,7 @@ struct ControlTowerCommonContext {
     let beersAPI: BeersAPI
     let persistentStack: PersistentStack
     let favoriteBeersStorage: FavoriteBeersStorageType
+    var beersDataSource: BeersDataSourceType
 }
 
 extension ControlTowerCommonContext: CommonContext {

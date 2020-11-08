@@ -18,7 +18,7 @@ protocol FavoriteBeersInteractorType {
 }
 
 final class FavoriteBeersInteractor: FavoriteBeersInteractorType {
-    typealias Context = DataContext & FavoriteBeersStorageContext
+    typealias Context = FavoriteBeersStorageContext & BeersDataSourceContext
     
     let listItems: Driver<[BeerListItem]>
     private let listItemsRelay = BehaviorRelay<[BeerListItem]>(value: [])
@@ -28,7 +28,6 @@ final class FavoriteBeersInteractor: FavoriteBeersInteractorType {
     }
     
     private let context: Context
-    private let dataSource: BeersDataSourceType
     private var beersFRC: MultiFetchedResultsControllerDelegate<BeerInfo>?
     private let favoriteStorage: FavoriteBeersStorageType
     private let disposeBag = DisposeBag()
@@ -36,7 +35,6 @@ final class FavoriteBeersInteractor: FavoriteBeersInteractorType {
     
     init(context: Context) {
         self.context = context
-        self.dataSource = BeersDataSource(context: context)
         self.favoriteStorage = context.favoriteBeersStorage
         self.listItems = listItemsRelay.asDriver()
 
@@ -55,7 +53,7 @@ private extension FavoriteBeersInteractor {
     func configureBeersFRC(for favoriteBeerIDs: Set<Int>) {
         frcDisposeBag = DisposeBag()
         
-        self.beersFRC = dataSource.makeBeersFRC(withIDs: favoriteBeerIDs)
+        self.beersFRC = context.beersDataSource.makeBeersFRC(withIDs: favoriteBeerIDs)
         beersFRC?.fetchedItem
             .map(makeBeerItemsList)
             .drive(listItemsRelay)

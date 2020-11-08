@@ -22,7 +22,7 @@ protocol BeersListInteractorType {
 }
 
 final class BeersListInteractor: BeersListInteractorType {
-    typealias Context = BeersAPIContext & DataContext
+    typealias Context = BeersAPIContext & BeersDataSourceContext
         & FavoriteBeersStorageContext
     
     let listItems: Driver<[BeerListItem]>
@@ -36,15 +36,13 @@ final class BeersListInteractor: BeersListInteractorType {
     }
     
     private let context: Context
-    private let dataSource: BeersDataSourceType
     private let beersFRC: MultiFetchedResultsControllerDelegate<BeerInfo>
     private let favoriteStorage: FavoriteBeersStorageType
     private let disposeBag = DisposeBag()
     
     init(context: Context) {
         self.context = context
-        self.dataSource = BeersDataSource(context: context)
-        self.beersFRC = dataSource.makeBaseBeersFRC()
+        self.beersFRC = context.beersDataSource.makeBaseBeersFRC()
         self.favoriteStorage = context.favoriteBeersStorage
         self.isInActivity = isLoadingInProgressRelay.asDriver()
         self.listItems = listItemsRelay.asDriver()

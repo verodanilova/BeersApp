@@ -24,3 +24,7 @@ protocol BeersAPIContext {
 protocol FavoriteBeersStorageContext {
     var favoriteBeersStorage: FavoriteBeersStorageType {get}
 }
+
+protocol BeersDataSourceContext {
+    var beersDataSource: BeersDataSourceType {get}
+}

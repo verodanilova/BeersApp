@@ -16,9 +16,18 @@ protocol BeersDataSourceType {
 }
 
 final class BeersDataSource: BeersDataSourceType {
-    private let context: DataContext
-    init(context: DataContext) {
-        self.context = context
+    typealias Context = DataContext
+    
+    private let contextProvider: ContextProvider
+    private var context: Context {
+        guard let context: Context = contextProvider.provideContext() else {
+            fatalError("The context provider must supply a valid context")
+        }
+        return context
+    }
+    
+    init(contextProvider: ContextProvider) {
+        self.contextProvider = contextProvider
     }
     
     func makeBaseBeersFRC() -> MultiFetchedResultsControllerDelegate<BeerInfo> {
