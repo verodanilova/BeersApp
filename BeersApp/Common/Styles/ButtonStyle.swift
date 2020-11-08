@@ -15,8 +15,12 @@ protocol ButtonStyleType {
     var titleColorHighlighted: UIColor? {get}
     var cornerRadius: CGFloat {get}
     var backgroundColor: UIColor? {get}
+    /* Border */
     var borderColor: UIColor? {get}
     var borderWidth: CGFloat {get}
+    
+    /* Shadow */
+    var shadowLayer: ButtonShadowLayer? {get}
 }
 
 extension UIButton {
@@ -30,6 +34,13 @@ extension UIButton {
         self.backgroundColor = style.backgroundColor
         self.layer.borderColor = style.borderColor?.cgColor
         self.layer.borderWidth = style.borderWidth
+        if let shadowLayer = style.shadowLayer {
+            self.layer.shadowColor = shadowLayer.color.cgColor
+            self.layer.shadowOpacity = shadowLayer.opacity
+            self.layer.shadowOffset = shadowLayer.offset
+            self.layer.shadowRadius = shadowLayer.radius
+            self.layer.masksToBounds = false
+        }
     }
 }
 
@@ -42,5 +53,12 @@ extension ButtonStyleType {
     var backgroundColor: UIColor? { return nil }
     var borderColor: UIColor? { return nil }
     var borderWidth: CGFloat { return 0  }
+    var shadowLayer: ButtonShadowLayer? { return nil }
 }
 
+struct ButtonShadowLayer {
+    let color: UIColor
+    let opacity: Float
+    let offset: CGSize
+    let radius: CGFloat
+}

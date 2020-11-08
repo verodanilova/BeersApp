@@ -17,11 +17,11 @@ struct BeersListItemStyle: BeersListItemStyleType {
     var beerNameTextStyle: LabelStyleType {
         return LabelStyle(
             textFont: .systemFont(ofSize: 16, weight: .medium),
-            textColor: appColors.sandDune)
+            textColor: appColors.mineShaft)
     }
     var beerTaglineTextStyle: LabelStyleType {
         return LabelStyle(
             textFont: .systemFont(ofSize: 16, weight: .regular),
-            textColor: appColors.sandDune)
+            textColor: appColors.mineShaft)
     }
 }

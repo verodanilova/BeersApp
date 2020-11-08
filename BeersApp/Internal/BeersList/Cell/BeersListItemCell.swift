@@ -29,7 +29,7 @@ class BeersListItemCell: UITableViewCell {
    
     var style: BeersListItemStyleType? {
         didSet {
-            bindViewModel()
+            applyStyle()
         }
     }
 }
@@ -38,6 +38,7 @@ private extension BeersListItemCell {
     func applyStyle() {
         guard let style = style else { return }
         
+        selectionStyle = .none
         beerNameLabel.apply(style: style.beerNameTextStyle)
         beerTaglineLabel.apply(style: style.beerTaglineTextStyle)
     }

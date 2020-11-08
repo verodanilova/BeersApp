@@ -60,6 +60,11 @@ private extension BeersListViewController {
     }
     
     func configureViewComponents() {
+        let navigationBarTitle = NSLocalizedString(
+            "Beers list.Navigation bar.Title",
+            comment: "Navigation bar title for beers list")
+        navigationItem.title = navigationBarTitle
+        
         view.addSubview(sortButton)
         sortButton.translatesAutoresizingMaskIntoConstraints = false
         sortButton.snp.makeConstraints {
