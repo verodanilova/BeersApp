@@ -94,10 +94,6 @@ private extension BeerDetailsViewController {
             $0.bottom.equalTo(view)
         }
         
-        let buttonTitle = NSLocalizedString(
-            "Beer details.Add to favorites button.Title",
-            comment: "Beer details: title for to favorites button")
-        toFavoritesButton.setTitle(buttonTitle, for: .normal)
         toFavoritesButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(toFavoritesButton)
         toFavoritesButton.snp.makeConstraints {
@@ -132,6 +128,13 @@ private extension BeerDetailsViewController {
             .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
         
+        viewModel.toFavoritesButtonTitle
+            .drive(toFavoritesButton.rx.title(for: .normal))
+            .disposed(by: disposeBag)
+        
         infoContainer?.viewModel = viewModel.infoViewModel
+        
+        viewModel.bindViewEvents(
+            toFavoritesTap: toFavoritesButton.rx.tap.asSignal())
     }
 }

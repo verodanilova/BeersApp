@@ -23,3 +23,4 @@
 "Beer details.Info.Figures.Color.Title" = "EBC";
 "Beer details.Info.Figures.Placeholder" = "–";
 "Beer details.Add to favorites button.Title" = "Add to favorites";
+"Beer details.Remove from favorites button.Title" = "Unfavorite";
