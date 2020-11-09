@@ -16,6 +16,12 @@
 "Beers list.Swipe action.Add to favorite.Title" = "Add to favorites";
 "Beers list.Swipe action.Remove from favorite.Title" = "Unfavorite";
 
+"Beers list.Filters.Title" = "Filters";
+"Beers list.Filters.Alcohol index.Title" = "Alcohol volume";
+"Beers list.Filters.Bitterness index.Title" = "IBU: Bitterness";
+"Beers list.Filters.Color index.Title" = "EBC: Color";
+"Beers list.Filters.Apply button.Title" = "Apply";
+
 "Beer details.Info.About.Title" = "About";
 "Beer details.Info.Figures.Alcohol.Title" = "Alc.";
 "Beer details.Info.Figures.Alcohol.Volume.Format" = "%@%%";

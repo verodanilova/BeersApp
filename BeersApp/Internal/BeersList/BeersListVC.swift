@@ -29,6 +29,7 @@ class BeersListViewController: UIViewController {
     
     private let itemAddedToFavorites = PublishRelay<IndexPath>()
     private let disposeBag = DisposeBag()
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +80,10 @@ private extension BeersListViewController {
             "Beers list.Sort button.Title",
             comment: "Beers list: sort button title")
         sortButton.setTitle(sortButtonTitle, for: .normal)
+        
+        sortButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] _ in self?.feedbackGenerator.impactOccurred() })
+            .disposed(by: disposeBag)
         
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false

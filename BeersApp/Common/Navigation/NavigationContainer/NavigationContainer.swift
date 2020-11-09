@@ -12,6 +12,7 @@ protocol NavigationContainerType {
     typealias Item = UIViewController
     func push(_ item: Item)
     func push(_ item: Item, animated: Bool)
+    func present(_ item: Item)
 }
 
 final class NavigationContainer {
@@ -29,5 +30,8 @@ extension NavigationContainer: NavigationContainerType {
     
     func push(_ item: Item, animated: Bool) {
         navigationController.pushViewController(item, animated: animated)
+    }
+    func present(_ item: Item) {
+        navigationController.present(item, animated: false, completion: nil)
     }
 }

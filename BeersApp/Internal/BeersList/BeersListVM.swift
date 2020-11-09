@@ -96,6 +96,6 @@ private extension BeersListViewModel {
     }
     
     func showSortOptions() {
-        // TODO: Add navigation to sort options
+        context.navigator.navigate(to: .beerFiltersBottomSheet, in: .list)
     }
 }

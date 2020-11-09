@@ -12,6 +12,7 @@ protocol ViewStyleType {
     var cornerRadius: CGFloat? {get}
     var borderWidth: CGFloat? {get}
     var borderColor: UIColor? {get}
+    var backgroundColor: UIColor? {get}
 }
 
 extension UIView {
@@ -24,11 +25,13 @@ extension UIView {
             self.layer.borderWidth = borderWidth
             self.layer.borderColor = borderColor.cgColor
         }
+        self.backgroundColor = style.backgroundColor
     }
 }
 
 struct ViewStyle: ViewStyleType {
-    var cornerRadius: CGFloat?
-    var borderWidth: CGFloat?
-    var borderColor: UIColor?
+    var cornerRadius: CGFloat? = nil
+    var borderWidth: CGFloat? = nil
+    var borderColor: UIColor? = nil
+    var backgroundColor: UIColor? = nil
 }
