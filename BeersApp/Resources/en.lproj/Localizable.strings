@@ -22,6 +22,16 @@
 "Beers list.Filters.Color index.Title" = "EBC: Color";
 "Beers list.Filters.Apply button.Title" = "Apply";
 
+"Beers list.Filters.Alcohol index info.All" = "all volumes";
+"Beers list.Filters.Alcohol index info.From" = "from %@%%";
+"Beers list.Filters.Alcohol index info.To" = "up to %@%%";
+"Beers list.Filters.Alcohol index info.From-To" = "from %@%% to %@%%";
+"Beers list.Filters.Bitterness index info.From-To" = "%ld – %ld";
+"Beers list.Filters.Color index info.All" = "all colors";
+"Beers list.Filters.Color index info.From" = "from %ld";
+"Beers list.Filters.Color index info.To" = "up to %ld";
+"Beers list.Filters.Color index info.From-To" = "from %ld to %ld";
+
 "Beer details.Info.About.Title" = "About";
 "Beer details.Info.Figures.Alcohol.Title" = "Alc.";
 "Beer details.Info.Figures.Alcohol.Volume.Format" = "%@%%";

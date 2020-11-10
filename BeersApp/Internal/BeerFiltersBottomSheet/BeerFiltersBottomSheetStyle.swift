@@ -15,6 +15,10 @@ protocol BeerFiltersBottomSheetStyleType {
     var separatorColor: UIColor {get}
     var unitLabelStyle: LabelStyleType {get}
     var sliderStyle: RangeSliderStyleType {get}
+    var activeValueInfoLabelStyle: LabelStyleType {get}
+    var activeValueInfoContainerStyle: ViewStyle {get}
+    var inactiveValueInfoLabelStyle: LabelStyleType {get}
+    var inactiveValueInfoContainerStyle: ViewStyle {get}
     var applyButtonStyle: ButtonStyleType {get}
 }
 
@@ -53,6 +57,28 @@ struct BeerFiltersBottomSheetStyle: BeerFiltersBottomSheetStyleType {
             thumbBorderColor: appColors.bostonBlue)
     }
     
+    var activeValueInfoLabelStyle: LabelStyleType {
+        return LabelStyle(
+            textFont: .systemFont(ofSize: 16, weight: .medium),
+            textColor: appColors.white)
+    }
+    
+    var activeValueInfoContainerStyle: ViewStyle {
+        return ViewStyle(cornerRadius: 14, borderWidth: 1,
+            borderColor: appColors.bostonBlue, backgroundColor: appColors.bostonBlue)
+    }
+    
+    var inactiveValueInfoLabelStyle: LabelStyleType {
+        return LabelStyle(
+            textFont: .systemFont(ofSize: 16, weight: .regular),
+            textColor: appColors.sandDune)
+    }
+    
+    var inactiveValueInfoContainerStyle: ViewStyle {
+        return ViewStyle(cornerRadius: 14, borderWidth: 1,
+            borderColor: appColors.alto, backgroundColor: appColors.white)
+    }
+
     var applyButtonStyle: ButtonStyleType {
         return ApplyButtonStyle()
     }

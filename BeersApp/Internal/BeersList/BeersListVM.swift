@@ -31,6 +31,7 @@ final class BeersListViewModel: BeersListViewModelType {
     
     private let context: Context
     private let interactor: BeersListInteractorType
+    private let storage = BeerFiltersStorage()
     private let disposeBag = DisposeBag()
     
     init(context: Context) {
@@ -96,6 +97,6 @@ private extension BeersListViewModel {
     }
     
     func showSortOptions() {
-        context.navigator.navigate(to: .beerFiltersBottomSheet, in: .list)
+        context.navigator.navigate(to: .beerFiltersBottomSheet(storage: storage), in: .list)
     }
 }
