@@ -32,7 +32,6 @@ final class BeersListViewModel: BeersListViewModelType {
     private let context: Context
     private let interactor: BeersListInteractorType
     private let storage: BeerFiltersStorageType
-    private var filtersModel: BeerFiltersBottomSheetViewModelType?
     private let disposeBag = DisposeBag()
     
     init(context: Context) {
@@ -41,7 +40,6 @@ final class BeersListViewModel: BeersListViewModelType {
         self.storage = BeerFiltersStorage()
         self.items = itemsRelay.asDriver()
         self.isInActivity = interactor.isInActivity
-        self.filtersModel = BeerFiltersBottomSheetViewModel(storage: storage, delegate: self)
         
         interactor.listItems
             .map { $0.map { BeersListItemViewModel(item: $0) } }
@@ -100,8 +98,8 @@ private extension BeersListViewModel {
     }
     
     func showSortOptions() {
-        guard let model = filtersModel else { return }
-        context.navigator.navigate(to: .beerFiltersBottomSheet(model: model), in: .list)
+        let filtersModel = BeerFiltersBottomSheetViewModel(storage: storage, delegate: self)
+        context.navigator.navigate(to: .beerFiltersBottomSheet(model: filtersModel), in: .list)
     }
 }
 

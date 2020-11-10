@@ -67,21 +67,21 @@ final class BeerFiltersBottomSheetViewModel: BeerFiltersBottomSheetViewModelType
         self.bitternessEdgesRange = configurator.getBitternessEdgesRange()
         self.colorEdgesRange = configurator.getColorEdgesRange()
         
-        self.alcoholValuesRange = configurator.getAlcoholValuesRange()
+        self.alcoholValuesRange = configurator.getAlcoholValuesRange(in: storage)
         self.alcoholValuesRangeRelay = BehaviorRelay(value: alcoholValuesRange)
         self.alcoholFilterIsActive = alcoholValuesRangeRelay.asDriver()
             .map(configurator.isAlcoholFilterActive)
         self.alcoholValuesInfo = alcoholValuesRangeRelay.asDriver()
             .map(configurator.makeAlcoholRangeInfo)
         
-        self.bitternessValuesRange = configurator.getBitternessValuesRange()
+        self.bitternessValuesRange = configurator.getBitternessValuesRange(in: storage)
         self.bitternessValuesRangeRelay = BehaviorRelay(value: bitternessValuesRange)
         self.bitternessFilterIsActive = bitternessValuesRangeRelay.asDriver()
             .map(configurator.isBitternessFilterActive(valuesRange:))
         self.bitternessValuesInfo = bitternessValuesRangeRelay.asDriver()
             .map(configurator.makeBitternessRangeInfo)
         
-        self.colorValuesRange = configurator.getColorValuesRange()
+        self.colorValuesRange = configurator.getColorValuesRange(in: storage)
         self.colorValuesRangeRelay = BehaviorRelay(value: colorValuesRange)
         self.colorFilterIsActive = colorValuesRangeRelay.asDriver()
             .map(configurator.isColorFilterActive)
@@ -163,21 +163,40 @@ private struct Configurator {
         let maximum = BeerFilterKind.colorUpperValue.edgeValue
         return (minimum: minimum, maximum: maximum)
     }
-    func getAlcoholValuesRange() -> (lowerValue: Double, upperValue: Double) {
-        let lowerValue = BeerFilterKind.alcoholLowerValue.edgeValue
-        let upperValue = BeerFilterKind.alcoholUpperValue.edgeValue
+    
+    func getAlcoholValuesRange(in storage: BeerFiltersStorageType)
+        -> (lowerValue: Double, upperValue: Double) {
+        
+        let defaultLowerValue = BeerFilterKind.alcoholLowerValue.edgeValue
+        let defaultUpperValue = BeerFilterKind.alcoholUpperValue.edgeValue
+        
+        let lowerValue = storage.alcoholLowerValue ?? defaultLowerValue
+        let upperValue = storage.alcoholUpperValue ?? defaultUpperValue
+        
         return (lowerValue: lowerValue, upperValue: upperValue)
     }
     
-    func getBitternessValuesRange() -> (lowerValue: Double, upperValue: Double) {
-        let lowerValue = BeerFilterKind.bitternessLowerValue.edgeValue
-        let upperValue = BeerFilterKind.bitternessUpperValue.edgeValue
+    func getBitternessValuesRange(in storage: BeerFiltersStorageType)
+        -> (lowerValue: Double, upperValue: Double) {
+        
+        let defaultLowerValue = BeerFilterKind.bitternessLowerValue.edgeValue
+        let defaultUpperValue = BeerFilterKind.bitternessUpperValue.edgeValue
+        
+        let lowerValue = storage.bitternessLowerValue ?? defaultLowerValue
+        let upperValue = storage.bitternessUpperValue ?? defaultUpperValue
+        
         return (lowerValue: lowerValue, upperValue: upperValue)
     }
     
-    func getColorValuesRange() -> (lowerValue: Double, upperValue: Double) {
-        let lowerValue = BeerFilterKind.colorLowerValue.edgeValue
-        let upperValue = BeerFilterKind.colorUpperValue.edgeValue
+    func getColorValuesRange(in storage: BeerFiltersStorageType)
+        -> (lowerValue: Double, upperValue: Double) {
+        
+        let defaultLowerValue = BeerFilterKind.colorLowerValue.edgeValue
+        let defaultUpperValue = BeerFilterKind.colorUpperValue.edgeValue
+        
+        let lowerValue = storage.colorLowerValue ?? defaultLowerValue
+        let upperValue = storage.colorUpperValue ?? defaultUpperValue
+        
         return (lowerValue: lowerValue, upperValue: upperValue)
     }
     

@@ -22,7 +22,7 @@ protocol BeerFiltersStorageType: AnyObject {
     func resetFilters()
 }
 
-class BeerFiltersStorage: BeerFiltersStorageType {
+final class BeerFiltersStorage: BeerFiltersStorageType {
     var alcoholLowerValue: Double?
     var alcoholUpperValue: Double?
     var bitternessLowerValue: Double?
