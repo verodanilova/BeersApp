@@ -108,6 +108,8 @@ private extension BeersListViewModel {
 // MARK: - BeerFiltersBottomSheetDelegate conformance
 extension BeersListViewModel: BeerFiltersBottomSheetDelegate {
     func shouldApplyFilters() {
-        
+        if storage.hasSelectedFilters {
+            interactor.loadBeersListWithFilters(storage: storage)
+        }
     }
 }

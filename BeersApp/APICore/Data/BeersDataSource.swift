@@ -13,6 +13,8 @@ protocol BeersDataSourceType {
     func makeBaseBeersFRC() -> MultiFetchedResultsControllerDelegate<BeerInfo>
     func makeBeerInfoFRC(withID id: Int) -> FetchedResultsControllerDelegate<BeerInfo>
     func makeBeersFRC(withIDs ids: Set<Int>) -> MultiFetchedResultsControllerDelegate<BeerInfo>
+    func makeFilteredBeersFRC(storage: BeerFiltersStorageType)
+        -> MultiFetchedResultsControllerDelegate<BeerInfo>
 }
 
 final class BeersDataSource: BeersDataSourceType {
@@ -44,6 +46,12 @@ final class BeersDataSource: BeersDataSourceType {
     
     func makeBeersFRC(withIDs ids: Set<Int>) -> MultiFetchedResultsControllerDelegate<BeerInfo> {
         let request: NSFetchRequest<BeerInfo> = BeerInfo.fetchRequest(ids: ids)
+        return MultiFetchedResultsControllerDelegate(context: context, request: request)
+    }
+    
+    func makeFilteredBeersFRC(storage: BeerFiltersStorageType)
+        -> MultiFetchedResultsControllerDelegate<BeerInfo> {
+        let request: NSFetchRequest<BeerInfo> = BeerInfo.fetchRequest(withFilters: storage)
         return MultiFetchedResultsControllerDelegate(context: context, request: request)
     }
 }

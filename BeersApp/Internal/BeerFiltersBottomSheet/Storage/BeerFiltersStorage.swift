@@ -16,6 +16,8 @@ protocol BeerFiltersStorageType: AnyObject {
     var colorLowerValue: Double? {get}
     var colorUpperValue: Double? {get}
     
+    var hasSelectedFilters: Bool {get}
+    
     func setValue(_ value: Double, for filterKind: BeerFilterKind)
     func resetFilters()
 }
@@ -27,6 +29,15 @@ class BeerFiltersStorage: BeerFiltersStorageType {
     var bitternessUpperValue: Double?
     var colorLowerValue: Double?
     var colorUpperValue: Double?
+    
+    var hasSelectedFilters: Bool {
+        let allValues = [
+            alcoholLowerValue, alcoholUpperValue,
+            bitternessLowerValue, bitternessUpperValue,
+            colorLowerValue, colorUpperValue
+        ]
+        return allValues.contains(where: { $0 != nil })
+    }
     
     init() {}
     

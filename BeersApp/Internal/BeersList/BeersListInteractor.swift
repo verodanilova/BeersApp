@@ -15,8 +15,14 @@ protocol BeersListInteractorType {
     var currentBeerInfos: [BeerInfo] {get}
     var isInActivity: Driver<Bool> {get}
     
+    /* Data loading */
     func loadBeersListIfNeeded()
     func loadMoreData()
+    
+    /* Data with filters loading */
+    func loadBeersListWithFilters(storage: BeerFiltersStorageType)
+    
+    /* Storage updates */
     func updateFavoriteBeersStorage(with beerID: Int)
     func isFavoriteItem(beerID: Int) -> Bool
 }
@@ -32,41 +38,43 @@ final class BeersListInteractor: BeersListInteractorType {
     private let isLoadingInProgressRelay = BehaviorRelay<Bool>(value: false)
     
     var currentBeerInfos: [BeerInfo] {
-        return beersFRC.currentItem
+        return beersFRC?.currentItem ?? []
     }
     
     private let context: Context
-    private let beersFRC: MultiFetchedResultsControllerDelegate<BeerInfo>
+    private let dataSource: BeersDataSourceType
     private let favoriteStorage: FavoriteBeersStorageType
+    private var paginationStateController: PaginationStateControllerType
+    private var beersFRC: MultiFetchedResultsControllerDelegate<BeerInfo>?
+    private var filtersStorage: BeerFiltersStorageType?
     private let disposeBag = DisposeBag()
+    private var frcDisposeBag = DisposeBag()
     
     init(context: Context) {
         self.context = context
-        self.beersFRC = context.beersDataSource.makeBaseBeersFRC()
+        self.dataSource = context.beersDataSource
         self.favoriteStorage = context.favoriteBeersStorage
+        self.paginationStateController = PaginationStateController()
         self.isInActivity = isLoadingInProgressRelay.asDriver()
         self.listItems = listItemsRelay.asDriver()
         
-        Driver.combineLatest(beersFRC.fetchedItem, favoriteStorage.favoriteBeerIDs)
-            .map { [unowned self] in self.makeBeerItemsList(infos: $0, favoriteBeerIDs: $1) }
-            .drive(listItemsRelay)
-            .disposed(by: disposeBag)
+        startFetchingItems()
     }
     
     func loadBeersListIfNeeded() {
-        if beersFRC.currentItem.isEmpty {
-            loadBeersList()
+        if paginationStateController.nextPage == 1 {
+            loadNewData()
         }
     }
     
     func loadMoreData() {
-        guard !isLoadingInProgressRelay.value else { return }
-        
-        let itemsCount = beersFRC.currentItem.count
-        let dataFetchLimit = appConfiguration.dataFetchLimit
-        let loadingPage = (itemsCount / dataFetchLimit) + 1
-        
-        loadBeersList(loadingPage)
+        loadNewData(paginationStateController.nextPage)
+    }
+    
+    func loadBeersListWithFilters(storage: BeerFiltersStorageType) {
+        filtersStorage = storage
+        startFetchingItems()
+        loadBeersListIfNeeded()
     }
     
     func updateFavoriteBeersStorage(with beerID: Int) {
@@ -84,8 +92,28 @@ final class BeersListInteractor: BeersListInteractorType {
     }
 }
 
-// MARK: - Data mapping
+// MARK: - Data fetching
 private extension BeersListInteractor {
+    func startFetchingItems() {
+        frcDisposeBag = DisposeBag()
+        paginationStateController.resetState()
+        
+        if let filtersStorage = filtersStorage {
+            self.beersFRC = dataSource.makeFilteredBeersFRC(storage: filtersStorage)
+        } else {
+            self.beersFRC = dataSource.makeBaseBeersFRC()
+        }
+
+        Driver.combineLatest(beersFRC!.fetchedItem, favoriteStorage.favoriteBeerIDs)
+            .map { [unowned self] in self.makeBeerItemsList(infos: $0, favoriteBeerIDs: $1) }
+            .drive(listItemsRelay)
+            .disposed(by: frcDisposeBag)
+        
+        beersFRC?.fetchedItem
+            .drive(onNext: paginationStateController.setStoredItems)
+            .disposed(by: frcDisposeBag)
+    }
+    
     func makeBeerItemsList(infos: [BeerInfo], favoriteBeerIDs: Set<Int>) -> [BeerListItem] {
         return infos.map { beerInfo -> BeerListItem in
             let isFavorite = favoriteBeerIDs.contains(Int(beerInfo.id))
@@ -96,6 +124,17 @@ private extension BeersListInteractor {
 
 // MARK: - Data loading
 private extension BeersListInteractor {
+    func loadNewData(_ page: Int? = nil) {
+        guard !isLoadingInProgressRelay.value else { return }
+        guard paginationStateController.isPaginationEnabled else { return }
+        
+        if let filtersStorage = filtersStorage {
+            loadFilteredBeersList(storage: filtersStorage, page: page)
+        } else {
+            loadBeersList(page)
+        }
+    }
+    
     func loadBeersList(_ page: Int? = nil) {
         isLoadingInProgressRelay.accept(true)
         
@@ -103,12 +142,35 @@ private extension BeersListInteractor {
         if let loadingPage = page {
             request = GetBeersListRequest(page: loadingPage)
         }
+        
         context.beersAPI.getBeersList(request)
-            .subscribe(onSuccess: { [weak self] _ in
+            .subscribe(onSuccess: { [weak self] list in
                 self?.isLoadingInProgressRelay.accept(false)
+                self?.paginationStateController.newLoadedItems(list)
             }, onError: { [weak self] error in
                 self?.isLoadingInProgressRelay.accept(false)
                 print("Error while loading beers list: \(error)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func loadFilteredBeersList(storage: BeerFiltersStorageType, page: Int? = nil) {
+        isLoadingInProgressRelay.accept(true)
+
+        let request: GetFilteredBeersListRequest
+        if let loadingPage = page {
+            request = GetFilteredBeersListRequest(storage: storage, page: loadingPage)
+        } else {
+            request = GetFilteredBeersListRequest(storage: storage)
+        }
+        
+        context.beersAPI.getFilteredBeersList(request)
+            .subscribe(onSuccess: { [weak self] list in
+                self?.isLoadingInProgressRelay.accept(false)
+                self?.paginationStateController.newLoadedItems(list)
+            }, onError: { [weak self] error in
+                self?.isLoadingInProgressRelay.accept(false)
+                print("Error while loading filtered beers list: \(error)")
             })
             .disposed(by: disposeBag)
     }

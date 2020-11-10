@@ -94,6 +94,8 @@
 		4CF93EC2255AD2CE00EC6D61 /* BeerFiltersStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93EC1255AD2CE00EC6D61 /* BeerFiltersStorage.swift */; };
 		4CF93EC7255AD54D00EC6D61 /* BeerFilterKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93EC6255AD54D00EC6D61 /* BeerFilterKind.swift */; };
 		4CF93ECA255B097700EC6D61 /* BeerFiltersBottomSheetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93EC9255B097700EC6D61 /* BeerFiltersBottomSheetDelegate.swift */; };
+		4CF93ECE255B0D4E00EC6D61 /* GetFilteredBeersListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93ECD255B0D4E00EC6D61 /* GetFilteredBeersListRequest.swift */; };
+		4CF93ED1255B264500EC6D61 /* PaginationStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93ED0255B264500EC6D61 /* PaginationStateController.swift */; };
 		DB6EA38F044BC48654710FBD /* Pods_BeersApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C868D3C906E863A4AA5A2F95 /* Pods_BeersApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -187,6 +189,8 @@
 		4CF93EC1255AD2CE00EC6D61 /* BeerFiltersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerFiltersStorage.swift; sourceTree = "<group>"; };
 		4CF93EC6255AD54D00EC6D61 /* BeerFilterKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerFilterKind.swift; sourceTree = "<group>"; };
 		4CF93EC9255B097700EC6D61 /* BeerFiltersBottomSheetDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerFiltersBottomSheetDelegate.swift; sourceTree = "<group>"; };
+		4CF93ECD255B0D4E00EC6D61 /* GetFilteredBeersListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFilteredBeersListRequest.swift; sourceTree = "<group>"; };
+		4CF93ED0255B264500EC6D61 /* PaginationStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationStateController.swift; sourceTree = "<group>"; };
 		907782CB85B8F49CD978D2C6 /* Pods-BeersApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeersApp.debug.xcconfig"; path = "Target Support Files/Pods-BeersApp/Pods-BeersApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B0AD11786F9D8F1FBBC71633 /* Pods-BeersApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeersApp.release.xcconfig"; path = "Target Support Files/Pods-BeersApp/Pods-BeersApp.release.xcconfig"; sourceTree = "<group>"; };
 		C868D3C906E863A4AA5A2F95 /* Pods_BeersApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeersApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,6 +290,7 @@
 			children = (
 				4C340A342553009200EE54EA /* BeersAPI.swift */,
 				4C340A4A2553259400EE54EA /* GetBeersListRequest.swift */,
+				4CF93ECD255B0D4E00EC6D61 /* GetFilteredBeersListRequest.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 				4C340A262552F8F000EE54EA /* APIClient.swift */,
 				4C340A302553006400EE54EA /* APIRequest.swift */,
 				4C340A472553160D00EE54EA /* DataRequest+InsertableFromJSON.swift */,
+				4CF93ED0255B264500EC6D61 /* PaginationStateController.swift */,
 			);
 			path = APICore;
 			sourceTree = "<group>";
@@ -716,11 +722,13 @@
 				4C340ACE255730F100EE54EA /* BeerDetailsInfoView.swift in Sources */,
 				4C11CD90254F50D9006E960C /* BeersListStyle.swift in Sources */,
 				4C340AC1255708BF00EE54EA /* BeersListFooterStyle.swift in Sources */,
+				4CF93ECE255B0D4E00EC6D61 /* GetFilteredBeersListRequest.swift in Sources */,
 				4CF93DBC25589A5B00EC6D61 /* BeerFiltersBottomSheetVC.swift in Sources */,
 				4C340A4B2553259400EE54EA /* GetBeersListRequest.swift in Sources */,
 				4C11CD5D254F17CB006E960C /* BeerDetailsVC.swift in Sources */,
 				4C11CD9D254F558D006E960C /* ButtonStyle.swift in Sources */,
 				4CF93DB5255898B700EC6D61 /* BottomSheetContentViewDelegate.swift in Sources */,
+				4CF93ED1255B264500EC6D61 /* PaginationStateController.swift in Sources */,
 				4C340AE32558393600EE54EA /* BeerInfo+BeerColorKind.swift in Sources */,
 				4C340A6C25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift in Sources */,
 				4C6F6D34254E0F19004FD828 /* RootTabBarController.swift in Sources */,
