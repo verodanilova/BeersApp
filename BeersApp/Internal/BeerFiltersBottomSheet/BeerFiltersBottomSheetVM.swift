@@ -55,10 +55,12 @@ final class BeerFiltersBottomSheetViewModel: BeerFiltersBottomSheetViewModelType
     private let colorValuesRangeRelay: BehaviorRelay<UnitValuesRange>
     
     private let storage: BeerFiltersStorageType
+    private weak var delegate: BeerFiltersBottomSheetDelegate?
     private let disposeBag = DisposeBag()
     
-    init(storage: BeerFiltersStorageType) {
+    init(storage: BeerFiltersStorageType, delegate: BeerFiltersBottomSheetDelegate) {
         self.storage = storage
+        self.delegate = delegate
         
         let configurator = Configurator()
         self.alcoholEdgesRange = configurator.getAlcoholEdgesRange()
@@ -103,7 +105,7 @@ final class BeerFiltersBottomSheetViewModel: BeerFiltersBottomSheetViewModelType
             .disposed(by: disposeBag)
         
         applyTap
-            .emit(onNext: weakly(self, type(of: self).saveFilters))
+            .emit(onNext: weakly(self, type(of: self).applyFilters))
             .disposed(by: disposeBag)
     }
 }
@@ -128,8 +130,8 @@ private extension BeerFiltersBottomSheetViewModel {
         storage.setValue(range.upperValue, for: .colorUpperValue)
     }
     
-    func saveFilters() {
-        // TODO: Add filters providing to list screen
+    func applyFilters() {
+        delegate?.shouldApplyFilters()
     }
 }
 

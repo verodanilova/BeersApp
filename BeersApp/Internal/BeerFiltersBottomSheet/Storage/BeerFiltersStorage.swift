@@ -32,7 +32,7 @@ class BeerFiltersStorage: BeerFiltersStorageType {
     
     func setValue(_ value: Double, for filterKind: BeerFilterKind) {
         let edgeValue = filterKind.edgeValue
-        var newValue = value == edgeValue ? nil : value
+        let newValue = value == edgeValue ? nil : value
         
         switch filterKind {
             case .alcoholLowerValue:

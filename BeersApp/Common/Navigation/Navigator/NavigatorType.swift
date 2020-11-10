@@ -10,7 +10,7 @@ import Foundation
 
 enum NavigationTarget {
     case beerDetails(id: Int)
-    case beerFiltersBottomSheet(storage: BeerFiltersStorageType)
+    case beerFiltersBottomSheet(model: BeerFiltersBottomSheetViewModelType)
 }
 
 protocol NavigatorType {
@@ -22,8 +22,8 @@ extension AppNavigator: NavigatorType {
         switch target {
             case let .beerDetails(id):
                 navigateToBeerDetails(containerKind, itemId: id)
-            case let .beerFiltersBottomSheet(storage):
-                showFiltersBottomSheet(containerKind, storage: storage)
+            case let .beerFiltersBottomSheet(model):
+                showFiltersBottomSheet(containerKind, model: model)
         }
     }
 }
@@ -36,12 +36,11 @@ private extension AppNavigator {
     }
     
     func showFiltersBottomSheet(_ containerKind: AppNavigationContainerKind,
-        storage: BeerFiltersStorageType) {
+        model: BeerFiltersBottomSheetViewModelType) {
         let style = BeerFiltersBottomSheetStyle()
-        let viewModel = BeerFiltersBottomSheetViewModel(storage: storage)
         let controller = BeerFiltersBottomSheetViewController()
         controller.style = style
-        controller.viewModel = viewModel
+        controller.viewModel = model
         controller.configurePresentationStyle()
         let container = containerForKind(containerKind)
         container.present(controller)

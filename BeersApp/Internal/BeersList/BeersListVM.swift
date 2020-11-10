@@ -31,14 +31,17 @@ final class BeersListViewModel: BeersListViewModelType {
     
     private let context: Context
     private let interactor: BeersListInteractorType
-    private let storage = BeerFiltersStorage()
+    private let storage: BeerFiltersStorageType
+    private var filtersModel: BeerFiltersBottomSheetViewModelType?
     private let disposeBag = DisposeBag()
     
     init(context: Context) {
         self.context = context
         self.interactor = BeersListInteractor(context: context)
+        self.storage = BeerFiltersStorage()
         self.items = itemsRelay.asDriver()
         self.isInActivity = interactor.isInActivity
+        self.filtersModel = BeerFiltersBottomSheetViewModel(storage: storage, delegate: self)
         
         interactor.listItems
             .map { $0.map { BeersListItemViewModel(item: $0) } }
@@ -97,6 +100,14 @@ private extension BeersListViewModel {
     }
     
     func showSortOptions() {
-        context.navigator.navigate(to: .beerFiltersBottomSheet(storage: storage), in: .list)
+        guard let model = filtersModel else { return }
+        context.navigator.navigate(to: .beerFiltersBottomSheet(model: model), in: .list)
+    }
+}
+
+// MARK: - BeerFiltersBottomSheetDelegate conformance
+extension BeersListViewModel: BeerFiltersBottomSheetDelegate {
+    func shouldApplyFilters() {
+        
     }
 }
