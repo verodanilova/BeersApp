@@ -43,4 +43,48 @@ extension BeerInfo {
             keyPath: \BeerInfo.id, ascending: true)]
         return request
     }
+    
+    class func fetchRequest(withFilters storage: BeerFiltersStorageType) -> NSFetchRequest<BeerInfo> {
+        let request: NSFetchRequest<BeerInfo> = fetchRequest()
+        
+        var predicates: [NSPredicate] = []
+        if let alcoholLowerValue = storage.alcoholLowerValue {
+            let value = Double(round(10 * alcoholLowerValue)/10)
+            let predicate = NSPredicate(format: "alcoholIndex > %lf", value)
+            predicates.append(predicate)
+        }
+        if let alcoholUpperValue = storage.alcoholUpperValue {
+            let value = Double(round(10 * alcoholUpperValue)/10)
+            let predicate = NSPredicate(format: "alcoholIndex < %lf", value)
+            predicates.append(predicate)
+        }
+        if let bitternessLowerValue = storage.bitternessLowerValue {
+            let value = Int(bitternessLowerValue)
+            let predicate = NSPredicate(format: "bitternessIndex > %ld", value)
+            predicates.append(predicate)
+        }
+        if let bitternessUpperValue = storage.bitternessUpperValue {
+            let value = Int(bitternessUpperValue)
+            let predicate = NSPredicate(format: "bitternessIndex < %ld", value)
+            predicates.append(predicate)
+        }
+        if let colorLowerValue = storage.colorLowerValue {
+            let value = Int(colorLowerValue)
+            let predicate = NSPredicate(format: "colorIndex > %ld", value)
+            predicates.append(predicate)
+        }
+        if let colorUpperValue = storage.colorUpperValue {
+            let value = Int(colorUpperValue)
+            let predicate = NSPredicate(format: "colorIndex < %ld", value)
+            predicates.append(predicate)
+        }
+        
+        if !predicates.isEmpty {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        }
+        
+        request.sortDescriptors = [NSSortDescriptor(
+            keyPath: \BeerInfo.id, ascending: true)]
+        return request
+    }
 }

@@ -13,7 +13,9 @@ import RxCocoa
 
 private struct Constants {
     let offset: CGFloat = 16.0
-    let sortButtonHeight: CGFloat = 44.0
+    let filtersButtonHeight: CGFloat = 44.0
+    let filtersButtonWidthRatio: CGFloat = 0.4
+    let headerViewHeight: CGFloat = 60
     let footerViewHeight: CGFloat = 60
 }
 private let constants = Constants()
@@ -21,7 +23,8 @@ private let constants = Constants()
 class BeersListViewController: UIViewController {
     
     private let tableView = UITableView()
-    private let sortButton = UIButton()
+    private let filtersButton = UIButton()
+    private var headerView = BeersListHeaderView()
     private var footerView: BeersListFooterView?
     
     var viewModel: BeersListViewModelType?
@@ -29,6 +32,7 @@ class BeersListViewController: UIViewController {
     
     private let itemAddedToFavorites = PublishRelay<IndexPath>()
     private let disposeBag = DisposeBag()
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +55,7 @@ private extension BeersListViewController {
         guard let style = style else { return }
         
         view.backgroundColor = style.backgroundColor
-        sortButton.apply(style: style.sortButtonStyle)
+        filtersButton.apply(style: style.filtersButtonStyle)
         
         tableView.delegate = self
         tableView.separatorStyle = .singleLine
@@ -66,34 +70,44 @@ private extension BeersListViewController {
             comment: "Navigation bar title for beers list")
         navigationItem.title = navigationBarTitle
         
-        view.addSubview(sortButton)
-        sortButton.translatesAutoresizingMaskIntoConstraints = false
-        sortButton.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(constants.offset)
-            $0.leading.equalToSuperview().offset(constants.offset)
-            $0.trailing.equalToSuperview().offset(-constants.offset)
-            $0.height.equalTo(constants.sortButtonHeight)
-        }
-        
-        let sortButtonTitle = NSLocalizedString(
-            "Beers list.Sort button.Title",
-            comment: "Beers list: sort button title")
-        sortButton.setTitle(sortButtonTitle, for: .normal)
-        
+        /* Table view */
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.snp.makeConstraints {
-            $0.top.equalTo(sortButton.snp.bottom).offset(constants.offset)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
         }
         
         tableView.registerCell(BeersListItemCell.reuseId, BeersListItemCell.nibName)
+        
+        let headerViewFrame = CGRect(x: 0, y: 0, width: view.frame.width,
+            height: constants.headerViewHeight)
+        headerView = BeersListHeaderView(frame: headerViewFrame)
+        headerView.style = style?.headerStyle
         
         let footerViewFrame = CGRect(x: 0, y: 0, width: view.frame.width,
             height: constants.footerViewHeight)
         self.footerView = BeersListFooterView(frame: footerViewFrame)
         footerView?.style = style?.footerStyle
         tableView.tableFooterView = footerView
+        
+        /* Filters button */
+        view.addSubview(filtersButton)
+        filtersButton.translatesAutoresizingMaskIntoConstraints = false
+        filtersButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-constants.offset)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(constants.filtersButtonHeight)
+            $0.width.equalToSuperview().multipliedBy(constants.filtersButtonWidthRatio)
+        }
+        
+        let filtersButtonTitle = NSLocalizedString(
+            "Beers list.Filters button.Title",
+            comment: "Beers list: filters button title")
+        filtersButton.setTitle(filtersButtonTitle, for: .normal)
+        
+        filtersButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] _ in self?.feedbackGenerator.impactOccurred() })
+            .disposed(by: disposeBag)
     }
     
     func bindViewModel() {
@@ -116,15 +130,28 @@ private extension BeersListViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.showFiltersInfo
+            .drive(onNext: weakly(self, type(of: self).showFiltersInfo))
+            .disposed(by: disposeBag)
+                
         viewModel.bindViewEvents(
             itemSelected: tableView.rx.itemSelected.asSignal(),
             itemAddedToFavorites: itemAddedToFavorites.asSignal(),
-            sortTap: sortButton.rx.tap.asSignal())
+            filtersTap: filtersButton.rx.tap.asSignal(),
+            resetFiltersTap: headerView.resetButtonTap)
     }
     
     func updateActivityState(isInActivity: Bool, isEmptyList: Bool) {
         footerView?.isInitialLoading = isEmptyList
         tableView.tableFooterView?.isHidden = !isInActivity
+    }
+    
+    func showFiltersInfo(_ show: Bool) {
+        if show {
+            tableView.tableHeaderView = headerView
+        } else {
+            tableView.tableHeaderView = nil
+        }
     }
 }
 

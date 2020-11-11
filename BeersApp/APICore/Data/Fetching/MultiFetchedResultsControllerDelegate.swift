@@ -68,7 +68,7 @@ private extension MultiFetchedResultsControllerDelegate {
     func performFetch() {
         do {
             try fetchedResultsController.performFetch()
-            if let fetchedObject = fetchedResultsController.fetchedObjects as? [Item] {
+            if let fetchedObject = fetchedResultsController.fetchedObjects {
                 currentItem = fetchedObject
                 sendFetchedObject(fetchedObject)
             }

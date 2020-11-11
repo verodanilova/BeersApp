@@ -17,6 +17,7 @@ struct AppColors {
     let mineShaft = UIColor(int: 0x383838)
     let bostonBlue = UIColor(int: 0x307ebb)
     let gold = UIColor(int: 0xffd700)
+    let salem = UIColor(int: 0x0ea455)
     
     let beerColors = BeerColors()
     

@@ -42,7 +42,7 @@ private struct ToFavoritesButtonStyle: ButtonStyleType {
         return appColors.sandDune
     }
     var cornerRadius: CGFloat {
-        return 10
+        return 6
     }
     var backgroundColor: UIColor? {
         return appColors.gold
