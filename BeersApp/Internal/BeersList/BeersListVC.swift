@@ -14,6 +14,7 @@ import RxCocoa
 private struct Constants {
     let offset: CGFloat = 16.0
     let sortButtonHeight: CGFloat = 44.0
+    let headerViewHeight: CGFloat = 60
     let footerViewHeight: CGFloat = 60
 }
 private let constants = Constants()
@@ -22,6 +23,7 @@ class BeersListViewController: UIViewController {
     
     private let tableView = UITableView()
     private let sortButton = UIButton()
+    private var headerView = BeersListHeaderView()
     private var footerView: BeersListFooterView?
     
     var viewModel: BeersListViewModelType?
@@ -94,6 +96,11 @@ private extension BeersListViewController {
         
         tableView.registerCell(BeersListItemCell.reuseId, BeersListItemCell.nibName)
         
+        let headerViewFrame = CGRect(x: 0, y: 0, width: view.frame.width,
+            height: constants.headerViewHeight)
+        headerView = BeersListHeaderView(frame: headerViewFrame)
+        headerView.style = style?.headerStyle
+        
         let footerViewFrame = CGRect(x: 0, y: 0, width: view.frame.width,
             height: constants.footerViewHeight)
         self.footerView = BeersListFooterView(frame: footerViewFrame)
@@ -121,15 +128,28 @@ private extension BeersListViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.showFiltersInfo
+            .drive(onNext: weakly(self, type(of: self).showFiltersInfo))
+            .disposed(by: disposeBag)
+                
         viewModel.bindViewEvents(
             itemSelected: tableView.rx.itemSelected.asSignal(),
             itemAddedToFavorites: itemAddedToFavorites.asSignal(),
-            sortTap: sortButton.rx.tap.asSignal())
+            sortTap: sortButton.rx.tap.asSignal(),
+            resetFiltersTap: headerView.resetButtonTap)
     }
     
     func updateActivityState(isInActivity: Bool, isEmptyList: Bool) {
         footerView?.isInitialLoading = isEmptyList
         tableView.tableFooterView?.isHidden = !isInActivity
+    }
+    
+    func showFiltersInfo(_ show: Bool) {
+        if show {
+            tableView.tableHeaderView = headerView
+        } else {
+            tableView.tableHeaderView = nil
+        }
     }
 }
 

@@ -21,6 +21,7 @@ protocol BeersListInteractorType {
     
     /* Data with filters loading */
     func loadBeersListWithFilters(storage: BeerFiltersStorageType)
+    func resetFilters()
     
     /* Storage updates */
     func updateFavoriteBeersStorage(with beerID: Int)
@@ -75,6 +76,11 @@ final class BeersListInteractor: BeersListInteractorType {
         filtersStorage = storage
         startFetchingItems()
         loadBeersListIfNeeded()
+    }
+    
+    func resetFilters() {
+        filtersStorage = nil
+        startFetchingItems()
     }
     
     func updateFavoriteBeersStorage(with beerID: Int) {

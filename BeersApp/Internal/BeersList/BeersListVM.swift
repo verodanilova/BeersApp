@@ -13,9 +13,11 @@ import RxCocoa
 protocol BeersListViewModelType {
     var items: Driver<[BeersListItemViewModelType]> {get}
     var isInActivity: Driver<Bool> {get}
+    var showFiltersInfo: Driver<Bool> {get}
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
-        itemAddedToFavorites: Signal<IndexPath>, sortTap: Signal<Void>)
+        itemAddedToFavorites: Signal<IndexPath>, sortTap: Signal<Void>,
+        resetFiltersTap: Signal<Void>)
     func prepare()
     func loadMoreData()
     func swipeActionTitle(at indexPath: IndexPath) -> String
@@ -29,6 +31,9 @@ final class BeersListViewModel: BeersListViewModelType {
     
     let isInActivity: Driver<Bool>
     
+    let showFiltersInfo: Driver<Bool>
+    private let showFiltersInfoRelay = BehaviorRelay<Bool>(value: false)
+    
     private let context: Context
     private let interactor: BeersListInteractorType
     private let storage: BeerFiltersStorageType
@@ -40,6 +45,7 @@ final class BeersListViewModel: BeersListViewModelType {
         self.storage = BeerFiltersStorage()
         self.items = itemsRelay.asDriver()
         self.isInActivity = interactor.isInActivity
+        self.showFiltersInfo = showFiltersInfoRelay.asDriver()
         
         interactor.listItems
             .map { $0.map { BeersListItemViewModel(item: $0) } }
@@ -48,7 +54,8 @@ final class BeersListViewModel: BeersListViewModelType {
     }
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
-        itemAddedToFavorites: Signal<IndexPath>, sortTap: Signal<Void>) {
+        itemAddedToFavorites: Signal<IndexPath>, sortTap: Signal<Void>,
+        resetFiltersTap: Signal<Void>) {
         itemSelected
             .emit(onNext: weakly(self, type(of: self).itemSelected))
             .disposed(by: disposeBag)
@@ -59,6 +66,10 @@ final class BeersListViewModel: BeersListViewModelType {
         
         sortTap
             .emit(onNext: weakly(self, type(of: self).showSortOptions))
+            .disposed(by: disposeBag)
+        
+        resetFiltersTap
+            .emit(onNext: weakly(self, type(of: self).resetFilters))
             .disposed(by: disposeBag)
     }
     
@@ -101,6 +112,12 @@ private extension BeersListViewModel {
         let filtersModel = BeerFiltersBottomSheetViewModel(storage: storage, delegate: self)
         context.navigator.navigate(to: .beerFiltersBottomSheet(model: filtersModel), in: .list)
     }
+    
+    func resetFilters() {
+        storage.resetFilters()
+        interactor.resetFilters()
+        showFiltersInfoRelay.accept(false)
+    }
 }
 
 // MARK: - BeerFiltersBottomSheetDelegate conformance
@@ -108,6 +125,7 @@ extension BeersListViewModel: BeerFiltersBottomSheetDelegate {
     func shouldApplyFilters() {
         if storage.hasSelectedFilters {
             interactor.loadBeersListWithFilters(storage: storage)
+            showFiltersInfoRelay.accept(true)
         }
     }
 }

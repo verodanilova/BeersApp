@@ -16,6 +16,7 @@ protocol BeersListStyleType {
     var separatorColor: UIColor {get}
     var swipeActionBackgroundColor: UIColor {get}
     var itemStyle: BeersListItemStyleType {get}
+    var headerStyle: BeersListHeaderStyleType {get}
     var footerStyle: BeersListFooterStyleType {get}
 }
 
@@ -40,6 +41,9 @@ struct BeersListStyle: BeersListStyleType {
     }
     var itemStyle: BeersListItemStyleType {
         return BeersListItemStyle()
+    }
+    var headerStyle: BeersListHeaderStyleType {
+        return BeersListHeaderStyle()
     }
     var footerStyle: BeersListFooterStyleType {
         return BeersListFooterStyle()

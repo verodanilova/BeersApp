@@ -11,6 +11,8 @@
 
 "Beers list.Navigation bar.Title" = "Beers";
 "Beers list.Sort button.Title" = "Sort options";
+"Beers list.Header.Reset button.Title" = "Reset";
+"Beers list.Header.Filter info.Title" = "Filters applied.";
 "Beers list.Footer.Initial loading.Title" = "Loading beers list...";
 "Beers list.Footer.Loading more info.Title" = "Loading more beers...";
 "Beers list.Swipe action.Add to favorite.Title" = "Add to favorites";
