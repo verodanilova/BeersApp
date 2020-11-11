@@ -10,7 +10,7 @@ import UIKit
 
 protocol BeersListStyleType {
     var backgroundColor: UIColor {get}
-    var sortButtonStyle: ButtonStyleType {get}
+    var filtersButtonStyle: ButtonStyleType {get}
     var tableViewBackgroundColor: UIColor {get}
     var separatorInset: UIEdgeInsets {get}
     var separatorColor: UIColor {get}
@@ -24,8 +24,8 @@ struct BeersListStyle: BeersListStyleType {
     var backgroundColor: UIColor {
         return .white
     }
-    var sortButtonStyle: ButtonStyleType {
-        return SortButtonStyle()
+    var filtersButtonStyle: ButtonStyleType {
+        return FiltersButtonStyle()
     }
     var tableViewBackgroundColor: UIColor {
         return appColors.white
@@ -50,23 +50,27 @@ struct BeersListStyle: BeersListStyleType {
     }
 }
 
-private struct SortButtonStyle: ButtonStyleType {
+private struct FiltersButtonStyle: ButtonStyleType {
+    var titleFont: UIFont {
+        return .systemFont(ofSize: 16, weight: .medium)
+    }
     var titleColorNormal: UIColor? {
-        return appColors.bostonBlue
-    }
-    var titleColorHighlighted: UIColor? {
-        return appColors.sandDune
-    }
-    var cornerRadius: CGFloat {
-        return 2
-    }
-    var backgroundColor: UIColor? {
         return appColors.white
     }
-    var borderColor: UIColor? {
+    var titleColorHighlighted: UIColor? {
+        return appColors.white
+    }
+    var cornerRadius: CGFloat {
+        return 22
+    }
+    var backgroundColor: UIColor? {
         return appColors.bostonBlue
     }
-    var borderWidth: CGFloat {
-        return 1
+    var shadowLayer: ButtonShadowLayer? {
+        return ButtonShadowLayer(
+            color: appColors.sandDune,
+            opacity: 0.4,
+            offset: CGSize(width: 0, height: 2),
+            radius: 4)
     }
 }

@@ -16,7 +16,7 @@ protocol BeersListViewModelType {
     var showFiltersInfo: Driver<Bool> {get}
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
-        itemAddedToFavorites: Signal<IndexPath>, sortTap: Signal<Void>,
+        itemAddedToFavorites: Signal<IndexPath>, filtersTap: Signal<Void>,
         resetFiltersTap: Signal<Void>)
     func prepare()
     func loadMoreData()
@@ -54,7 +54,7 @@ final class BeersListViewModel: BeersListViewModelType {
     }
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
-        itemAddedToFavorites: Signal<IndexPath>, sortTap: Signal<Void>,
+        itemAddedToFavorites: Signal<IndexPath>, filtersTap: Signal<Void>,
         resetFiltersTap: Signal<Void>) {
         itemSelected
             .emit(onNext: weakly(self, type(of: self).itemSelected))
@@ -64,8 +64,8 @@ final class BeersListViewModel: BeersListViewModelType {
             .emit(onNext: weakly(self, type(of: self).itemAddedToFavorites))
             .disposed(by: disposeBag)
         
-        sortTap
-            .emit(onNext: weakly(self, type(of: self).showSortOptions))
+        filtersTap
+            .emit(onNext: weakly(self, type(of: self).showFilters))
             .disposed(by: disposeBag)
         
         resetFiltersTap
@@ -108,7 +108,7 @@ private extension BeersListViewModel {
         interactor.updateFavoriteBeersStorage(with: Int(id))
     }
     
-    func showSortOptions() {
+    func showFilters() {
         let filtersModel = BeerFiltersBottomSheetViewModel(storage: storage, delegate: self)
         context.navigator.navigate(to: .beerFiltersBottomSheet(model: filtersModel), in: .list)
     }
