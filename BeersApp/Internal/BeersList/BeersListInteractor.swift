@@ -14,6 +14,7 @@ protocol BeersListInteractorType {
     var listItems: Driver<[BeerListItem]> {get}
     var currentBeerInfos: [BeerInfo] {get}
     var isInActivity: Driver<Bool> {get}
+    var errorOccurredSignal: Signal<Void> {get}
     
     /* Data loading */
     func loadBeersListIfNeeded()
@@ -38,6 +39,9 @@ final class BeersListInteractor: BeersListInteractorType {
     let isInActivity: Driver<Bool>
     private let isLoadingInProgressRelay = BehaviorRelay<Bool>(value: false)
     
+    let errorOccurredSignal: Signal<Void>
+    private let errorOccurredRelay = PublishRelay<Void>()
+    
     var currentBeerInfos: [BeerInfo] {
         return beersFRC?.currentItem ?? []
     }
@@ -58,6 +62,7 @@ final class BeersListInteractor: BeersListInteractorType {
         self.paginationStateController = PaginationStateController()
         self.isInActivity = isLoadingInProgressRelay.asDriver()
         self.listItems = listItemsRelay.asDriver()
+        self.errorOccurredSignal = errorOccurredRelay.asSignal()
         
         startFetchingItems()
     }
@@ -155,7 +160,7 @@ private extension BeersListInteractor {
                 self?.paginationStateController.newLoadedItems(list)
             }, onError: { [weak self] error in
                 self?.isLoadingInProgressRelay.accept(false)
-                print("Error while loading beers list: \(error)")
+                self?.errorOccurredRelay.accept(())
             })
             .disposed(by: disposeBag)
     }

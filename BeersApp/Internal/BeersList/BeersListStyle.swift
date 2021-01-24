@@ -18,6 +18,8 @@ protocol BeersListStyleType {
     var itemStyle: BeersListItemStyleType {get}
     var headerStyle: BeersListHeaderStyleType {get}
     var footerStyle: BeersListFooterStyleType {get}
+    var errorBackgroundColor: UIColor {get}
+    var errorTextStyle: LabelStyleType {get}
 }
 
 struct BeersListStyle: BeersListStyleType {
@@ -47,6 +49,14 @@ struct BeersListStyle: BeersListStyleType {
     }
     var footerStyle: BeersListFooterStyleType {
         return BeersListFooterStyle()
+    }
+    var errorBackgroundColor: UIColor {
+        return .carnation
+    }
+    var errorTextStyle: LabelStyleType {
+        return LabelStyle(
+            textFont: .systemFont(ofSize: 14, weight: .medium),
+            textColor: .white)
     }
 }
 

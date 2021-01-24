@@ -14,6 +14,7 @@ protocol BeersListViewModelType {
     var items: Driver<[BeersListItemViewModelType]> {get}
     var isInActivity: Driver<Bool> {get}
     var showFiltersInfo: Driver<Bool> {get}
+    var errorOccurredSignal: Signal<Void> {get}
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
         itemAddedToFavorites: Signal<IndexPath>, filtersTap: Signal<Void>,
@@ -30,6 +31,7 @@ final class BeersListViewModel: BeersListViewModelType {
     private let itemsRelay = BehaviorRelay<[BeersListItemViewModelType]>(value: [])
     
     let isInActivity: Driver<Bool>
+    let errorOccurredSignal: Signal<Void>
     
     let showFiltersInfo: Driver<Bool>
     private let showFiltersInfoRelay = BehaviorRelay<Bool>(value: false)
@@ -46,6 +48,7 @@ final class BeersListViewModel: BeersListViewModelType {
         self.items = itemsRelay.asDriver()
         self.isInActivity = interactor.isInActivity
         self.showFiltersInfo = showFiltersInfoRelay.asDriver()
+        self.errorOccurredSignal = interactor.errorOccurredSignal
         
         interactor.listItems
             .map { $0.map { BeersListItemViewModel(item: $0) } }

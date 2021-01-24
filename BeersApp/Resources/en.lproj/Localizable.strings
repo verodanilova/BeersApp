@@ -17,6 +17,7 @@
 "Beers list.Footer.Loading more info.Title" = "Loading more beers...";
 "Beers list.Swipe action.Add to favorite.Title" = "Add to favorites";
 "Beers list.Swipe action.Remove from favorite.Title" = "Unfavorite";
+"Beers list.Common error.Title" = "Oops.. Some error occurred 😢\nPlease try again later";
 
 "Beers list.Filters.Title" = "Filters";
 "Beers list.Filters.Alcohol index.Title" = "Alcohol volume";
