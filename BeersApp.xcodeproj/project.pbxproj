@@ -41,7 +41,6 @@
 		4C340A6F25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A6E25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift */; };
 		4C340A732553524600EE54EA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A712553524600EE54EA /* Model.xcdatamodeld */; };
 		4C340A772553618A00EE54EA /* BeerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A762553618A00EE54EA /* BeerInfo.swift */; };
-		4C340A9D25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */; };
 		4C340AA32554A38300EE54EA /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AA22554A38300EE54EA /* FetchedResultsControllerDelegate.swift */; };
 		4C340AA72556E16A00EE54EA /* BeersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AA62556E16A00EE54EA /* BeersDataSource.swift */; };
 		4C340AAA2556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C340AA92556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift */; };
@@ -138,7 +137,6 @@
 		4C340A6E25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Deleting.swift"; sourceTree = "<group>"; };
 		4C340A722553524600EE54EA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4C340A762553618A00EE54EA /* BeerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerInfo.swift; sourceTree = "<group>"; };
-		4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeerInfo+InsertableFromJSON.swift"; sourceTree = "<group>"; };
 		4C340AA22554A38300EE54EA /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
 		4C340AA62556E16A00EE54EA /* BeersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersDataSource.swift; sourceTree = "<group>"; };
 		4C340AA92556E5D500EE54EA /* MultiFetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiFetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 			isa = PBXGroup;
 			children = (
 				4C340A762553618A00EE54EA /* BeerInfo.swift */,
-				4C340A9C25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift */,
 				4C340AE22558393600EE54EA /* BeerInfo+BeerColorKind.swift */,
 			);
 			path = PersistentModel;
@@ -818,7 +815,6 @@
 				4C340AD8255744C100EE54EA /* BeerDetailsInfoVM.swift in Sources */,
 				4C340AA72556E16A00EE54EA /* BeersDataSource.swift in Sources */,
 				4C6F6DB8254F11E2004FD828 /* AppNavigator.swift in Sources */,
-				4C340A9D25548BD300EE54EA /* BeerInfo+InsertableFromJSON.swift in Sources */,
 				4C6F6DCB254F1540004FD828 /* FavoriteBeersVC.swift in Sources */,
 				4C340A63255342D000EE54EA /* CancelableTask.swift in Sources */,
 				4C340AEF25585A3500EE54EA /* BeerListItem.swift in Sources */,

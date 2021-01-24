@@ -11,6 +11,7 @@ import CoreData
 let insertableFromJSONErrorDomain = "InsertableFromJSONErrorDomain"
 enum InsertableFromJSONError: Error {
     case invalidJSON
+    case missingManagedObjectContext
     case serializingError(Error)
     case insertError(Error)
 }
@@ -35,4 +36,24 @@ extension Array: InsertableFromJSON where Element: InsertableFromJSON {
             try? Element.insertObject(fromJSON: elementJSON, to: context)
         }
     }
+}
+
+extension InsertableFromJSON where Self: NSManagedObject & Decodable {
+    static func insertObject(fromJSON JSON: Any,
+        to context: NSManagedObjectContext) throws -> Self {
+        
+        guard let input = JSON as? [String: Any],
+            let data = try? JSONSerialization.data(withJSONObject: input) else {
+            throw InsertableFromJSONError.invalidJSON
+        }
+        
+        let decoder = JSONDecoder()
+        decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
+        
+        return try decoder.decode(Self.self, from: data)
+    }
+}
+
+extension CodingUserInfoKey {
+  static let managedObjectContext = CodingUserInfoKey(rawValue: "managedObjectContext")!
 }
