@@ -1,0 +1,7 @@
+xcassets:
+  inputs: BeersApp/Resources/Colors.xcassets
+  outputs:
+    templatePath: BeersApp/Resources/colors-template.stencil
+    output: BeersApp/Common/Extensions/UIColor+Colors.swift
+    params:
+      className: UIColor

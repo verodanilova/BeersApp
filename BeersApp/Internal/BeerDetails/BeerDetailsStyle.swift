@@ -18,13 +18,13 @@ protocol BeerDetailsStyleType {
 
 struct BeerDetailsStyle: BeerDetailsStyleType {
     var backgroundColor: UIColor {
-        return appColors.white
+        return .white
     }
     var imageContainerBackgroundColor: UIColor {
-        return appColors.clear
+        return .clear
     }
     var infoBackViewBackgroundColor: UIColor {
-        return appColors.white
+        return .white
     }
     var toFavoritesButtonStyle: ButtonStyleType {
         return ToFavoritesButtonStyle()
@@ -36,20 +36,20 @@ struct BeerDetailsStyle: BeerDetailsStyleType {
 
 private struct ToFavoritesButtonStyle: ButtonStyleType {
     var titleColorNormal: UIColor? {
-        return appColors.mineShaft
+        return .mineShaft
     }
     var titleColorHighlighted: UIColor? {
-        return appColors.sandDune
+        return .sandDune
     }
     var cornerRadius: CGFloat {
         return 6
     }
     var backgroundColor: UIColor? {
-        return appColors.gold
+        return .gold
     }
     var shadowLayer: ButtonShadowLayer? {
         return ButtonShadowLayer(
-            color: appColors.sandDune,
+            color: .sandDune,
             opacity: 0.4,
             offset: CGSize(width: 0, height: 2),
             radius: 4)

@@ -17,18 +17,18 @@ protocol BeersListHeaderStyleType {
 
 struct BeersListHeaderStyle: BeersListHeaderStyleType {
     var headerBackgroundColor: UIColor {
-        return appColors.white
+        return .white
     }
     var filtersInfoTextStyle: LabelStyle {
         return LabelStyle(
             textFont: .systemFont(ofSize: 16, weight: .medium),
-            textColor: appColors.sandDune)
+            textColor: .sandDune)
     }
     var resetButtonStyle: ButtonStyleType {
         return ResetButtonStyle()
     }
     var separatorColor: UIColor {
-        return appColors.alto
+        return .alto
     }
 }
 
@@ -37,9 +37,9 @@ private struct ResetButtonStyle: ButtonStyleType {
         return .systemFont(ofSize: 16, weight: .medium)
     }
     var titleColorNormal: UIColor? {
-        return appColors.bostonBlue
+        return .bostonBlue
     }
     var titleColorHighlighted: UIColor? {
-        return appColors.bostonBlue
+        return .bostonBlue
     }
 }

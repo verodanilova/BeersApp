@@ -17,6 +17,10 @@ private struct Constants {
     let filtersButtonWidthRatio: CGFloat = 0.4
     let headerViewHeight: CGFloat = 60
     let footerViewHeight: CGFloat = 60
+    let errorDisplayThrottle: RxTimeInterval = .seconds(4)
+    let errorDisplayDuration: TimeInterval = 0.25
+    let errorHidingDuration: TimeInterval = 0.25
+    let errorHidingDelay: TimeInterval = 3.5
 }
 private let constants = Constants()
 
@@ -133,6 +137,11 @@ private extension BeersListViewController {
         viewModel.showFiltersInfo
             .drive(onNext: weakly(self, type(of: self).showFiltersInfo))
             .disposed(by: disposeBag)
+        
+        viewModel.errorOccurredSignal
+            .throttle(constants.errorDisplayThrottle)
+            .emit(onNext: weakly(self, type(of: self).showError))
+            .disposed(by: disposeBag)
                 
         viewModel.bindViewEvents(
             itemSelected: tableView.rx.itemSelected.asSignal(),
@@ -183,5 +192,47 @@ extension BeersListViewController: UITableViewDelegate {
         let configuration = UISwipeActionsConfiguration(actions: [addToFavorites])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
+    }
+}
+
+// MARK: - Error display
+extension BeersListViewController {
+    func showError() {
+        guard let style = style else { return }
+        let errorView = UIView()
+        errorView.backgroundColor = style.errorBackgroundColor
+        errorView.alpha = 0
+        
+        let errorLabel = UILabel()
+        errorLabel.apply(style: style.errorTextStyle)
+        errorLabel.numberOfLines = 0
+        errorLabel.textAlignment = .center
+        errorLabel.text = NSLocalizedString(
+            "Beers list.Common error.Title",
+            comment: "Beers list: common error text")
+        
+        errorView.addSubview(errorLabel)
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(constants.offset)
+        }
+        
+        view.addSubview(errorView)
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.snp.makeConstraints {
+            $0.trailing.leading.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        
+        UIView.animate(withDuration: constants.errorDisplayDuration) {
+            errorView.alpha = 1
+        } completion: { _ in
+            UIView.animate(withDuration: constants.errorHidingDuration,
+                delay: constants.errorHidingDelay) {
+                errorView.alpha = 0
+            } completion: { _ in
+                errorView.removeFromSuperview()
+            }
+        }
     }
 }
