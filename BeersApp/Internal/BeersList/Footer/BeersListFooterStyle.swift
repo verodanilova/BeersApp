@@ -16,7 +16,7 @@ protocol BeersListFooterStyleType {
 
 struct BeersListFooterStyle: BeersListFooterStyleType {
     var footerBackgroundColor: UIColor {
-        return appColors.white
+        return .white
     }
     var activityIndicatorStyle: UIActivityIndicatorView.Style {
         return .medium
@@ -24,6 +24,6 @@ struct BeersListFooterStyle: BeersListFooterStyleType {
     var footerTextStyle: LabelStyle {
         return LabelStyle(
             textFont: .systemFont(ofSize: 16, weight: .regular),
-            textColor: appColors.sandDune)
+            textColor: .sandDune)
     }
 }

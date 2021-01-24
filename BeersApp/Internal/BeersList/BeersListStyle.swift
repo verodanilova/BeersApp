@@ -28,16 +28,16 @@ struct BeersListStyle: BeersListStyleType {
         return FiltersButtonStyle()
     }
     var tableViewBackgroundColor: UIColor {
-        return appColors.white
+        return .white
     }
     var separatorInset: UIEdgeInsets {
         return .init(top: 0, left: 16, bottom: 0, right: 16)
     }
     var separatorColor: UIColor {
-        return appColors.alto
+        return .alto
     }
     var swipeActionBackgroundColor: UIColor {
-        return appColors.sandDune.withAlphaComponent(0.7)
+        return UIColor.sandDune.withAlphaComponent(0.7)
     }
     var itemStyle: BeersListItemStyleType {
         return BeersListItemStyle()
@@ -55,20 +55,20 @@ private struct FiltersButtonStyle: ButtonStyleType {
         return .systemFont(ofSize: 16, weight: .medium)
     }
     var titleColorNormal: UIColor? {
-        return appColors.white
+        return .white
     }
     var titleColorHighlighted: UIColor? {
-        return appColors.white
+        return .white
     }
     var cornerRadius: CGFloat {
         return 22
     }
     var backgroundColor: UIColor? {
-        return appColors.bostonBlue
+        return .bostonBlue
     }
     var shadowLayer: ButtonShadowLayer? {
         return ButtonShadowLayer(
-            color: appColors.sandDune,
+            color: .sandDune,
             opacity: 0.4,
             offset: CGSize(width: 0, height: 2),
             radius: 4)

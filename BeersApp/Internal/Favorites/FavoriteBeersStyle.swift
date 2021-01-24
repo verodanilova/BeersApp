@@ -19,19 +19,19 @@ protocol FavoriteBeersStyleType {
 
 struct FavoriteBeersStyle: FavoriteBeersStyleType {
     var backgroundColor: UIColor {
-        return appColors.white
+        return .white
     }
     var tableViewBackgroundColor: UIColor {
-        return appColors.white
+        return .white
     }
     var separatorInset: UIEdgeInsets {
         return .init(top: 0, left: 16, bottom: 0, right: 16)
     }
     var separatorColor: UIColor {
-        return appColors.alto
+        return .alto
     }
     var swipeActionBackgroundColor: UIColor {
-        return appColors.sandDune.withAlphaComponent(0.7)
+        return UIColor.sandDune.withAlphaComponent(0.7)
     }
     var itemStyle: BeersListItemStyleType {
         return BeersListItemStyle()

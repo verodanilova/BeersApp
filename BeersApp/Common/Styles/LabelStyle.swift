@@ -22,7 +22,7 @@ extension UILabel {
 
 extension LabelStyleType {
     var textFont: UIFont { return UIFont.systemFont(ofSize: 17) }
-    var textColor: UIColor { return appColors.sandDune }
+    var textColor: UIColor { return .sandDune }
 }
 
 struct LabelStyle: LabelStyleType {

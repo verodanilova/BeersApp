@@ -16,5 +16,8 @@ target 'BeersApp' do
 
   #Image loading
   pod 'Kingfisher', '~> 5.0'
+
+  #Code generation
+  pod 'SwiftGen', '6.1.0'
   
 end

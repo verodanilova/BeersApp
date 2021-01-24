@@ -19,16 +19,16 @@ struct BeersListItemStyle: BeersListItemStyleType {
     var beerNameTextStyle: LabelStyleType {
         return LabelStyle(
             textFont: .systemFont(ofSize: 16, weight: .medium),
-            textColor: appColors.mineShaft)
+            textColor: .mineShaft)
     }
     var beerTaglineTextStyle: LabelStyleType {
         return LabelStyle(
             textFont: .systemFont(ofSize: 16, weight: .regular),
-            textColor: appColors.mineShaft)
+            textColor: .mineShaft)
     }
     var starImage: UIImage? {
         return UIImage(named: "star_ic")?
-            .withTintColor(appColors.sandDune.withAlphaComponent(0.7))
+            .withTintColor(UIColor.sandDune.withAlphaComponent(0.7))
     }
     var highlightedStarImage: UIImage? {
         return UIImage(named: "star_highlighted_ic")

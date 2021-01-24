@@ -13,10 +13,10 @@ private struct Constants {
     let cornerRadii = CGSize(width: 16, height: 16)
     let animationDuration: TimeInterval = 0.25
     let updatePositionAnimationDuration: TimeInterval = 0.1
-    let backgroundColor: UIColor = appColors.sandDune.withAlphaComponent(0.4)
+    let backgroundColor: UIColor = UIColor.sandDune.withAlphaComponent(0.4)
     let bottomSheetBackgroundColor: UIColor = .clear
     let closeThreshold: CGFloat = 0.35
-    let viewShadow = LayerShadow(color: appColors.sandDune, opacity: 0.3,
+    let viewShadow = LayerShadow(color: .sandDune, opacity: 0.3,
         offset: .zero, radius: 5)
 }
 private let constants = Constants()
@@ -129,11 +129,11 @@ private extension BaseBottomSheetViewController {
         let shapeLayer = CAShapeLayer()
         shapeLayer.addShadow(constants.viewShadow)
         shapeLayer.path = path.cgPath
-        shapeLayer.fillColor = appColors.clear.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
         
         shadowLayer.addShadow(constants.viewShadow)
         shadowLayer.path = path.cgPath
-        shadowLayer.fillColor = appColors.white.cgColor
+        shadowLayer.fillColor = UIColor.white.cgColor
         shapeLayer.addSublayer(shadowLayer)
         
         bottomSheetView.layer.insertSublayer(shapeLayer, at: 0)

@@ -1,0 +1,16 @@
+// AUTO-GENERATED using SwiftGen
+{% set className %}{{param.className|default:"Asset"}}{% endset %}
+
+import UIKit
+
+{% macro casesBlock assets %}
+  {% for asset in assets %}
+  {% if asset.type == "color" %}
+    static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = UIColor(named: "{{asset.value}}")!
+  {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+extension {{className}} {
+  {% call casesBlock catalogs.first.assets %}
+}

@@ -46,7 +46,7 @@ extension UIButton {
 
 extension ButtonStyleType {
     var titleFont: UIFont { return UIFont.systemFont(ofSize: 17) }
-    var tintColor: UIColor { return appColors.sandDune }
+    var tintColor: UIColor { return .sandDune }
     var titleColorNormal: UIColor? { return nil }
     var titleColorHighlighted: UIColor? { return nil }
     var cornerRadius: CGFloat { return 0 }

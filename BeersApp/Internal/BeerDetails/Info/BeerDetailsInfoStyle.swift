@@ -23,58 +23,58 @@ protocol BeerDetailsInfoStyleType {
 
 struct BeerDetailsInfoStyle: BeerDetailsInfoStyleType {
     var infoBackgroundColor: UIColor {
-        return appColors.white
+        return .white
     }
     var titleLabelStyle: LabelStyle {
         return LabelStyle(
             textFont: .systemFont(ofSize: 20, weight: .semibold),
-            textColor: appColors.mineShaft)
+            textColor: .mineShaft)
     }
     var taglineLabelStyle: LabelStyle {
         return LabelStyle(
             textFont: .italicSystemFont(ofSize: 16),
-            textColor: appColors.sandDune)
+            textColor: .sandDune)
     }
     var separatorViewColor: UIColor {
-        return appColors.alto
+        return .alto
     }
     var figuresTitleLabelStyle: LabelStyle {
         return LabelStyle(
             textFont: .systemFont(ofSize: 16, weight: .regular),
-            textColor: appColors.sandDune)
+            textColor: .sandDune)
     }
     var figuresIndexLabelStyle: LabelStyle {
         return LabelStyle(
             textFont: .systemFont(ofSize: 18, weight: .medium),
-            textColor: appColors.sandDune)
+            textColor: .sandDune)
     }
     var colorValueViewStyle: ViewStyleType {
-        return ViewStyle(cornerRadius: 4, borderWidth: 1, borderColor: appColors.alto)
+        return ViewStyle(cornerRadius: 4, borderWidth: 1, borderColor: .alto)
     }
     var sectionTitleLabelStyle: LabelStyle {
         return LabelStyle(
             textFont: .systemFont(ofSize: 18, weight: .medium),
-            textColor: appColors.mineShaft)
+            textColor: .mineShaft)
     }
     var sectionTextLabelStyle: LabelStyle {
         return LabelStyle(
             textFont: .systemFont(ofSize: 16, weight: .regular),
-            textColor: appColors.mineShaft)
+            textColor: .mineShaft)
     }
     var colorForBeerColorKind: (BeerColorKind) -> UIColor? = { kind in
         switch kind {
-            case .paleStraw: return appColors.beerColors.paleStraw
-            case .straw: return appColors.beerColors.straw
-            case .paleGold: return appColors.beerColors.paleGold
-            case .deepGold: return appColors.beerColors.deepGold
-            case .paleAmber: return appColors.beerColors.paleAmber
-            case .mediumAmber: return appColors.beerColors.mediumAmber
-            case .deepAmber: return appColors.beerColors.deepAmber
-            case .amberBrown: return appColors.beerColors.amberBrown
-            case .brown: return appColors.beerColors.brown
-            case .rubyBrown: return appColors.beerColors.rubyBrown
-            case .deepBrown: return appColors.beerColors.deepBrown
-            case .black: return appColors.beerColors.black
+            case .paleStraw: return beerColors.paleStraw
+            case .straw: return beerColors.straw
+            case .paleGold: return beerColors.paleGold
+            case .deepGold: return beerColors.deepGold
+            case .paleAmber: return beerColors.paleAmber
+            case .mediumAmber: return beerColors.mediumAmber
+            case .deepAmber: return beerColors.deepAmber
+            case .amberBrown: return beerColors.amberBrown
+            case .brown: return beerColors.brown
+            case .rubyBrown: return beerColors.rubyBrown
+            case .deepBrown: return beerColors.deepBrown
+            case .black: return beerColors.black
             case .unknown: return nil
         }
     }
