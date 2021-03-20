@@ -5,15 +5,10 @@
 //  Created by Veronica Danilova on 04.11.2020.
 //
 
-import Foundation
+import BeersCore
 
 
-enum ConfigurationStrings: String {
-    case apiBaseURI = "https://api.punkapi.com/v2"
-    case persistentStackModelName = "Model"
-}
-
-struct AppConfiguration {
+struct AppConfiguration: AppConfigurationType {
     let apiBaseURL: URL = fetchURL(.apiBaseURI)
     let persistentStackModelName = ConfigurationStrings.persistentStackModelName.rawValue
     let dataFetchLimit: Int = 30
@@ -28,5 +23,3 @@ private extension AppConfiguration {
         preconditionFailure("A value for the key <\(key.rawValue)> must be an URL.")
     }
 }
-
-let appConfiguration = AppConfiguration()

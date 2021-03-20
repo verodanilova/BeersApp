@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import BeersCore
 
 protocol BeerDetailsInfoStyleType {
     var infoBackgroundColor: UIColor {get}

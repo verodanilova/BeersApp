@@ -18,13 +18,13 @@ enum InsertableFromJSONError: Error {
 
 /** This protocol defines requirements for instances, which can be inserted into a managed
   object context from JSON representation. */
-protocol InsertableFromJSON {
+public protocol InsertableFromJSON {
     static func insertObject(fromJSON JSON: Any,
         to context: NSManagedObjectContext) throws -> Self
 }
 
 extension Array: InsertableFromJSON where Element: InsertableFromJSON {
-    static func insertObject(fromJSON JSON: Any,
+    public static func insertObject(fromJSON JSON: Any,
         to context: NSManagedObjectContext) throws -> Array<Element> {
         guard let array = JSON as? [[String: Any]] else {
             let error = NSError(domain: insertableFromJSONErrorDomain, code: 0,
@@ -39,7 +39,7 @@ extension Array: InsertableFromJSON where Element: InsertableFromJSON {
 }
 
 extension InsertableFromJSON where Self: NSManagedObject & Decodable {
-    static func insertObject(fromJSON JSON: Any,
+    public static func insertObject(fromJSON JSON: Any,
         to context: NSManagedObjectContext) throws -> Self {
         
         guard let input = JSON as? [String: Any],

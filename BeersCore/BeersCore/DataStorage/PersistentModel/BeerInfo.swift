@@ -9,17 +9,17 @@ import Foundation
 import CoreData
 
 
-final class BeerInfo: NSManagedObject, Decodable {
+public final class BeerInfo: NSManagedObject, Decodable {
 
-    @NSManaged var id: Int16
-    @NSManaged var name: String?
-    @NSManaged var tagline: String?
-    @NSManaged var beerDescription: String?
-    @NSManaged var imageURL: URL?
+    @NSManaged public var id: Int16
+    @NSManaged public var name: String?
+    @NSManaged public var tagline: String?
+    @NSManaged public var beerDescription: String?
+    @NSManaged public var imageURL: URL?
     
-    @NSManaged var alcoholIndex: Double /* ABV */
-    @NSManaged var bitternessIndex: Double /* IBU */
-    @NSManaged var colorIndex: Double /* EBC */
+    @NSManaged public var alcoholIndex: Double /* ABV */
+    @NSManaged public var bitternessIndex: Double /* IBU */
+    @NSManaged public var colorIndex: Double /* EBC */
     
     enum CodingKeys: String, CodingKey {
         case id, name, tagline, description
@@ -29,7 +29,7 @@ final class BeerInfo: NSManagedObject, Decodable {
         case color = "ebc"
     }
     
-    required convenience init(from decoder: Decoder) throws {
+    required convenience public init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[CodingUserInfoKey.managedObjectContext] as? NSManagedObjectContext else {
             throw InsertableFromJSONError.missingManagedObjectContext
         }

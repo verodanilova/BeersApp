@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum BeerColorKind {
+public enum BeerColorKind {
     case paleStraw
     case straw
     case paleGold
@@ -24,7 +24,7 @@ enum BeerColorKind {
     case unknown
 }
 
-extension BeerInfo {
+public extension BeerInfo {
     var colorKind: BeerColorKind {
         switch self.colorIndex {
             case 4.0..<6.0: return .paleStraw

@@ -8,6 +8,6 @@
 import RxSwift
 
 
-protocol CommonAPI {
+public protocol CommonAPI {
     func executeRequest<T: InsertableFromJSON>(_ request: APIRequest) -> Observable<T>
 }

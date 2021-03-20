@@ -1,14 +1,11 @@
 //
 //  BeerFilterKind.swift
-//  BeersApp
+//  BeersCore
 //
-//  Created by Veronica Danilova on 10.11.2020.
+//  Created by Veronica Danilova on 20.03.2021.
 //
 
-import Foundation
-
-
-enum BeerFilterKind {
+public enum BeerFilterKind {
     case alcoholLowerValue
     case alcoholUpperValue
     case bitternessLowerValue
@@ -16,7 +13,7 @@ enum BeerFilterKind {
     case colorLowerValue
     case colorUpperValue
     
-    var edgeValue: Double {
+    public var edgeValue: Double {
         switch self {
             case .alcoholLowerValue: return 0.0
             case .alcoholUpperValue: return 42.0

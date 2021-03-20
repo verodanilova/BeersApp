@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 
-struct APIRequest {
+public struct APIRequest {
     typealias Headers = [String: String]
     
     var method: HTTPMethod

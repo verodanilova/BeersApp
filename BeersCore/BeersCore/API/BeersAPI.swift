@@ -10,14 +10,14 @@ import RxSwift
 import Alamofire
 
 
-protocol BeersAPI: CommonAPI {
+public protocol BeersAPI: CommonAPI {
     func getBeersList(_ input: GetBeersListRequest) -> Single<[BeerInfo]>
     func getFilteredBeersList(_ input: GetFilteredBeersListRequest) -> Single<[BeerInfo]>
 }
 
 extension APIClient: BeersAPI {}
 
-extension BeersAPI {
+public extension BeersAPI {
     func getBeersList(_ input: GetBeersListRequest) -> Single<[BeerInfo]> {
         var request = APIRequest(method: .get, path: "/beers")
         request.parameters = APIRequest.requestParameters(input)
