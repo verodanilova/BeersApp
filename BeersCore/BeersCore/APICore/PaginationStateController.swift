@@ -7,22 +7,12 @@
 
 import Foundation
 
-
-protocol PaginationStateControllerType {
-    var nextPage: Int {get}
-    var isPaginationEnabled: Bool {get}
-    
-    func setStoredItems(_ items: [Any])
-    func newLoadedItems(_ items: [Any])
-    func resetState()
-}
-
-final class PaginationStateController: PaginationStateControllerType {
+public final class PaginationStateController: PaginationStateControllerType {
     private var itemsCount: Int = 0
     private var lastLoadedItemsResult: [Any]?
-    private let dataFetchLimit = appConfiguration.dataFetchLimit
+    private let dataFetchLimit = BeersCore.configuration.dataFetchLimit
     
-    var isPaginationEnabled: Bool {
+    public var isPaginationEnabled: Bool {
         if let lastItemsResult = lastLoadedItemsResult {
             return lastItemsResult.count == dataFetchLimit
         } else {
@@ -30,19 +20,21 @@ final class PaginationStateController: PaginationStateControllerType {
         }
     }
     
-    var nextPage: Int {
+    public var nextPage: Int {
         return (itemsCount / dataFetchLimit) + 1
     }
     
-    func setStoredItems(_ items: [Any]) {
+    public init() {}
+    
+    public func setStoredItems(_ items: [Any]) {
         itemsCount = items.count
     }
 
-    func newLoadedItems(_ items: [Any]) {
+    public func newLoadedItems(_ items: [Any]) {
         lastLoadedItemsResult = items
     }
     
-    func resetState() {
+    public func resetState() {
         itemsCount = 0
         lastLoadedItemsResult = nil
     }

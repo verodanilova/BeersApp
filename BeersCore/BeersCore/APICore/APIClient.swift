@@ -11,12 +11,12 @@ import RxSwift
 import CoreData
 
 
-final class APIClient {
+public final class APIClient {
     private let baseURL: URL
     private let managedObjectContext: NSManagedObjectContext
     private let networkSession: SessionManager
 
-    init(baseURL: URL, managedObjectContext: NSManagedObjectContext) {
+    public init(baseURL: URL, managedObjectContext: NSManagedObjectContext) {
         let sessionConfiguration = URLSessionConfiguration.default
         let policyManager = ServerTrustPolicyManager(policies: [:])
         self.networkSession = SessionManager(configuration: sessionConfiguration,
@@ -29,7 +29,7 @@ final class APIClient {
 
 // MARK: - Common API conformance
 extension APIClient: CommonAPI {
-    func executeRequest<T: InsertableFromJSON>(_ request: APIRequest) -> Observable<T> {
+    public func executeRequest<T: InsertableFromJSON>(_ request: APIRequest) -> Observable<T> {
         return Observable.create { observer -> Disposable in
             let task = self.executeRequest(request, type: T.self,
                 completionHandler: self.requestCompletionHandler(observer: observer))

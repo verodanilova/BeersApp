@@ -6,13 +6,17 @@
 //
 
 import Foundation
-import CoreData
+import BeersCore
 
 
 final class ControlTower {
     private(set) var context: CommonContext
     
     init(rootController: RootControllerType) {
+        /* Configure Core */
+        let appConfiguration = AppConfiguration()
+        BeersCore.configure(with: appConfiguration)
+        
         /* Load a context provider. */
         let contextProvider = CommonContextProvider()
         
@@ -31,7 +35,8 @@ final class ControlTower {
         let favoriteBeersStorage = FavoriteBeersStorage()
         
         /* Data source */
-        let beersDataSource = BeersDataSource(contextProvider: contextProvider)
+        let beersDataSource = BeersDataSource(
+            managedObjectContext: coreDataStack.managedObjectContext)
         
         /* Create the context object. */
         self.context = ControlTowerCommonContext(

@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import BeersCore
 
 
 class BeerDetailsInfoView: UIView {

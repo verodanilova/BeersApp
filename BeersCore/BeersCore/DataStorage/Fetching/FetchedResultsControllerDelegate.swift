@@ -11,28 +11,25 @@ import RxSwift
 import RxCocoa
 
 
-protocol FetchedResultsControllerDelegateType {
+public protocol FetchedResultsControllerDelegateType {
     associatedtype Item: NSFetchRequestResult
     var currentItem: Item? {get}
     var fetchedItem: Driver<Item> {get}
 }
 
-final class FetchedResultsControllerDelegate<Item: NSFetchRequestResult>: NSObject,
+public final class FetchedResultsControllerDelegate<Item: NSFetchRequestResult>: NSObject,
     NSFetchedResultsControllerDelegate, Disposable,
     FetchedResultsControllerDelegateType {
-    typealias Context = DataContext
 
-    var currentItem: Item?
-    let fetchedItem: Driver<Item>
+    public var currentItem: Item?
+    public let fetchedItem: Driver<Item>
 
     private let request: NSFetchRequest<Item>
 
-    private let context: Context
     private let fetchedResultsController: NSFetchedResultsController<Item>
     private let itemSubject = ReplaySubject<Item>.create(bufferSize: 1)
 
-    public init(context: Context, request: NSFetchRequest<Item>) {
-        self.context = context
+    public init(managedObjectContext: NSManagedObjectContext, request: NSFetchRequest<Item>) {
         self.request = request
         request.fetchLimit = 1
 
@@ -41,7 +38,7 @@ final class FetchedResultsControllerDelegate<Item: NSFetchRequestResult>: NSObje
             }
         
         fetchedResultsController = NSFetchedResultsController<Item>(
-            fetchRequest: request, managedObjectContext: context.managedObjectContext,
+            fetchRequest: request, managedObjectContext: managedObjectContext,
             sectionNameKeyPath: nil, cacheName: nil)
 
         super.init()
@@ -50,7 +47,7 @@ final class FetchedResultsControllerDelegate<Item: NSFetchRequestResult>: NSObje
         performFetch()
     }
 
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         try? controller.performFetch()
         if let fetchedObject = controller.fetchedObjects?.first as? Item {
             currentItem = fetchedObject
@@ -60,7 +57,7 @@ final class FetchedResultsControllerDelegate<Item: NSFetchRequestResult>: NSObje
         }
     }
     
-    func dispose() {
+    public func dispose() {
         itemSubject.dispose()
     }
 }

@@ -8,12 +8,13 @@
 import Foundation
 
 
-struct GetBeersListRequest {
-    private let perPage: Int = appConfiguration.dataFetchLimit
+public struct GetBeersListRequest {
+    private let perPage: Int
     private let page: Int
 
-    init(page: Int = 1) {
+    public init(page: Int = 1) {
         self.page = page
+        self.perPage = BeersCore.configuration.dataFetchLimit
     }
 }
 

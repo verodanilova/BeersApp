@@ -11,28 +11,24 @@ import RxSwift
 import RxCocoa
 
 
-protocol MultiFetchedResultsControllerDelegateType {
+public protocol MultiFetchedResultsControllerDelegateType {
     associatedtype Item: NSManagedObject
     var currentItem: [Item] {get}
     var fetchedItem: Driver<[Item]> {get}
 }
 
-final class MultiFetchedResultsControllerDelegate<Item: NSManagedObject>: NSObject,
+public final class MultiFetchedResultsControllerDelegate<Item: NSManagedObject>: NSObject,
     NSFetchedResultsControllerDelegate, Disposable,
     MultiFetchedResultsControllerDelegateType {
-    typealias Context = DataContext
 
-    var currentItem: [Item] = []
-    let fetchedItem: Driver<[Item]>
+    public var currentItem: [Item] = []
+    public let fetchedItem: Driver<[Item]>
 
     private let request: NSFetchRequest<Item>
-
-    private let context: Context
     private let fetchedResultsController: NSFetchedResultsController<Item>
     private let itemSubject = ReplaySubject<[Item]>.create(bufferSize: 1)
 
-    public init(context: Context, request: NSFetchRequest<Item>) {
-        self.context = context
+    public init(managedObjectContext: NSManagedObjectContext, request: NSFetchRequest<Item>) {
         self.request = request
 
         self.fetchedItem = itemSubject.asDriver { _ in
@@ -40,7 +36,7 @@ final class MultiFetchedResultsControllerDelegate<Item: NSManagedObject>: NSObje
             }
         
         fetchedResultsController = NSFetchedResultsController<Item>(
-            fetchRequest: request, managedObjectContext: context.managedObjectContext,
+            fetchRequest: request, managedObjectContext: managedObjectContext,
             sectionNameKeyPath: nil, cacheName: nil)
 
         super.init()
@@ -49,7 +45,7 @@ final class MultiFetchedResultsControllerDelegate<Item: NSManagedObject>: NSObje
         performFetch()
     }
 
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         try? controller.performFetch()
         if let fetchedObject = controller.fetchedObjects as? [Item] {
             currentItem = fetchedObject
@@ -59,7 +55,7 @@ final class MultiFetchedResultsControllerDelegate<Item: NSManagedObject>: NSObje
         }
     }
     
-    func dispose() {
+    public func dispose() {
         itemSubject.dispose()
     }
 }

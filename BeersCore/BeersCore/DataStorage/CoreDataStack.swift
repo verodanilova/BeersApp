@@ -8,13 +8,8 @@
 import CoreData
 
 
-protocol PersistentStack {
-    /** A background managed object context */
-    var managedObjectContext: NSManagedObjectContext {get}
-}
-
-final class CoreDataStack: PersistentStack {
-    private(set) lazy var managedObjectContext: NSManagedObjectContext = {
+public final class CoreDataStack: PersistentStack {
+    private(set) lazy public var managedObjectContext: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = coordinator
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
@@ -23,7 +18,7 @@ final class CoreDataStack: PersistentStack {
 
     private let coordinator: NSPersistentStoreCoordinator
 
-    init(modelName: String) {
+    public init(modelName: String) {
         let model = Self.loadManagedObjectModel(with: modelName)
         self.coordinator = Self.loadPersistentStoreCoordinator(
             model: model, modelName: modelName)
@@ -38,7 +33,7 @@ final class CoreDataStack: PersistentStack {
 
 private extension CoreDataStack {
     static func loadManagedObjectModel(with modelName: String) -> NSManagedObjectModel {
-        guard let modelURL = Bundle.main.url(
+        guard let modelURL = BeersCore.bundle.url(
             forResource: modelName, withExtension: "momd") else {
             fatalError("Unable to find data model url")
         }

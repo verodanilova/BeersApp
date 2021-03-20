@@ -1,36 +1,22 @@
 //
 //  BeerFiltersStorage.swift
-//  BeersApp
+//  BeersCore
 //
-//  Created by Veronica Danilova on 10.11.2020.
+//  Created by Veronica Danilova on 20.03.2021.
 //
 
 import Foundation
 
 
-protocol BeerFiltersStorageType: AnyObject {
-    var alcoholLowerValue: Double? {get}
-    var alcoholUpperValue: Double? {get}
-    var bitternessLowerValue: Double? {get}
-    var bitternessUpperValue: Double? {get}
-    var colorLowerValue: Double? {get}
-    var colorUpperValue: Double? {get}
+public final class BeerFiltersStorage: BeerFiltersStorageType {
+    public var alcoholLowerValue: Double?
+    public var alcoholUpperValue: Double?
+    public var bitternessLowerValue: Double?
+    public var bitternessUpperValue: Double?
+    public var colorLowerValue: Double?
+    public var colorUpperValue: Double?
     
-    var hasSelectedFilters: Bool {get}
-    
-    func setValue(_ value: Double, for filterKind: BeerFilterKind)
-    func resetFilters()
-}
-
-final class BeerFiltersStorage: BeerFiltersStorageType {
-    var alcoholLowerValue: Double?
-    var alcoholUpperValue: Double?
-    var bitternessLowerValue: Double?
-    var bitternessUpperValue: Double?
-    var colorLowerValue: Double?
-    var colorUpperValue: Double?
-    
-    var hasSelectedFilters: Bool {
+    public var hasSelectedFilters: Bool {
         let allValues = [
             alcoholLowerValue, alcoholUpperValue,
             bitternessLowerValue, bitternessUpperValue,
@@ -39,9 +25,9 @@ final class BeerFiltersStorage: BeerFiltersStorageType {
         return allValues.contains(where: { $0 != nil })
     }
     
-    init() {}
+    public init() {}
     
-    func setValue(_ value: Double, for filterKind: BeerFilterKind) {
+    public func setValue(_ value: Double, for filterKind: BeerFilterKind) {
         let edgeValue = filterKind.edgeValue
         let newValue = value == edgeValue ? nil : value
         
@@ -61,7 +47,7 @@ final class BeerFiltersStorage: BeerFiltersStorageType {
         }
     }
     
-    func resetFilters() {
+    public func resetFilters() {
         alcoholLowerValue = nil
         alcoholUpperValue = nil
         bitternessLowerValue = nil

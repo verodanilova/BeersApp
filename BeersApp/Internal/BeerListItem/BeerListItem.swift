@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BeersCore
 
 
 struct BeerListItem {
