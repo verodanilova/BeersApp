@@ -15,7 +15,13 @@ struct MediumEntryView: View {
         VStack {
             if beers.count > 1 {
                 ForEach(beers.prefix(2), id: \.self) { beer in
-                    BeerInfoView(beer: beer)
+                    if let url = WidgetManager.widgetURL(for: beer) {
+                        Link(destination: url, label: {
+                            BeerInfoView(beer: beer)
+                        })
+                    } else {
+                        BeerInfoView(beer: beer)
+                    }
                     if beer.id == beers.prefix(2).first?.id {
                         SeparatorWithInsets()
                     }

@@ -21,8 +21,7 @@ protocol BeerDetailsViewModelType {
 }
 
 final class BeerDetailsViewModel: BeerDetailsViewModelType {
-    typealias Context = FavoriteBeersStorageContext & BeersDataSourceContext
-        
+    typealias Context = FavoriteBeersStorageContext & BeerDetailsInteractor.Context
     
     let imageURL: Driver<URL?>
     let navigationBarTitle: Driver<String?>
@@ -30,19 +29,17 @@ final class BeerDetailsViewModel: BeerDetailsViewModelType {
     let infoViewModel: BeerDetailsInfoViewModelType
     
     private let storage: FavoriteBeersStorageType
+    private let interactor: BeerDetailsInteractorType
     private let itemID: Int
-    private let beerFRC: FetchedResultsControllerDelegate<BeerInfo>
     private let disposeBag = DisposeBag()
 
     init(context: Context, id: Int) {
         self.itemID = id
         self.storage = context.favoriteBeersStorage
-        self.beerFRC = context.beersDataSource.makeBeerInfoFRC(withID: id)
-        
-        let beerInfo = beerFRC.fetchedItem
-        self.imageURL = beerInfo.map { $0.imageURL }
-        self.navigationBarTitle = beerInfo.map { $0.name }
-        self.infoViewModel = BeerDetailsInfoViewModel(info: beerInfo)
+        self.interactor = BeerDetailsInteractor(context: context, beerID: id)
+        self.imageURL = interactor.beerInfo.map { $0.imageURL }
+        self.navigationBarTitle = interactor.beerInfo.map { $0.name }
+        self.infoViewModel = BeerDetailsInfoViewModel(info: interactor.beerInfo)
         
         let configurator = Configurator()
         self.toFavoritesButtonTitle = storage.favoriteBeerIDs

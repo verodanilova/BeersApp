@@ -40,6 +40,7 @@
 		4C5D47C826066A290051EFA2 /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D47C726066A290051EFA2 /* PersistentStack.swift */; };
 		4C5D47CB26066B9C0051EFA2 /* PaginationStateControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D47CA26066B9C0051EFA2 /* PaginationStateControllerType.swift */; };
 		4C5D47CE26066CC60051EFA2 /* BeerFiltersStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D47CD26066CC60051EFA2 /* BeerFiltersStorage.swift */; };
+		4CA668C3260805D700B346E5 /* ResponseWrappedObjectEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668C2260805D700B346E5 /* ResponseWrappedObjectEnvelope.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		4C5D47C726066A290051EFA2 /* PersistentStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStack.swift; sourceTree = "<group>"; };
 		4C5D47CA26066B9C0051EFA2 /* PaginationStateControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationStateControllerType.swift; sourceTree = "<group>"; };
 		4C5D47CD26066CC60051EFA2 /* BeerFiltersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerFiltersStorage.swift; sourceTree = "<group>"; };
+		4CA668C2260805D700B346E5 /* ResponseWrappedObjectEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrappedObjectEnvelope.swift; sourceTree = "<group>"; };
 		892F69EE45248ADD94D4755F /* Pods_BeersCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeersCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A633239406F81B170C049079 /* Pods-BeersCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeersCore.debug.xcconfig"; path = "Target Support Files/Pods-BeersCore/Pods-BeersCore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5D4775260662780051EFA2 /* ResponseRootArrayEnvelope.swift */,
+				4CA668C2260805D700B346E5 /* ResponseWrappedObjectEnvelope.swift */,
 				4C5D4776260662780051EFA2 /* ResponseDataEnvelope.swift */,
 				4C5D4777260662780051EFA2 /* ResponseEnvelopeType.swift */,
 			);
@@ -373,6 +376,7 @@
 				4C5D479E260662D80051EFA2 /* BeersCore.swift in Sources */,
 				4C5D4782260662780051EFA2 /* APIClient.swift in Sources */,
 				4C5D47C826066A290051EFA2 /* PersistentStack.swift in Sources */,
+				4CA668C3260805D700B346E5 /* ResponseWrappedObjectEnvelope.swift in Sources */,
 				4C5D478A260662780051EFA2 /* Model.xcdatamodeld in Sources */,
 				4C5D47CB26066B9C0051EFA2 /* PaginationStateControllerType.swift in Sources */,
 				4C5D4792260662780051EFA2 /* RequestParametersConvertible.swift in Sources */,

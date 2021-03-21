@@ -75,6 +75,7 @@
 		4CA668932606913F00B346E5 /* WidgetFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668902606909900B346E5 /* WidgetFont.swift */; };
 		4CA6689926069F9A00B346E5 /* WidgetAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6689626069F9600B346E5 /* WidgetAPIClient.swift */; };
 		4CA668B626077E3000B346E5 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668B526077E3000B346E5 /* WidgetManager.swift */; };
+		4CA668BF2607FD6800B346E5 /* BeerDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668BE2607FD6800B346E5 /* BeerDetailsInteractor.swift */; };
 		4CF93DAB255894CD00EC6D61 /* BaseBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DAA255894CD00EC6D61 /* BaseBottomSheetVC.swift */; };
 		4CF93DB5255898B700EC6D61 /* BottomSheetContentViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DB4255898B700EC6D61 /* BottomSheetContentViewDelegate.swift */; };
 		4CF93DB82558995600EC6D61 /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */; };
@@ -204,6 +205,7 @@
 		4CA668902606909900B346E5 /* WidgetFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFont.swift; sourceTree = "<group>"; };
 		4CA6689626069F9600B346E5 /* WidgetAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAPIClient.swift; sourceTree = "<group>"; };
 		4CA668B526077E3000B346E5 /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
+		4CA668BE2607FD6800B346E5 /* BeerDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsInteractor.swift; sourceTree = "<group>"; };
 		4CF93DAA255894CD00EC6D61 /* BaseBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetVC.swift; sourceTree = "<group>"; };
 		4CF93DB4255898B700EC6D61 /* BottomSheetContentViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetContentViewDelegate.swift; sourceTree = "<group>"; };
 		4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			children = (
 				4C340ACC255730CB00EE54EA /* Info */,
 				4C340AC52557248200EE54EA /* BeerDetailsStyle.swift */,
+				4CA668BE2607FD6800B346E5 /* BeerDetailsInteractor.swift */,
 				4C11CD61254F17E7006E960C /* BeerDetailsVM.swift */,
 				4C11CD5C254F17CB006E960C /* BeerDetailsVC.swift */,
 			);
@@ -817,6 +820,7 @@
 				4C6F6DA8254F0957004FD828 /* NavigationContainer.swift in Sources */,
 				4C60B737254F6C140075DDE1 /* UITableView+Extensions.swift in Sources */,
 				4C6F6DC3254F14DC004FD828 /* BeersListVM.swift in Sources */,
+				4CA668BF2607FD6800B346E5 /* BeerDetailsInteractor.swift in Sources */,
 				4C340AB82556F23300EE54EA /* UIImageView+Loading.swift in Sources */,
 				4C60B733254F68550075DDE1 /* LabelStyle.swift in Sources */,
 				4C664FEE25BDF4BA00765BE7 /* UIColor+Colors.swift in Sources */,

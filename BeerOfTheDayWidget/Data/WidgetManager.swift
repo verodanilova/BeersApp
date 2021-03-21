@@ -9,6 +9,10 @@ import UIKit
 import WidgetKit
 
 class WidgetManager {
+    
+    struct Constants {
+        static let widgetScheme = "widget://"
+    }
 
     private let apiClient = WidgetAPIClient()
 
@@ -27,6 +31,15 @@ class WidgetManager {
             return UIImage(named: "defaultImage")
         }
         return UIImage(data: data)
+    }
+    
+    static func widgetURL(for beer: WidgetBeerInfo?) -> URL? {
+        guard let id = beer?.id else {
+            return nil
+        }
+        
+        let urlString = Constants.widgetScheme + "\(id)"
+        return URL(string: urlString)
     }
         
     static let samples: [WidgetBeerInfo] = {

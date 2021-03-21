@@ -32,6 +32,7 @@ struct SmallEntryView: View {
             }
         }
         .padding()
+        .widgetURL(WidgetManager.widgetURL(for: beers.first))
     }
 }
 
