@@ -7,46 +7,19 @@
 
 import SwiftUI
 
-struct BackgroundImage: View {
-    var image: UIImage?
-    
-    var body: some View {
-        if let image = image {
-            Image(uiImage: image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .overlay(OverlayView())
-        } else {
-            OverlayView()
-        }
-    }
-}
-
-struct OverlayView: View {
-    let gradient = Gradient(colors: [
-        WidgetColor.backgroundGradientTop,
-        WidgetColor.backgroundGradientBottom
-    ])
-    
-    var body: some View {
-        Rectangle()
-            .foregroundColor(.clear)
-            .background(LinearGradient(gradient: gradient,
-                startPoint: .top, endPoint: .bottom))
-    }
-}
-
 struct TopBeerInfoView: View {
     let beer: WidgetBeerInfo
     
-    let image = UIImage(named: "defaultImage")
+    var image: UIImage? {
+        WidgetManager.image(for: beer)
+    }
     
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
             if let image = image {
                 Image(uiImage: image)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 120)
                     .cornerRadius(8.0)
             }
@@ -73,14 +46,16 @@ struct TopBeerInfoView: View {
 struct BeerInfoView: View {
     let beer: WidgetBeerInfo
     
-    let image = UIImage(named: "defaultImage")
+    var image: UIImage? {
+        WidgetManager.image(for: beer)
+    }
     
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
             if let image = image {
                 Image(uiImage: image)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 56, height: 56)
                     .cornerRadius(8.0)
             }

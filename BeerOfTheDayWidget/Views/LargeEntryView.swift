@@ -34,7 +34,7 @@ struct LargeEntryView: View {
 
 struct LargeEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        LargeEntryView(beers: WidgetBeerInfo.samples)
+        LargeEntryView(beers: WidgetManager.samples)
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

@@ -29,7 +29,7 @@ struct MediumEntryView: View {
 
 struct MediumEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        MediumEntryView(beers: WidgetBeerInfo.samples)
+        MediumEntryView(beers: WidgetManager.samples)
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
