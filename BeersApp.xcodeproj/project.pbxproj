@@ -77,6 +77,10 @@
 		4CA668B626077E3000B346E5 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668B526077E3000B346E5 /* WidgetManager.swift */; };
 		4CA668BF2607FD6800B346E5 /* BeerDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668BE2607FD6800B346E5 /* BeerDetailsInteractor.swift */; };
 		4CA668C726080B3700B346E5 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668C626080B3700B346E5 /* UIView+Extensions.swift */; };
+		4CA668CE26092FEE00B346E5 /* BeerDetailsFoodPairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668CD26092FEE00B346E5 /* BeerDetailsFoodPairingView.swift */; };
+		4CA668D7260937D900B346E5 /* BeerDetailsFoodPairingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668D6260937D900B346E5 /* BeerDetailsFoodPairingVM.swift */; };
+		4CA668DC260938F200B346E5 /* BeerDetailsFoodPairingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668DB260938F200B346E5 /* BeerDetailsFoodPairingStyle.swift */; };
+		4CA668E32609487700B346E5 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668E22609487700B346E5 /* String+Extensions.swift */; };
 		4CF93DAB255894CD00EC6D61 /* BaseBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DAA255894CD00EC6D61 /* BaseBottomSheetVC.swift */; };
 		4CF93DB5255898B700EC6D61 /* BottomSheetContentViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DB4255898B700EC6D61 /* BottomSheetContentViewDelegate.swift */; };
 		4CF93DB82558995600EC6D61 /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */; };
@@ -208,6 +212,10 @@
 		4CA668B526077E3000B346E5 /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
 		4CA668BE2607FD6800B346E5 /* BeerDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsInteractor.swift; sourceTree = "<group>"; };
 		4CA668C626080B3700B346E5 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		4CA668CD26092FEE00B346E5 /* BeerDetailsFoodPairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsFoodPairingView.swift; sourceTree = "<group>"; };
+		4CA668D6260937D900B346E5 /* BeerDetailsFoodPairingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsFoodPairingVM.swift; sourceTree = "<group>"; };
+		4CA668DB260938F200B346E5 /* BeerDetailsFoodPairingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsFoodPairingStyle.swift; sourceTree = "<group>"; };
+		4CA668E22609487700B346E5 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4CF93DAA255894CD00EC6D61 /* BaseBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetVC.swift; sourceTree = "<group>"; };
 		4CF93DB4255898B700EC6D61 /* BottomSheetContentViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetContentViewDelegate.swift; sourceTree = "<group>"; };
 		4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
@@ -290,6 +298,7 @@
 		4C11CD5B254F17BE006E960C /* BeerDetails */ = {
 			isa = PBXGroup;
 			children = (
+				4CA668CC26092FCA00B346E5 /* FoodPairing */,
 				4C340ACC255730CB00EE54EA /* Info */,
 				4C340AC52557248200EE54EA /* BeerDetailsStyle.swift */,
 				4CA668BE2607FD6800B346E5 /* BeerDetailsInteractor.swift */,
@@ -319,6 +328,7 @@
 				4C340AB72556F23300EE54EA /* UIImageView+Loading.swift */,
 				4C340AC92557307800EE54EA /* UIView+Loadable.swift */,
 				4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */,
+				4CA668E22609487700B346E5 /* String+Extensions.swift */,
 				4C340A6B25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift */,
 				4C340A6E25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift */,
 				4CA668C626080B3700B346E5 /* UIView+Extensions.swift */,
@@ -528,6 +538,16 @@
 				4CA668902606909900B346E5 /* WidgetFont.swift */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		4CA668CC26092FCA00B346E5 /* FoodPairing */ = {
+			isa = PBXGroup;
+			children = (
+				4CA668DB260938F200B346E5 /* BeerDetailsFoodPairingStyle.swift */,
+				4CA668D6260937D900B346E5 /* BeerDetailsFoodPairingVM.swift */,
+				4CA668CD26092FEE00B346E5 /* BeerDetailsFoodPairingView.swift */,
+			);
+			path = FoodPairing;
 			sourceTree = "<group>";
 		};
 		4CF93DA92558944500EC6D61 /* BeerFiltersBottomSheet */ = {
@@ -790,6 +810,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C340AD425573F8300EE54EA /* BeerDetailsInfoStyle.swift in Sources */,
+				4CA668CE26092FEE00B346E5 /* BeerDetailsFoodPairingView.swift in Sources */,
+				4CA668D7260937D900B346E5 /* BeerDetailsFoodPairingVM.swift in Sources */,
 				4C6F6DA4254F0477004FD828 /* AppNavigationContainerKind.swift in Sources */,
 				4C340AE02558370E00EE54EA /* ViewStyle.swift in Sources */,
 				4C60B72F254F68180075DDE1 /* BeersListItemStyle.swift in Sources */,
@@ -799,6 +821,7 @@
 				4C340AC62557248200EE54EA /* BeerDetailsStyle.swift in Sources */,
 				4C340A5225532B9500EE54EA /* AppConfiguration.swift in Sources */,
 				4C11CD99254F5351006E960C /* WeakCapture.swift in Sources */,
+				4CA668E32609487700B346E5 /* String+Extensions.swift in Sources */,
 				4C340A6F25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift in Sources */,
 				4C11CD6E254F20EE006E960C /* NavigatorType.swift in Sources */,
 				4CF93DCA25589BFA00EC6D61 /* BottomSheetContentView.swift in Sources */,
@@ -840,6 +863,7 @@
 				4C340ACA2557307800EE54EA /* UIView+Loadable.swift in Sources */,
 				4C11CD7A254F3456006E960C /* Contexts.swift in Sources */,
 				4CF93DC625589B5D00EC6D61 /* BeerFiltersBottomSheetStyle.swift in Sources */,
+				4CA668DC260938F200B346E5 /* BeerDetailsFoodPairingStyle.swift in Sources */,
 				4C040D9F25585F6C008904E0 /* BeersListInteractor.swift in Sources */,
 				4C60B727254F620F0075DDE1 /* UIColor+Extensions.swift in Sources */,
 				4C040DA325587C03008904E0 /* FavoriteBeersStyle.swift in Sources */,
