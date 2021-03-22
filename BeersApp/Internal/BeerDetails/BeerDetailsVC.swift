@@ -30,6 +30,7 @@ class BeerDetailsViewController: UIViewController {
     private let imageView = UIImageView()
     private let infoBackView = UIView()
     private var infoContainer: BeerDetailsInfoView?
+    private let foodPairingView = BeerDetailsFoodPairingView()
     private let toFavoritesButton = UIButton()
     
     private let disposeBag = DisposeBag()
@@ -84,7 +85,6 @@ private extension BeerDetailsViewController {
         infoContainer.snp.makeConstraints {
             $0.top.equalTo(imageContainer.snp.bottom)
             $0.leading.trailing.equalTo(view)
-            $0.bottom.equalTo(scrollView).offset(constants.infoContainerBottomOffset)
         }
         self.infoContainer = infoContainer
         
@@ -92,6 +92,13 @@ private extension BeerDetailsViewController {
             $0.leading.trailing.equalTo(view)
             $0.top.equalTo(infoContainer)
             $0.bottom.equalTo(view)
+        }
+        
+        scrollView.addSubview(foodPairingView)
+        foodPairingView.snp.makeConstraints {
+            $0.top.equalTo(infoContainer.snp.bottom)
+            $0.leading.trailing.equalTo(view)
+            $0.bottom.equalTo(scrollView).offset(constants.infoContainerBottomOffset)
         }
         
         toFavoritesButton.translatesAutoresizingMaskIntoConstraints = false
@@ -111,6 +118,7 @@ private extension BeerDetailsViewController {
         imageContainer.backgroundColor = style.imageContainerBackgroundColor
         infoBackView.backgroundColor = style.infoBackViewBackgroundColor
         infoContainer?.style = style.infoViewStyle
+        foodPairingView.style = style.foodPairingStyle
         toFavoritesButton.apply(style: style.toFavoritesButtonStyle)
     }
     
@@ -137,6 +145,7 @@ private extension BeerDetailsViewController {
             .disposed(by: disposeBag)
         
         infoContainer?.viewModel = viewModel.infoViewModel
+        foodPairingView.viewModel = viewModel.foodPairingViewModel
         
         viewModel.bindViewEvents(
             toFavoritesTap: toFavoritesButton.rx.tap.asSignal())

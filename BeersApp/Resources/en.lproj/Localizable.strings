@@ -41,6 +41,7 @@
 "Beer details.Info.Figures.Bitterness.Title" = "IBU";
 "Beer details.Info.Figures.Color.Title" = "EBC";
 "Beer details.Info.Figures.Placeholder" = "–";
+"Beer details.Food pairing.Title" = "Food pairing";
 "Beer details.Add to favorites button.Title" = "Add to favorites";
 "Beer details.Remove from favorites button.Title" = "Unfavorite";
 

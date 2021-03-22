@@ -14,6 +14,7 @@ protocol BeerDetailsStyleType {
     var infoBackViewBackgroundColor: UIColor {get}
     var toFavoritesButtonStyle: ButtonStyleType {get}
     var infoViewStyle: BeerDetailsInfoStyleType {get}
+    var foodPairingStyle: BeerDetailsFoodPairingStyleType {get}
 }
 
 struct BeerDetailsStyle: BeerDetailsStyleType {
@@ -31,6 +32,9 @@ struct BeerDetailsStyle: BeerDetailsStyleType {
     }
     var infoViewStyle: BeerDetailsInfoStyleType {
         return BeerDetailsInfoStyle()
+    }
+    var foodPairingStyle: BeerDetailsFoodPairingStyleType {
+        return BeerDetailsFoodPairingStyle()
     }
 }
 
