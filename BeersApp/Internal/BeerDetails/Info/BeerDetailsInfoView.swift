@@ -39,6 +39,10 @@ class BeerDetailsInfoView: UIView {
         didSet { bindViewModel() }
     }
     
+    var isShimmering: Bool = false {
+        didSet { changeShimmerState() }
+    }
+    
     private let disposeBag = DisposeBag()
 }
 
@@ -107,6 +111,15 @@ private extension BeerDetailsInfoView {
         } else {
             colorValueView.apply(style: style.colorValueViewStyle)
             colorValueView.backgroundColor = style.colorForBeerColorKind(colorKind)
+        }
+    }
+    
+    func changeShimmerState() {
+        let views: [UIView] = [titleLabel, taglineLabel, alcoholVolumeLabel, bitternessIndexLabel, colorValueView, descriptionLabel]
+        if isShimmering {
+            views.forEach { $0.startShimmering() }
+        } else {
+            views.forEach { $0.stopShimmering() }
         }
     }
 }

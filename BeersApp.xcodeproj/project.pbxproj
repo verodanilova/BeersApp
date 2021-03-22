@@ -76,6 +76,7 @@
 		4CA6689926069F9A00B346E5 /* WidgetAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6689626069F9600B346E5 /* WidgetAPIClient.swift */; };
 		4CA668B626077E3000B346E5 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668B526077E3000B346E5 /* WidgetManager.swift */; };
 		4CA668BF2607FD6800B346E5 /* BeerDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668BE2607FD6800B346E5 /* BeerDetailsInteractor.swift */; };
+		4CA668C726080B3700B346E5 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668C626080B3700B346E5 /* UIView+Extensions.swift */; };
 		4CF93DAB255894CD00EC6D61 /* BaseBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DAA255894CD00EC6D61 /* BaseBottomSheetVC.swift */; };
 		4CF93DB5255898B700EC6D61 /* BottomSheetContentViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DB4255898B700EC6D61 /* BottomSheetContentViewDelegate.swift */; };
 		4CF93DB82558995600EC6D61 /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */; };
@@ -206,6 +207,7 @@
 		4CA6689626069F9600B346E5 /* WidgetAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAPIClient.swift; sourceTree = "<group>"; };
 		4CA668B526077E3000B346E5 /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
 		4CA668BE2607FD6800B346E5 /* BeerDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsInteractor.swift; sourceTree = "<group>"; };
+		4CA668C626080B3700B346E5 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		4CF93DAA255894CD00EC6D61 /* BaseBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetVC.swift; sourceTree = "<group>"; };
 		4CF93DB4255898B700EC6D61 /* BottomSheetContentViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetContentViewDelegate.swift; sourceTree = "<group>"; };
 		4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */,
 				4C340A6B25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift */,
 				4C340A6E25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift */,
+				4CA668C626080B3700B346E5 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				4C60B72F254F68180075DDE1 /* BeersListItemStyle.swift in Sources */,
 				4C11CD62254F17E7006E960C /* BeerDetailsVM.swift in Sources */,
 				4CF93DEF2559921E00EC6D61 /* RangeSlider.swift in Sources */,
+				4CA668C726080B3700B346E5 /* UIView+Extensions.swift in Sources */,
 				4C340AC62557248200EE54EA /* BeerDetailsStyle.swift in Sources */,
 				4C340A5225532B9500EE54EA /* AppConfiguration.swift in Sources */,
 				4C11CD99254F5351006E960C /* WeakCapture.swift in Sources */,

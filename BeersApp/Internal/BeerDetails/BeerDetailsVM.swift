@@ -16,6 +16,7 @@ protocol BeerDetailsViewModelType {
     var navigationBarTitle: Driver<String?> {get}
     var toFavoritesButtonTitle: Driver<String> {get}
     var infoViewModel: BeerDetailsInfoViewModelType {get}
+    var isInActivity: Driver<Bool> {get}
     
     func bindViewEvents(toFavoritesTap: Signal<Void>)
 }
@@ -27,6 +28,7 @@ final class BeerDetailsViewModel: BeerDetailsViewModelType {
     let navigationBarTitle: Driver<String?>
     let toFavoritesButtonTitle: Driver<String>
     let infoViewModel: BeerDetailsInfoViewModelType
+    let isInActivity: Driver<Bool>
     
     private let storage: FavoriteBeersStorageType
     private let interactor: BeerDetailsInteractorType
@@ -40,6 +42,7 @@ final class BeerDetailsViewModel: BeerDetailsViewModelType {
         self.imageURL = interactor.beerInfo.map { $0.imageURL }
         self.navigationBarTitle = interactor.beerInfo.map { $0.name }
         self.infoViewModel = BeerDetailsInfoViewModel(info: interactor.beerInfo)
+        self.isInActivity = interactor.isInActivity
         
         let configurator = Configurator()
         self.toFavoritesButtonTitle = storage.favoriteBeerIDs
