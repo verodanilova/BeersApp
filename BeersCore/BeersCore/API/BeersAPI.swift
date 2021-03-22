@@ -13,6 +13,7 @@ import Alamofire
 public protocol BeersAPI: CommonAPI {
     func getBeersList(_ input: GetBeersListRequest) -> Single<[BeerInfo]>
     func getFilteredBeersList(_ input: GetFilteredBeersListRequest) -> Single<[BeerInfo]>
+    func getBeer(with id: Int) -> Single<BeerInfo>
 }
 
 extension APIClient: BeersAPI {}
@@ -29,6 +30,12 @@ public extension BeersAPI {
         var request = APIRequest(method: .get, path: "/beers")
         request.parameters = APIRequest.requestParameters(input)
         request.envelope = ResponseRootArrayEnvelope()
+        return executeRequest(request).asSingle()
+    }
+    
+    func getBeer(with id: Int) -> Single<BeerInfo> {
+        var request = APIRequest(method: .get, path: "/beers/\(id)")
+        request.envelope = ResponseWrappedObjectEnvelope()
         return executeRequest(request).asSingle()
     }
 }

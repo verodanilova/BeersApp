@@ -21,8 +21,21 @@ target 'BeersApp' do
   pod 'Kingfisher', '~> 5.0'
 
   # Data loading
-  pod 'Alamofire', '~> 4.7.3'
+  pod 'Alamofire', '~> 4.8'
   
+end
+
+target "BeerOfTheDayWidgetExtension" do
+  project './BeersApp.xcodeproj' 
+
+  # Reactive support
+  pod 'RxSwift', '~> 5.1.0'
+  pod 'RxCocoa', '~> 5.1.0'
+
+  # Data loading
+  pod 'Alamofire', '~> 4.8'
+  pod 'RxAlamofire'
+
 end
 
 target 'BeersCore' do
@@ -33,6 +46,6 @@ target 'BeersCore' do
   pod 'RxCocoa', '~> 5.1.0'
 
   # Data loading
-  pod 'Alamofire', '~> 4.7.3'
+  pod 'Alamofire', '~> 4.8'
 
 end

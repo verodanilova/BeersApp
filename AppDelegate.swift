@@ -11,7 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var controlTower: ControlTower!
+    var controlTower: ControlTower?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -25,6 +25,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func application(_ application: UIApplication, open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.scheme == "widget" {
+            return handleWidgetUrl(url)
+        }
 
+       return false
+    }
+    
+    private func handleWidgetUrl(_ url: URL) -> Bool {
+        guard let controlTower = controlTower,
+              let beerID = url.host,
+              let id = Int(beerID)
+        else {
+            return false
+        }
+        
+        let navigator = controlTower.context.navigator
+        navigator.navigate(to: .beerDetails(id: id), in: .list)
+        return true
+    }
 }
 

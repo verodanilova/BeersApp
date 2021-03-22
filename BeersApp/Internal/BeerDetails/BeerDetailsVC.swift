@@ -132,9 +132,24 @@ private extension BeerDetailsViewController {
             .drive(toFavoritesButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
         
+        viewModel.isInActivity
+            .drive(onNext: changeShimmerState)
+            .disposed(by: disposeBag)
+        
         infoContainer?.viewModel = viewModel.infoViewModel
         
         viewModel.bindViewEvents(
             toFavoritesTap: toFavoritesButton.rx.tap.asSignal())
+    }
+    
+    func changeShimmerState(_ isShimmering: Bool) {
+        infoContainer?.isShimmering = isShimmering
+        toFavoritesButton.isHidden = isShimmering
+        
+        if isShimmering {
+            imageView.startShimmering()
+        } else {
+            imageView.stopShimmering()
+        }
     }
 }
