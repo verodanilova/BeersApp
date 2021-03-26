@@ -19,13 +19,13 @@ protocol BeerDetailsStyleType {
 
 struct BeerDetailsStyle: BeerDetailsStyleType {
     var backgroundColor: UIColor {
-        return .white
+        .albescentWhite
     }
     var imageContainerBackgroundColor: UIColor {
         return .clear
     }
     var infoBackViewBackgroundColor: UIColor {
-        return .white
+        return .clear
     }
     var toFavoritesButtonStyle: ButtonStyleType {
         return ToFavoritesButtonStyle()

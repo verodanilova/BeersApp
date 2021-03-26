@@ -8,11 +8,15 @@
 import UIKit
 
 protocol BeerDetailsFoodPairingStyleType {
+    var pairingBackgroundColor: UIColor {get}
     var titleLabelStyle: LabelStyleType {get}
     var chipStyle: ButtonStyleType {get}
 }
 
 struct BeerDetailsFoodPairingStyle: BeerDetailsFoodPairingStyleType {
+    var pairingBackgroundColor: UIColor {
+        .white
+    }
     var titleLabelStyle: LabelStyleType {
         return LabelStyle(
             textFont: .systemFont(ofSize: 18, weight: .medium),

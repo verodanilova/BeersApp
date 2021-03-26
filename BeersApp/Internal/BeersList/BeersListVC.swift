@@ -40,7 +40,8 @@ class BeersListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        configureNavigationBar()
         applyStyle()
         configureViewComponents()
         bindViewModel()
@@ -69,11 +70,6 @@ private extension BeersListViewController {
     }
     
     func configureViewComponents() {
-        let navigationBarTitle = NSLocalizedString(
-            "Beers list.Navigation bar.Title",
-            comment: "Navigation bar title for beers list")
-        navigationItem.title = navigationBarTitle
-        
         /* Table view */
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -112,6 +108,11 @@ private extension BeersListViewController {
         filtersButton.rx.tap.asDriver()
             .drive(onNext: { [weak self] _ in self?.feedbackGenerator.impactOccurred() })
             .disposed(by: disposeBag)
+    }
+    
+    func configureNavigationBar() {
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButton
     }
     
     func bindViewModel() {

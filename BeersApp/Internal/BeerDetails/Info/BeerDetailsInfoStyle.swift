@@ -19,6 +19,7 @@ protocol BeerDetailsInfoStyleType {
     var sectionTitleLabelStyle: LabelStyle {get}
     var sectionTextLabelStyle: LabelStyle {get}
     var colorForBeerColorKind: (BeerColorKind) -> UIColor? {get}
+    var topCornerRadius: CGFloat {get}
 }
 
 struct BeerDetailsInfoStyle: BeerDetailsInfoStyleType {
@@ -78,4 +79,5 @@ struct BeerDetailsInfoStyle: BeerDetailsInfoStyleType {
             case .unknown: return nil
         }
     }
+    var topCornerRadius: CGFloat { 32.0 }
 }

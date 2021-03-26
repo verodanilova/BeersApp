@@ -20,6 +20,7 @@ final class NavigationContainer {
 
     init(rootController: UIViewController) {
         self.navigationController = UINavigationController(rootViewController: rootController)
+        configureNavigationBar()
     }
 }
 
@@ -33,5 +34,15 @@ extension NavigationContainer: NavigationContainerType {
     }
     func present(_ item: Item) {
         navigationController.present(item, animated: false, completion: nil)
+    }
+}
+
+private extension NavigationContainer {
+    func configureNavigationBar() {
+        navigationController.navigationBar.backgroundColor = .clear
+        navigationController.navigationBar.tintColor = .mineShaft
+        navigationController.navigationBar.isTranslucent = true
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.shadowImage = UIImage()
     }
 }

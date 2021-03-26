@@ -30,6 +30,7 @@ class BeerDetailsFoodPairingView: UIView {
     
     private let titleLabel = UILabel()
     private let verticalStackView = UIStackView()
+    private let bottomOverscrollView = UIView()
     private var chips: [UIButton] = []
     private let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     private let disposeBag = DisposeBag()
@@ -70,12 +71,21 @@ private extension BeerDetailsFoodPairingView {
         verticalStackView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(Constants.titleOffset)
             $0.leading.trailing.equalToSuperview().inset(Constants.verticalStackViewOffset)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(Constants.verticalStackViewOffset * 2)
+        }
+        
+        addSubview(bottomOverscrollView)
+        bottomOverscrollView.snp.makeConstraints {
+            $0.trailing.leading.equalToSuperview()
+            $0.top.equalTo(snp.bottom)
+            $0.height.equalTo(UIScreen.main.bounds.height)
         }
     }
     
     func applyStyle() {
         guard let style = style else { return }
+        backgroundColor = style.pairingBackgroundColor
+        bottomOverscrollView.backgroundColor = style.pairingBackgroundColor
         titleLabel.apply(style: style.titleLabelStyle)
     }
     

@@ -17,6 +17,8 @@ private struct Constants {
     let buttonBottomOffset: CGFloat = -24
     let infoContainerBottomOffset: CGFloat = -92
     let imageContainerWidthRatio: CGFloat = 0.8
+    let imageInset: CGFloat = 16
+    let screenWidth: CGFloat = UIScreen.main.bounds.width
 }
 private let constants = Constants()
 
@@ -37,37 +39,36 @@ class BeerDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configureViewComponents()
         applyStyle()
         bindViewModel()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        applyImageGradient()
     }
 }
 
 private extension BeerDetailsViewController {
     func configureViewComponents() {
-        scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
-        
-        imageContainer.translatesAutoresizingMaskIntoConstraints = false
+
         scrollView.addSubview(imageContainer)
-        
-        infoBackView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(infoBackView)
         
         let infoContainer: BeerDetailsInfoView = .loadFromNib()
-        infoContainer.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(infoContainer)
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(imageView)
 
         imageContainer.snp.makeConstraints {
-            $0.top.equalTo(scrollView)
+            $0.top.equalTo(scrollView).inset(-constants.imageInset)
             $0.leading.trailing.equalTo(view)
             $0.height.equalTo(imageContainer.snp.width)
                 .multipliedBy(constants.imageContainerWidthRatio)
@@ -77,13 +78,13 @@ private extension BeerDetailsViewController {
         imageView.clipsToBounds = true
         imageView.snp.makeConstraints {
             $0.leading.trailing.equalTo(imageContainer)
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).priority(.high)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).priority(.high)
             $0.height.greaterThanOrEqualTo(imageContainer.snp.height).priority(.required)
             $0.bottom.equalTo(imageContainer.snp.bottom)
         }
         
         infoContainer.snp.makeConstraints {
-            $0.top.equalTo(imageContainer.snp.bottom)
+            $0.top.equalTo(imageContainer.snp.bottom).offset(constants.imageInset)
             $0.leading.trailing.equalTo(view)
         }
         self.infoContainer = infoContainer
@@ -98,28 +99,42 @@ private extension BeerDetailsViewController {
         foodPairingView.snp.makeConstraints {
             $0.top.equalTo(infoContainer.snp.bottom)
             $0.leading.trailing.equalTo(view)
-            $0.bottom.equalTo(scrollView).offset(constants.infoContainerBottomOffset)
+            $0.bottom.equalTo(scrollView.snp.bottom)
         }
-        
-        toFavoritesButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(toFavoritesButton)
-        toFavoritesButton.snp.makeConstraints {
-            $0.height.equalTo(constants.buttonHeight)
-            $0.width.equalToSuperview().multipliedBy(constants.buttonWidthRatio)
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(constants.buttonBottomOffset)
-        }
+
+//        view.addSubview(toFavoritesButton)
+//        toFavoritesButton.snp.makeConstraints {
+//            $0.height.equalTo(constants.buttonHeight)
+//            $0.width.equalToSuperview().multipliedBy(constants.buttonWidthRatio)
+//            $0.centerX.equalToSuperview()
+//            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(constants.buttonBottomOffset)
+//        }
     }
     
     func applyStyle() {
         guard let style = style else { return }
         
-        view.backgroundColor = style.backgroundColor
+        scrollView.backgroundColor = style.backgroundColor
         imageContainer.backgroundColor = style.imageContainerBackgroundColor
         infoBackView.backgroundColor = style.infoBackViewBackgroundColor
         infoContainer?.style = style.infoViewStyle
         foodPairingView.style = style.foodPairingStyle
         toFavoritesButton.apply(style: style.toFavoritesButtonStyle)
+    }
+    
+    func applyImageGradient() {
+        let albescentWhite = UIColor.albescentWhite.cgColor
+        let grainBrown = UIColor.grainBrown.withAlphaComponent(0.7).cgColor
+        let roundedCornersGap = style?.infoViewStyle.topCornerRadius ?? 0
+        var gradientFrame = imageContainer.bounds
+        gradientFrame.size.height = imageContainer.bounds.height + roundedCornersGap
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = gradientFrame
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientLayer.colors = [albescentWhite, grainBrown]
+        imageContainer.layer.addSublayer(gradientLayer)
     }
     
     func bindViewModel() {
@@ -131,10 +146,10 @@ private extension BeerDetailsViewController {
                 self?.imageView.setImage(from: url, placeholder: placeholder)
             })
             .disposed(by: disposeBag)
-        
-        viewModel.navigationBarTitle
-            .drive(navigationItem.rx.title)
-            .disposed(by: disposeBag)
+//
+//        viewModel.navigationBarTitle
+//            .drive(navigationItem.rx.title)
+//            .disposed(by: disposeBag)
         
         viewModel.toFavoritesButtonTitle
             .drive(toFavoritesButton.rx.title(for: .normal))

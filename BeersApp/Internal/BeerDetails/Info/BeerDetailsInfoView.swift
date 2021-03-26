@@ -74,6 +74,8 @@ private extension BeerDetailsInfoView {
             "Beer details.Info.Figures.Color.Title",
             comment: "Beer details info: Color figure title")
         bottomSeparatorView.backgroundColor = style.separatorViewColor
+        
+        roundCorners(with: style.topCornerRadius)
     }
     
     func bindViewModel() {
@@ -112,6 +114,13 @@ private extension BeerDetailsInfoView {
             colorValueView.apply(style: style.colorValueViewStyle)
             colorValueView.backgroundColor = style.colorForBeerColorKind(colorKind)
         }
+    }
+    
+    func roundCorners(with cornerRadius: CGFloat) {
+        clipsToBounds = true
+        layer.cornerCurve = .continuous
+        layer.cornerRadius = cornerRadius
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func changeShimmerState() {
