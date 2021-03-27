@@ -6,9 +6,6 @@
   
 */
 
-"Tab bar.List item.Title" = "List";
-"Tab bar.Favorites item.Title" = "Favorites";
-
 "Beers list.Navigation bar.Title" = "Beers";
 "Beers list.Filters button.Title" = "Filters";
 "Beers list.Header.Reset button.Title" = "Reset";
