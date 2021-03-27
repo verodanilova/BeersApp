@@ -112,7 +112,7 @@ private extension BeerDetailsInfoView {
             placeholderLabel.snp.makeConstraints { $0.edges.equalToSuperview() }
         } else {
             colorValueView.apply(style: style.colorValueViewStyle)
-            colorValueView.backgroundColor = style.colorForBeerColorKind(colorKind)
+            colorValueView.backgroundColor = .color(for: colorKind)
         }
     }
     

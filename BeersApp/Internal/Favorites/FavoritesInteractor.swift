@@ -1,5 +1,5 @@
 //
-//  FavoriteBeersInteractor.swift
+//  FavoritesInteractor.swift
 //  BeersApp
 //
 //  Created by Veronica Danilova on 08.11.2020.
@@ -11,14 +11,14 @@ import RxCocoa
 import BeersCore
 
 
-protocol FavoriteBeersInteractorType {
+protocol FavoritesInteractorType {
     var listItems: Driver<[BeerListItem]> {get}
     var currentBeerInfos: [BeerInfo] {get}
     
     func removeItemFromStorage(with id: Int)
 }
 
-final class FavoriteBeersInteractor: FavoriteBeersInteractorType {
+final class FavoritesInteractor: FavoritesInteractorType {
     typealias Context = FavoriteBeersStorageContext & BeersDataSourceContext
     
     let listItems: Driver<[BeerListItem]>
@@ -40,7 +40,7 @@ final class FavoriteBeersInteractor: FavoriteBeersInteractorType {
         self.listItems = listItemsRelay.asDriver()
 
         favoriteStorage.favoriteBeerIDs
-            .drive(onNext: weakly(self, type(of: self).configureBeersFRC))
+            .drive(onNext: configureBeersFRC)
             .disposed(by: disposeBag)
     }
     
@@ -50,7 +50,7 @@ final class FavoriteBeersInteractor: FavoriteBeersInteractorType {
 }
 
 // MARK: - Data configuration
-private extension FavoriteBeersInteractor {
+private extension FavoritesInteractor {
     func configureBeersFRC(for favoriteBeerIDs: Set<Int>) {
         frcDisposeBag = DisposeBag()
         
@@ -62,8 +62,6 @@ private extension FavoriteBeersInteractor {
     }
     
     func makeBeerItemsList(infos: [BeerInfo]) -> [BeerListItem] {
-        return infos.map { beerInfo -> BeerListItem in
-            return BeerListItem(beerInfo: beerInfo)
-        }
+        infos.map { BeerListItem(beerInfo: $0) }
     }
 }

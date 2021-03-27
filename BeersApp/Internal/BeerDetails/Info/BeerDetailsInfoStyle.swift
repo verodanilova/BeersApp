@@ -18,7 +18,6 @@ protocol BeerDetailsInfoStyleType {
     var colorValueViewStyle: ViewStyleType {get}
     var sectionTitleLabelStyle: LabelStyle {get}
     var sectionTextLabelStyle: LabelStyle {get}
-    var colorForBeerColorKind: (BeerColorKind) -> UIColor? {get}
     var topCornerRadius: CGFloat {get}
 }
 
@@ -61,23 +60,6 @@ struct BeerDetailsInfoStyle: BeerDetailsInfoStyleType {
         return LabelStyle(
             textFont: .regular(ofSize: 20),
             textColor: .mineShaft)
-    }
-    var colorForBeerColorKind: (BeerColorKind) -> UIColor? = { kind in
-        switch kind {
-            case .paleStraw: return beerColors.paleStraw
-            case .straw: return beerColors.straw
-            case .paleGold: return beerColors.paleGold
-            case .deepGold: return beerColors.deepGold
-            case .paleAmber: return beerColors.paleAmber
-            case .mediumAmber: return beerColors.mediumAmber
-            case .deepAmber: return beerColors.deepAmber
-            case .amberBrown: return beerColors.amberBrown
-            case .brown: return beerColors.brown
-            case .rubyBrown: return beerColors.rubyBrown
-            case .deepBrown: return beerColors.deepBrown
-            case .black: return beerColors.black
-            case .unknown: return nil
-        }
     }
     var topCornerRadius: CGFloat { 32.0 }
 }

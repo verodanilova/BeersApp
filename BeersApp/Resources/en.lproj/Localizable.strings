@@ -44,5 +44,9 @@
 "Beer details.Food pairing.Title" = "Perfect with";
 "Beer details.Remove from favorites button.Title" = "Unfavorite";
 
-"Favorites.Navigation bar.Title" = "Favorite beers";
-"Favorites.Swipe action.Remove from favorite.Title" = "Unfavorite";
+"Favorites.Beer Info.Figures.Placeholder" = "–";
+"Favorites.Beer Info.Figures.Alcohol.Volume.Format" = "%@%%";
+"Favorites.Beer Info.Figures.Alcohol.Title" = "Alc.";
+"Favorites.Beer Info.Figures.Bitterness.Title" = "IBU";
+"Favorites.Title" = "Your favorites";
+"Favorites.Description" = "There is no worse situation than sitting and remembering the beer name in a bar. Add it to the list so as not to lose!";
