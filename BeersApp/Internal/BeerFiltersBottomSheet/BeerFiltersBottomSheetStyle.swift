@@ -12,7 +12,6 @@ protocol BeerFiltersBottomSheetStyleType {
     var backgroundColor: UIColor {get}
     var panViewStyle: ViewStyle {get}
     var titleLabelStyle: LabelStyleType {get}
-    var separatorColor: UIColor {get}
     var unitLabelStyle: LabelStyleType {get}
     var sliderStyle: RangeSliderStyleType {get}
     var activeValueInfoLabelStyle: LabelStyleType {get}
@@ -34,49 +33,45 @@ struct BeerFiltersBottomSheetStyle: BeerFiltersBottomSheetStyleType {
     
     var titleLabelStyle: LabelStyleType {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 18, weight: .medium),
-            textColor: .mineShaft)
+            textFont: .bold(ofSize: 24),
+            textColor: .freshEggplant)
     }
-    
-    var separatorColor: UIColor {
-        return .alto
-    }
-    
+
     var unitLabelStyle: LabelStyleType {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 16, weight: .semibold),
+            textFont: .semibold(ofSize: 20),
             textColor: .mineShaft)
     }
     
     var sliderStyle: RangeSliderStyleType {
         return RangeSliderStyle(
-            trackTintColor: .alto,
-            trackHighlightTintColor: .bostonBlue,
+            trackTintColor: .albescentWhite,
+            trackHighlightTintColor: .grainBrown,
             thumbTintColor: .white,
-            thumbHighlightTintColor: .bostonBlue,
-            thumbBorderColor: .bostonBlue)
+            thumbHighlightTintColor: .freshEggplant,
+            thumbBorderColor: .grainBrown)
     }
     
     var activeValueInfoLabelStyle: LabelStyleType {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 16, weight: .medium),
+            textFont: .semibold(ofSize: 18),
             textColor: .white)
     }
     
     var activeValueInfoContainerStyle: ViewStyle {
         return ViewStyle(cornerRadius: 14, borderWidth: 1,
-            borderColor: .bostonBlue, backgroundColor: .bostonBlue)
+            borderColor: .freshEggplant, backgroundColor: .freshEggplant)
     }
     
     var inactiveValueInfoLabelStyle: LabelStyleType {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 16, weight: .regular),
+            textFont: .regular(ofSize: 18),
             textColor: .sandDune)
     }
     
     var inactiveValueInfoContainerStyle: ViewStyle {
         return ViewStyle(cornerRadius: 14, borderWidth: 1,
-            borderColor: .alto, backgroundColor: .white)
+            borderColor: .swirl, backgroundColor: .white)
     }
 
     var applyButtonStyle: ButtonStyleType {
@@ -92,15 +87,18 @@ private struct ApplyButtonStyle: ButtonStyleType {
         return .white
     }
     var cornerRadius: CGFloat {
-        return 6
+        return 22
     }
     var backgroundColor: UIColor? {
-        return UIColor.salem.withAlphaComponent(0.9)
+        return UIColor.freshEggplant.withAlphaComponent(0.9)
     }
     var borderColor: UIColor? {
-        return .salem
+        return .freshEggplant
     }
     var borderWidth: CGFloat {
         return 2
+    }
+    var contentInsets: UIEdgeInsets {
+        UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
     }
 }

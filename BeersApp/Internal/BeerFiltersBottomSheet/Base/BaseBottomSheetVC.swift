@@ -10,7 +10,7 @@ import UIKit
 
 private struct Constants {
     let roundingCorners: UIRectCorner = [.topLeft, .topRight]
-    let cornerRadii = CGSize(width: 16, height: 16)
+    let cornerRadii = CGSize(width: 32, height: 32)
     let animationDuration: TimeInterval = 0.25
     let updatePositionAnimationDuration: TimeInterval = 0.1
     let backgroundColor: UIColor = UIColor.sandDune.withAlphaComponent(0.4)
