@@ -8,6 +8,7 @@ extension UIColor {
     static let alto = UIColor(named: "alto")!
     static let bostonBlue = UIColor(named: "bostonBlue")!
     static let carnation = UIColor(named: "carnation")!
+    static let freshEggplant = UIColor(named: "freshEggplant")!
     static let gold = UIColor(named: "gold")!
     static let grainBrown = UIColor(named: "grainBrown")!
     static let mineShaft = UIColor(named: "mineShaft")!

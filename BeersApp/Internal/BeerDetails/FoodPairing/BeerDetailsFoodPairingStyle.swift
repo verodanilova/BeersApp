@@ -19,7 +19,7 @@ struct BeerDetailsFoodPairingStyle: BeerDetailsFoodPairingStyleType {
     }
     var titleLabelStyle: LabelStyleType {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 18, weight: .medium),
+            textFont: .semibold(ofSize: 20),
             textColor: .mineShaft)
     }
     var chipStyle: ButtonStyleType {
@@ -28,7 +28,7 @@ struct BeerDetailsFoodPairingStyle: BeerDetailsFoodPairingStyleType {
 }
 
 private struct ChipButtonStyle: ButtonStyleType {
-    var titleFont: UIFont { .systemFont(ofSize: 16, weight: .regular) }
+    var titleFont: UIFont { .regular(ofSize: 18) }
     var titleColorNormal: UIColor? { .mineShaft }
     var titleColorHighlighted: UIColor? { .sandDune }
     var cornerRadius: CGFloat { 18.0 }
