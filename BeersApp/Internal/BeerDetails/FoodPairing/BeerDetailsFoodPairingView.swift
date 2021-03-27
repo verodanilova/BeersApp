@@ -13,7 +13,6 @@ import RxCocoa
 private struct Constants {
     static let titleOffset: CGFloat = 16
     static let verticalStackViewOffset: CGFloat = 16
-    static let chipsEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
     static let chipsOffset: CGFloat = 8
     static let chipsHeight: CGFloat = 36
 }
@@ -96,7 +95,6 @@ private extension BeerDetailsFoodPairingView {
         button.setTitle(title, for: .normal)
         button.titleLabel?.lineBreakMode = .byTruncatingTail
         button.apply(style: style.chipStyle)
-        button.contentEdgeInsets = Constants.chipsEdgeInsets
         button.tag = index
         button.sizeToFit()
         return button

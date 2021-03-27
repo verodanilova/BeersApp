@@ -15,6 +15,8 @@ protocol ButtonStyleType {
     var titleColorHighlighted: UIColor? {get}
     var cornerRadius: CGFloat {get}
     var backgroundColor: UIColor? {get}
+    var contentInsets: UIEdgeInsets {get}
+    
     /* Border */
     var borderColor: UIColor? {get}
     var borderWidth: CGFloat {get}
@@ -32,6 +34,7 @@ extension UIButton {
         self.layer.cornerRadius = style.cornerRadius
         self.clipsToBounds = style.cornerRadius != 0
         self.backgroundColor = style.backgroundColor
+        self.contentEdgeInsets = style.contentInsets
         self.layer.borderColor = style.borderColor?.cgColor
         self.layer.borderWidth = style.borderWidth
         if let shadowLayer = style.shadowLayer {
@@ -51,6 +54,7 @@ extension ButtonStyleType {
     var titleColorHighlighted: UIColor? { return nil }
     var cornerRadius: CGFloat { return 0 }
     var backgroundColor: UIColor? { return nil }
+    var contentInsets: UIEdgeInsets { return .zero }
     var borderColor: UIColor? { return nil }
     var borderWidth: CGFloat { return 0  }
     var shadowLayer: ButtonShadowLayer? { return nil }

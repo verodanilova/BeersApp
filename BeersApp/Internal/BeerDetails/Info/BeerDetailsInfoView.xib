@@ -22,13 +22,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Tagline" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjn-0D-G14">
-                    <rect key="frame" x="16" y="72" width="382" height="20.333333333333329"/>
+                    <rect key="frame" x="16" y="64" width="382" height="20.333333333333329"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQF-ae-LLy">
-                    <rect key="frame" x="16" y="112.33333333333331" width="382" height="171"/>
+                    <rect key="frame" x="16" y="104.33333333333331" width="382" height="179"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CY0-2q-U8w">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="1"/>
@@ -38,10 +38,10 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1nx-Kl-dDk">
-                            <rect key="frame" x="0.0" y="16.000000000000014" width="382" height="139"/>
+                            <rect key="frame" x="0.0" y="16" width="382" height="147"/>
                             <subviews>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="POG-Fr-7o1">
-                                    <rect key="frame" x="0.0" y="19" width="122" height="101"/>
+                                    <rect key="frame" x="0.0" y="23.000000000000014" width="122" height="101"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Alc." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m97-fb-CqY">
                                             <rect key="frame" x="0.0" y="0.0" width="122" height="64.666666666666671"/>
@@ -68,7 +68,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X9t-9R-e4j">
-                                    <rect key="frame" x="130" y="19" width="122" height="101"/>
+                                    <rect key="frame" x="130" y="23.000000000000014" width="122" height="101"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Bitterness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOf-MD-EyR">
                                             <rect key="frame" x="0.0" y="0.0" width="122" height="64.666666666666671"/>
@@ -95,7 +95,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cM8-xK-Yes">
-                                    <rect key="frame" x="260" y="19" width="122" height="101"/>
+                                    <rect key="frame" x="260" y="23.000000000000014" width="122" height="101"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wa4-SU-ZeV">
                                             <rect key="frame" x="0.0" y="0.0" width="122" height="65"/>
@@ -125,7 +125,7 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q72-bY-zDR">
-                            <rect key="frame" x="0.0" y="170" width="382" height="1"/>
+                            <rect key="frame" x="0.0" y="178" width="382" height="1"/>
                             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="WS8-VO-CGc"/>
@@ -167,7 +167,7 @@
                 <constraint firstItem="nK5-bl-p8S" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="G8K-ax-FPA"/>
                 <constraint firstItem="wjn-0D-G14" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Ge3-fm-yQk"/>
                 <constraint firstItem="nK5-bl-p8S" firstAttribute="top" secondItem="yEW-Us-cm7" secondAttribute="bottom" constant="12" id="PRe-Qg-rIO"/>
-                <constraint firstItem="wjn-0D-G14" firstAttribute="top" secondItem="OcT-I7-EjX" secondAttribute="bottom" constant="16" id="SEZ-GS-EvP"/>
+                <constraint firstItem="wjn-0D-G14" firstAttribute="top" secondItem="OcT-I7-EjX" secondAttribute="bottom" constant="8" id="SEZ-GS-EvP"/>
                 <constraint firstItem="LQF-ae-LLy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="bzl-QW-anZ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wjn-0D-G14" secondAttribute="trailing" constant="16" id="drZ-Tq-bML"/>
                 <constraint firstItem="OcT-I7-EjX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="eFA-h0-VOH"/>

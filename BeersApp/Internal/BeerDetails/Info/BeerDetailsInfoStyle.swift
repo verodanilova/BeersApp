@@ -33,8 +33,8 @@ struct BeerDetailsInfoStyle: BeerDetailsInfoStyleType {
     }
     var taglineLabelStyle: LabelStyle {
         return LabelStyle(
-            textFont: .regular(ofSize: 18),
-            textColor: .sandDune)
+            textFont: .regular(ofSize: 20),
+            textColor: .mineShaft)
     }
     var separatorViewColor: UIColor {
         return .alto
@@ -46,7 +46,7 @@ struct BeerDetailsInfoStyle: BeerDetailsInfoStyleType {
     }
     var figuresIndexLabelStyle: LabelStyle {
         return LabelStyle(
-            textFont: .semibold(ofSize: 18),
+            textFont: .semibold(ofSize: 20),
             textColor: .sandDune)
     }
     var colorValueViewStyle: ViewStyleType {
@@ -54,12 +54,12 @@ struct BeerDetailsInfoStyle: BeerDetailsInfoStyleType {
     }
     var sectionTitleLabelStyle: LabelStyle {
         return LabelStyle(
-            textFont: .semibold(ofSize: 20),
+            textFont: .semibold(ofSize: 22),
             textColor: .mineShaft)
     }
     var sectionTextLabelStyle: LabelStyle {
         return LabelStyle(
-            textFont: .regular(ofSize: 18),
+            textFont: .regular(ofSize: 20),
             textColor: .mineShaft)
     }
     var colorForBeerColorKind: (BeerColorKind) -> UIColor? = { kind in

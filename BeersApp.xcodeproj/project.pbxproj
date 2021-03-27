@@ -81,6 +81,13 @@
 		4CA668D7260937D900B346E5 /* BeerDetailsFoodPairingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668D6260937D900B346E5 /* BeerDetailsFoodPairingVM.swift */; };
 		4CA668DC260938F200B346E5 /* BeerDetailsFoodPairingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668DB260938F200B346E5 /* BeerDetailsFoodPairingStyle.swift */; };
 		4CA668E32609487700B346E5 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA668E22609487700B346E5 /* String+Extensions.swift */; };
+		4CDDE10C260F60E400EFB234 /* CrimsonText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDE106260F60E300EFB234 /* CrimsonText-Bold.ttf */; };
+		4CDDE10D260F60E400EFB234 /* CrimsonText-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDE107260F60E300EFB234 /* CrimsonText-SemiboldItalic.ttf */; };
+		4CDDE10E260F60E400EFB234 /* CrimsonText-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDE108260F60E300EFB234 /* CrimsonText-BoldItalic.ttf */; };
+		4CDDE10F260F60E400EFB234 /* CrimsonText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDE109260F60E300EFB234 /* CrimsonText-Semibold.ttf */; };
+		4CDDE110260F60E400EFB234 /* CrimsonText-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDE10A260F60E300EFB234 /* CrimsonText-Italic.ttf */; };
+		4CDDE111260F60E400EFB234 /* CrimsonText-Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDE10B260F60E400EFB234 /* CrimsonText-Roman.ttf */; };
+		4CDDE114260F61E500EFB234 /* UIFont+AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDE113260F61E500EFB234 /* UIFont+AppFonts.swift */; };
 		4CF93DAB255894CD00EC6D61 /* BaseBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DAA255894CD00EC6D61 /* BaseBottomSheetVC.swift */; };
 		4CF93DB5255898B700EC6D61 /* BottomSheetContentViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DB4255898B700EC6D61 /* BottomSheetContentViewDelegate.swift */; };
 		4CF93DB82558995600EC6D61 /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */; };
@@ -216,6 +223,13 @@
 		4CA668D6260937D900B346E5 /* BeerDetailsFoodPairingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsFoodPairingVM.swift; sourceTree = "<group>"; };
 		4CA668DB260938F200B346E5 /* BeerDetailsFoodPairingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsFoodPairingStyle.swift; sourceTree = "<group>"; };
 		4CA668E22609487700B346E5 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		4CDDE106260F60E300EFB234 /* CrimsonText-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CrimsonText-Bold.ttf"; sourceTree = "<group>"; };
+		4CDDE107260F60E300EFB234 /* CrimsonText-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CrimsonText-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		4CDDE108260F60E300EFB234 /* CrimsonText-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CrimsonText-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4CDDE109260F60E300EFB234 /* CrimsonText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CrimsonText-Semibold.ttf"; sourceTree = "<group>"; };
+		4CDDE10A260F60E300EFB234 /* CrimsonText-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CrimsonText-Italic.ttf"; sourceTree = "<group>"; };
+		4CDDE10B260F60E400EFB234 /* CrimsonText-Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CrimsonText-Roman.ttf"; sourceTree = "<group>"; };
+		4CDDE113260F61E500EFB234 /* UIFont+AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+AppFonts.swift"; sourceTree = "<group>"; };
 		4CF93DAA255894CD00EC6D61 /* BaseBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetVC.swift; sourceTree = "<group>"; };
 		4CF93DB4255898B700EC6D61 /* BottomSheetContentViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetContentViewDelegate.swift; sourceTree = "<group>"; };
 		4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
@@ -324,6 +338,7 @@
 				4C11CD98254F5351006E960C /* WeakCapture.swift */,
 				4C60B726254F620F0075DDE1 /* UIColor+Extensions.swift */,
 				4C664FED25BDF4BA00765BE7 /* UIColor+Colors.swift */,
+				4CDDE113260F61E500EFB234 /* UIFont+AppFonts.swift */,
 				4C60B736254F6C140075DDE1 /* UITableView+Extensions.swift */,
 				4C340AB72556F23300EE54EA /* UIImageView+Loading.swift */,
 				4C340AC92557307800EE54EA /* UIView+Loadable.swift */,
@@ -410,6 +425,7 @@
 		4C6F6D32254E0CD9004FD828 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4CDDE105260F60CF00EFB234 /* Fonts */,
 				4C6F6D1F254E0263004FD828 /* Assets.xcassets */,
 				4C664FA925BDE40C00765BE7 /* Colors.xcassets */,
 				4C6F6D24254E0263004FD828 /* Info.plist */,
@@ -548,6 +564,19 @@
 				4CA668CD26092FEE00B346E5 /* BeerDetailsFoodPairingView.swift */,
 			);
 			path = FoodPairing;
+			sourceTree = "<group>";
+		};
+		4CDDE105260F60CF00EFB234 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4CDDE106260F60E300EFB234 /* CrimsonText-Bold.ttf */,
+				4CDDE108260F60E300EFB234 /* CrimsonText-BoldItalic.ttf */,
+				4CDDE10A260F60E300EFB234 /* CrimsonText-Italic.ttf */,
+				4CDDE10B260F60E400EFB234 /* CrimsonText-Roman.ttf */,
+				4CDDE109260F60E300EFB234 /* CrimsonText-Semibold.ttf */,
+				4CDDE107260F60E300EFB234 /* CrimsonText-SemiboldItalic.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		4CF93DA92558944500EC6D61 /* BeerFiltersBottomSheet */ = {
@@ -706,8 +735,14 @@
 				4C6F6D23254E0263004FD828 /* LaunchScreen.storyboard in Resources */,
 				4C11CD88254F4486006E960C /* Localizable.strings in Resources */,
 				4C60B72C254F63A70075DDE1 /* BeersListItemCell.xib in Resources */,
+				4CDDE10E260F60E400EFB234 /* CrimsonText-BoldItalic.ttf in Resources */,
+				4CDDE110260F60E400EFB234 /* CrimsonText-Italic.ttf in Resources */,
+				4CDDE111260F60E400EFB234 /* CrimsonText-Roman.ttf in Resources */,
 				4C6F6D20254E0263004FD828 /* Assets.xcassets in Resources */,
 				4CF93DEB255988C500EC6D61 /* FiltersBottomSheetView.xib in Resources */,
+				4CDDE10C260F60E400EFB234 /* CrimsonText-Bold.ttf in Resources */,
+				4CDDE10D260F60E400EFB234 /* CrimsonText-SemiboldItalic.ttf in Resources */,
+				4CDDE10F260F60E400EFB234 /* CrimsonText-Semibold.ttf in Resources */,
 				4C664FAA25BDE40C00765BE7 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,6 +893,7 @@
 				4C60B72B254F63A70075DDE1 /* BeersListItemCell.swift in Sources */,
 				4CF93ED5255C32B100EC6D61 /* BeersListHeaderView.swift in Sources */,
 				4C340ABE255707FB00EE54EA /* BeersListFooterView.swift in Sources */,
+				4CDDE114260F61E500EFB234 /* UIFont+AppFonts.swift in Sources */,
 				4C6F6DBF254F14D0004FD828 /* BeersListVC.swift in Sources */,
 				4CF93DAB255894CD00EC6D61 /* BaseBottomSheetVC.swift in Sources */,
 				4C340ACA2557307800EE54EA /* UIView+Loadable.swift in Sources */,

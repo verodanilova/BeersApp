@@ -13,8 +13,7 @@ import BeersCore
 
 protocol BeerDetailsViewModelType {
     var imageURL: Driver<URL?> {get}
-    var navigationBarTitle: Driver<String?> {get}
-    var toFavoritesButtonTitle: Driver<String> {get}
+    var isFavorite: Driver<Bool> {get}
     var infoViewModel: BeerDetailsInfoViewModelType {get}
     var foodPairingViewModel: BeerDetailsFoodPairingViewModelType {get}
     var isInActivity: Driver<Bool> {get}
@@ -26,8 +25,7 @@ final class BeerDetailsViewModel: BeerDetailsViewModelType {
     typealias Context = FavoriteBeersStorageContext & BeerDetailsInteractor.Context
     
     let imageURL: Driver<URL?>
-    let navigationBarTitle: Driver<String?>
-    let toFavoritesButtonTitle: Driver<String>
+    let isFavorite: Driver<Bool>
     let infoViewModel: BeerDetailsInfoViewModelType
     let foodPairingViewModel: BeerDetailsFoodPairingViewModelType
     let isInActivity: Driver<Bool>
@@ -42,16 +40,12 @@ final class BeerDetailsViewModel: BeerDetailsViewModelType {
         self.storage = context.favoriteBeersStorage
         self.interactor = BeerDetailsInteractor(context: context, beerID: id)
         self.imageURL = interactor.beerInfo.map { $0.imageURL }
-        self.navigationBarTitle = interactor.beerInfo.map { $0.name }
         self.infoViewModel = BeerDetailsInfoViewModel(info: interactor.beerInfo)
         self.foodPairingViewModel = BeerDetailsFoodPairingViewModel(
             foodPairings: interactor.beerInfo.map({ $0.foodPairings }))
         self.isInActivity = interactor.isInActivity
-        
-        let configurator = Configurator()
-        self.toFavoritesButtonTitle = storage.favoriteBeerIDs
-            .map { ($0, id) }
-            .map(configurator.makeButtonTitle)
+        self.isFavorite = storage.favoriteBeerIDs
+            .map { $0.contains(id) }
     }
     
     func bindViewEvents(toFavoritesTap: Signal<Void>) {
@@ -69,20 +63,6 @@ private extension BeerDetailsViewModel {
             storage.remove(favoriteBeerID: itemID)
         } else {
             storage.add(favoriteBeerID: itemID)
-        }
-    }
-}
-
-private struct Configurator {
-    func makeButtonTitle(storage: Set<Int>, itemID: Int) -> String {
-        if storage.contains(itemID) {
-            return NSLocalizedString(
-                "Beer details.Remove from favorites button.Title",
-                comment: "Beer details: title for to favorites button")
-        } else {
-            return NSLocalizedString(
-                "Beer details.Add to favorites button.Title",
-                comment: "Beer details: title for to favorites button")
         }
     }
 }

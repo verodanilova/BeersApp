@@ -12,12 +12,10 @@ import RxCocoa
 
 
 private struct Constants {
-    let buttonWidthRatio: CGFloat = 0.8
-    let buttonHeight: CGFloat = 44.0
-    let buttonBottomOffset: CGFloat = -24
+    let buttonSize: CGFloat = 56.0
     let infoContainerBottomOffset: CGFloat = -92
     let imageContainerWidthRatio: CGFloat = 0.8
-    let imageInset: CGFloat = 16
+    let baseInset: CGFloat = 16
     let screenWidth: CGFloat = UIScreen.main.bounds.width
 }
 private let constants = Constants()
@@ -68,7 +66,7 @@ private extension BeerDetailsViewController {
         scrollView.addSubview(imageView)
 
         imageContainer.snp.makeConstraints {
-            $0.top.equalTo(scrollView).inset(-constants.imageInset)
+            $0.top.equalTo(scrollView).inset(-constants.baseInset)
             $0.leading.trailing.equalTo(view)
             $0.height.equalTo(imageContainer.snp.width)
                 .multipliedBy(constants.imageContainerWidthRatio)
@@ -76,6 +74,7 @@ private extension BeerDetailsViewController {
         
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
         imageView.snp.makeConstraints {
             $0.leading.trailing.equalTo(imageContainer)
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).priority(.high)
@@ -84,7 +83,7 @@ private extension BeerDetailsViewController {
         }
         
         infoContainer.snp.makeConstraints {
-            $0.top.equalTo(imageContainer.snp.bottom).offset(constants.imageInset)
+            $0.top.equalTo(imageContainer.snp.bottom).offset(constants.baseInset)
             $0.leading.trailing.equalTo(view)
         }
         self.infoContainer = infoContainer
@@ -102,13 +101,13 @@ private extension BeerDetailsViewController {
             $0.bottom.equalTo(scrollView.snp.bottom)
         }
 
-//        view.addSubview(toFavoritesButton)
-//        toFavoritesButton.snp.makeConstraints {
-//            $0.height.equalTo(constants.buttonHeight)
-//            $0.width.equalToSuperview().multipliedBy(constants.buttonWidthRatio)
-//            $0.centerX.equalToSuperview()
-//            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(constants.buttonBottomOffset)
-//        }
+        imageView.addSubview(toFavoritesButton)
+        toFavoritesButton.snp.makeConstraints {
+            $0.height.equalTo(constants.buttonSize)
+            $0.width.equalTo(toFavoritesButton.snp.height)
+            $0.bottom.equalTo(imageView.snp.bottom)
+            $0.trailing.equalToSuperview().inset(constants.baseInset * 2)
+        }
     }
     
     func applyStyle() {
@@ -146,13 +145,9 @@ private extension BeerDetailsViewController {
                 self?.imageView.setImage(from: url, placeholder: placeholder)
             })
             .disposed(by: disposeBag)
-//
-//        viewModel.navigationBarTitle
-//            .drive(navigationItem.rx.title)
-//            .disposed(by: disposeBag)
         
-        viewModel.toFavoritesButtonTitle
-            .drive(toFavoritesButton.rx.title(for: .normal))
+        viewModel.isFavorite
+            .drive(onNext: changeFavoritesButtonState)
             .disposed(by: disposeBag)
         
         viewModel.isInActivity
@@ -175,5 +170,11 @@ private extension BeerDetailsViewController {
         } else {
             imageView.stopShimmering()
         }
+    }
+    
+    func changeFavoritesButtonState(_ isActive: Bool) {
+        guard let style = style else { return }
+        let image: UIImage? = isActive ? style.isFavoriteImage : style.isNotFavoriteImage
+        toFavoritesButton.setImage(image, for: .normal)
     }
 }
