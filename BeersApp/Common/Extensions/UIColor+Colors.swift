@@ -14,5 +14,6 @@ extension UIColor {
     static let mineShaft = UIColor(named: "mineShaft")!
     static let salem = UIColor(named: "salem")!
     static let sandDune = UIColor(named: "sandDune")!
+    static let spanishWhite = UIColor(named: "spanishWhite")!
     static let swirl = UIColor(named: "swirl")!
 }

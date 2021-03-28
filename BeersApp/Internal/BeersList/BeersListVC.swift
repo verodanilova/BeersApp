@@ -17,6 +17,7 @@ private struct Constants {
     let filtersButtonWidthRatio: CGFloat = 0.4
     let headerViewHeight: CGFloat = 60
     let footerViewHeight: CGFloat = 60
+    let filtersButtonAnimationDuration: TimeInterval = 0.3
     let errorDisplayThrottle: RxTimeInterval = .seconds(4)
     let errorDisplayDuration: TimeInterval = 0.25
     let errorHidingDuration: TimeInterval = 0.25
@@ -25,6 +26,8 @@ private struct Constants {
 private let constants = Constants()
 
 class BeersListViewController: UIViewController {
+    
+    typealias Cell = BeersListItemCell
     
     private let tableView = UITableView()
     private let filtersButton = UIButton()
@@ -63,9 +66,7 @@ private extension BeersListViewController {
         filtersButton.apply(style: style.filtersButtonStyle)
         
         tableView.delegate = self
-        tableView.separatorStyle = .singleLine
-        tableView.separatorInset = style.separatorInset
-        tableView.separatorColor = style.separatorColor
+        tableView.separatorStyle = .none
         tableView.backgroundColor = style.tableViewBackgroundColor
     }
     
@@ -120,11 +121,13 @@ private extension BeersListViewController {
         
         viewModel.items
             .drive(tableView.rx.items(
-                cellIdentifier: BeersListItemCell.reuseId,
-                cellType: BeersListItemCell.self))
-                { [weak self] (_, model, cell) in
+                cellIdentifier: Cell.reuseId, cellType: Cell.self)) {
+                [weak self] (index, item, cell) in
                     cell.style = self?.style?.itemStyle
-                    cell.viewModel = model
+                    cell.configure(with: item)
+                    cell.toFavoritesAction = { [weak self] in
+                        self?.viewModel?.itemAddedToFavorites(index)
+                    }
                 }
                 .disposed(by: disposeBag)
         
@@ -193,6 +196,21 @@ extension BeersListViewController: UITableViewDelegate {
         let configuration = UISwipeActionsConfiguration(actions: [addToFavorites])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: constants.filtersButtonAnimationDuration) {
+            self.filtersButton.alpha = 0
+        } completion: { _ in
+            self.filtersButton.isHidden = true
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        filtersButton.isHidden = false
+        UIView.animate(withDuration: constants.filtersButtonAnimationDuration) {
+            self.filtersButton.alpha = 1
+        }
     }
 }
 

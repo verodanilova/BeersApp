@@ -18,7 +18,6 @@
 		4C11CD7D254F3545006E960C /* ContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD7C254F3545006E960C /* ContextProvider.swift */; };
 		4C11CD88254F4486006E960C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C11CD8A254F4486006E960C /* Localizable.strings */; };
 		4C11CD90254F50D9006E960C /* BeersListStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD8F254F50D9006E960C /* BeersListStyle.swift */; };
-		4C11CD94254F51E5006E960C /* BeersListItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD93254F51E5006E960C /* BeersListItemVM.swift */; };
 		4C11CD99254F5351006E960C /* WeakCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD98254F5351006E960C /* WeakCapture.swift */; };
 		4C11CD9D254F558D006E960C /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CD9C254F558D006E960C /* ButtonStyle.swift */; };
 		4C11CDA8254F6050006E960C /* BeerColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CDA7254F6050006E960C /* BeerColors.swift */; };
@@ -59,6 +58,8 @@
 		4C6F6DBB254F1318004FD828 /* ScreensFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6DBA254F1318004FD828 /* ScreensFactory.swift */; };
 		4C6F6DBF254F14D0004FD828 /* BeersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6DBE254F14D0004FD828 /* BeersListVC.swift */; };
 		4C6F6DC3254F14DC004FD828 /* BeersListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F6DC2254F14DC004FD828 /* BeersListVM.swift */; };
+		4C705E342610FCF30049ABB5 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C705E332610FCF30049ABB5 /* CGFloat+Extensions.swift */; };
+		4C7653C22610E0C40073A20F /* BeerListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7653C12610E0C40073A20F /* BeerListConfigurator.swift */; };
 		4CA6684E26067F0900B346E5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA6682026067C0700B346E5 /* WidgetKit.framework */; };
 		4CA6684F26067F0900B346E5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA6682226067C0700B346E5 /* SwiftUI.framework */; };
 		4CA6685226067F0900B346E5 /* BeerOfTheDayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6685126067F0900B346E5 /* BeerOfTheDayWidget.swift */; };
@@ -164,7 +165,6 @@
 		4C11CD7C254F3545006E960C /* ContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvider.swift; sourceTree = "<group>"; };
 		4C11CD89254F4486006E960C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C11CD8F254F50D9006E960C /* BeersListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListStyle.swift; sourceTree = "<group>"; };
-		4C11CD93254F51E5006E960C /* BeersListItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListItemVM.swift; sourceTree = "<group>"; };
 		4C11CD98254F5351006E960C /* WeakCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakCapture.swift; sourceTree = "<group>"; };
 		4C11CD9C254F558D006E960C /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		4C11CDA7254F6050006E960C /* BeerColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerColors.swift; sourceTree = "<group>"; };
@@ -207,6 +207,8 @@
 		4C6F6DBA254F1318004FD828 /* ScreensFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreensFactory.swift; sourceTree = "<group>"; };
 		4C6F6DBE254F14D0004FD828 /* BeersListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListVC.swift; sourceTree = "<group>"; };
 		4C6F6DC2254F14DC004FD828 /* BeersListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersListVM.swift; sourceTree = "<group>"; };
+		4C705E332610FCF30049ABB5 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		4C7653C12610E0C40073A20F /* BeerListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListConfigurator.swift; sourceTree = "<group>"; };
 		4CA6682026067C0700B346E5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		4CA6682226067C0700B346E5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		4CA6683726067C5C00B346E5 /* SmallEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallEntryView.swift; sourceTree = "<group>"; };
@@ -302,16 +304,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		4C040DAA25588B97008904E0 /* BeerListItem */ = {
+		4C040DAA25588B97008904E0 /* Item */ = {
 			isa = PBXGroup;
 			children = (
 				4C340AEE25585A3500EE54EA /* BeerListItem.swift */,
+				4C7653C12610E0C40073A20F /* BeerListConfigurator.swift */,
 				4C60B72E254F68180075DDE1 /* BeersListItemStyle.swift */,
-				4C11CD93254F51E5006E960C /* BeersListItemVM.swift */,
 				4C60B729254F63A70075DDE1 /* BeersListItemCell.swift */,
 				4C60B72A254F63A70075DDE1 /* BeersListItemCell.xib */,
 			);
-			path = BeerListItem;
+			path = Item;
 			sourceTree = "<group>";
 		};
 		4C11CD5A254F16F8006E960C /* RootTabBar */ = {
@@ -358,6 +360,7 @@
 				4C340AB72556F23300EE54EA /* UIImageView+Loading.swift */,
 				4C340AC92557307800EE54EA /* UIView+Loadable.swift */,
 				4CF93DB72558995600EC6D61 /* CALayer+Shadow.swift */,
+				4C705E332610FCF30049ABB5 /* CGFloat+Extensions.swift */,
 				4CA668E22609487700B346E5 /* String+Extensions.swift */,
 				4C340A6B25534BD400EE54EA /* NSManagedObjectContext+Inserting.swift */,
 				4C340A6E25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift */,
@@ -483,6 +486,7 @@
 		4C6F6DBD254F14BD004FD828 /* BeersList */ = {
 			isa = PBXGroup;
 			children = (
+				4C040DAA25588B97008904E0 /* Item */,
 				4CF93ED3255C329A00EC6D61 /* Header */,
 				4C340ABC255707ED00EE54EA /* Footer */,
 				4C11CD8F254F50D9006E960C /* BeersListStyle.swift */,
@@ -522,7 +526,6 @@
 			isa = PBXGroup;
 			children = (
 				4C11CD5A254F16F8006E960C /* RootTabBar */,
-				4C040DAA25588B97008904E0 /* BeerListItem */,
 				4C6F6DBD254F14BD004FD828 /* BeersList */,
 				4CF93DA92558944500EC6D61 /* BeerFiltersBottomSheet */,
 				4C6F6DC6254F1516004FD828 /* Favorites */,
@@ -900,7 +903,6 @@
 				4C340A6F25534CD700EE54EA /* NSManagedObjectContext+Deleting.swift in Sources */,
 				4C11CD6E254F20EE006E960C /* NavigatorType.swift in Sources */,
 				4CF93DCA25589BFA00EC6D61 /* BottomSheetContentView.swift in Sources */,
-				4C11CD94254F51E5006E960C /* BeersListItemVM.swift in Sources */,
 				4C11CDA8254F6050006E960C /* BeerColors.swift in Sources */,
 				4CF93E242559CA8F00EC6D61 /* RangeSliderThumbLayer.swift in Sources */,
 				4C11CD7D254F3545006E960C /* ContextProvider.swift in Sources */,
@@ -944,6 +946,8 @@
 				4CF93DC625589B5D00EC6D61 /* BeerFiltersBottomSheetStyle.swift in Sources */,
 				4CDDE123260F89E200EFB234 /* FavoritesCellStyle.swift in Sources */,
 				4CA668DC260938F200B346E5 /* BeerDetailsFoodPairingStyle.swift in Sources */,
+				4C7653C22610E0C40073A20F /* BeerListConfigurator.swift in Sources */,
+				4C705E342610FCF30049ABB5 /* CGFloat+Extensions.swift in Sources */,
 				4C040D9F25585F6C008904E0 /* BeersListInteractor.swift in Sources */,
 				4C60B727254F620F0075DDE1 /* UIColor+Extensions.swift in Sources */,
 				4CDDE117260F6F8B00EFB234 /* FavoritesVC.swift in Sources */,

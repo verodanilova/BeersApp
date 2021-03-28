@@ -12,7 +12,7 @@ import BeersCore
 
 
 protocol BeersListViewModelType {
-    var items: Driver<[BeersListItemViewModelType]> {get}
+    var items: Driver<[BeerListItem]> {get}
     var isInActivity: Driver<Bool> {get}
     var showFiltersInfo: Driver<Bool> {get}
     var errorOccurredSignal: Signal<Void> {get}
@@ -20,6 +20,7 @@ protocol BeersListViewModelType {
     func bindViewEvents(itemSelected: Signal<IndexPath>,
         itemAddedToFavorites: Signal<IndexPath>, filtersTap: Signal<Void>,
         resetFiltersTap: Signal<Void>)
+    func itemAddedToFavorites(_ index: Int)
     func prepare()
     func loadMoreData()
     func swipeActionTitle(at indexPath: IndexPath) -> String
@@ -28,8 +29,8 @@ protocol BeersListViewModelType {
 final class BeersListViewModel: BeersListViewModelType {
     typealias Context = NavigatorContext & BeersListInteractor.Context
     
-    let items: Driver<[BeersListItemViewModelType]>
-    private let itemsRelay = BehaviorRelay<[BeersListItemViewModelType]>(value: [])
+    let items: Driver<[BeerListItem]>
+    private let itemsRelay = BehaviorRelay<[BeerListItem]>(value: [])
     
     let isInActivity: Driver<Bool>
     let errorOccurredSignal: Signal<Void>
@@ -52,7 +53,6 @@ final class BeersListViewModel: BeersListViewModelType {
         self.errorOccurredSignal = interactor.errorOccurredSignal
         
         interactor.listItems
-            .map { $0.map { BeersListItemViewModel(item: $0) } }
             .drive(itemsRelay)
             .disposed(by: disposeBag)
     }
@@ -75,6 +75,11 @@ final class BeersListViewModel: BeersListViewModelType {
         resetFiltersTap
             .emit(onNext: weakly(self, type(of: self).resetFilters))
             .disposed(by: disposeBag)
+    }
+    
+    func itemAddedToFavorites(_ index: Int) {
+        let id = interactor.currentBeerInfos[index].id
+        interactor.updateFavoriteBeersStorage(with: Int(id))
     }
     
     func prepare() {

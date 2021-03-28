@@ -12,8 +12,6 @@ protocol BeersListStyleType {
     var backgroundColor: UIColor {get}
     var filtersButtonStyle: ButtonStyleType {get}
     var tableViewBackgroundColor: UIColor {get}
-    var separatorInset: UIEdgeInsets {get}
-    var separatorColor: UIColor {get}
     var swipeActionBackgroundColor: UIColor {get}
     var itemStyle: BeersListItemStyleType {get}
     var headerStyle: BeersListHeaderStyleType {get}
@@ -31,12 +29,6 @@ struct BeersListStyle: BeersListStyleType {
     }
     var tableViewBackgroundColor: UIColor {
         return .white
-    }
-    var separatorInset: UIEdgeInsets {
-        return .init(top: 0, left: 16, bottom: 0, right: 16)
-    }
-    var separatorColor: UIColor {
-        return .alto
     }
     var swipeActionBackgroundColor: UIColor {
         return UIColor.sandDune.withAlphaComponent(0.7)
