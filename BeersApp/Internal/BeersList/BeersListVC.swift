@@ -36,8 +36,7 @@ class BeersListViewController: UIViewController {
     
     var viewModel: BeersListViewModelType?
     var style: BeersListStyleType?
-    
-    private let itemAddedToFavorites = PublishRelay<IndexPath>()
+
     private let disposeBag = DisposeBag()
     private let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
 
@@ -133,23 +132,20 @@ private extension BeersListViewController {
         
         let isEmptyList = viewModel.items.map { $0.isEmpty }
         Driver.combineLatest(viewModel.isInActivity, isEmptyList)
-            .drive(onNext: { [weak self] in
-                self?.updateActivityState(isInActivity: $0, isEmptyList: $1)
-            })
+            .drive(onNext: updateActivityState)
             .disposed(by: disposeBag)
         
         viewModel.showFiltersInfo
-            .drive(onNext: weakly(self, type(of: self).showFiltersInfo))
+            .drive(onNext: showFiltersInfo)
             .disposed(by: disposeBag)
         
         viewModel.errorOccurredSignal
             .throttle(constants.errorDisplayThrottle)
-            .emit(onNext: weakly(self, type(of: self).showError))
+            .emit(onNext: showError)
             .disposed(by: disposeBag)
                 
         viewModel.bindViewEvents(
             itemSelected: tableView.rx.itemSelected.asSignal(),
-            itemAddedToFavorites: itemAddedToFavorites.asSignal(),
             filtersTap: filtersButton.rx.tap.asSignal(),
             resetFiltersTap: headerView.resetButtonTap)
     }
@@ -178,24 +174,6 @@ extension BeersListViewController: UITableViewDelegate {
         if delta <= 0 {
             viewModel?.loadMoreData()
         }
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt
-        indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        guard let title = viewModel?.swipeActionTitle(at: indexPath) else {
-            return nil
-        }
-        
-        let addToFavorites = UIContextualAction(style: .normal, title: title) {
-            [weak self] (_, _, completion) in
-                self?.itemAddedToFavorites.accept(indexPath)
-                completion(true)
-        }
-        addToFavorites.backgroundColor = style?.swipeActionBackgroundColor
-
-        let configuration = UISwipeActionsConfiguration(actions: [addToFavorites])
-        configuration.performsFirstActionWithFullSwipe = false
-        return configuration
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {

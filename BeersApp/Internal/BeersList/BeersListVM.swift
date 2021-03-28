@@ -18,12 +18,10 @@ protocol BeersListViewModelType {
     var errorOccurredSignal: Signal<Void> {get}
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
-        itemAddedToFavorites: Signal<IndexPath>, filtersTap: Signal<Void>,
-        resetFiltersTap: Signal<Void>)
+        filtersTap: Signal<Void>, resetFiltersTap: Signal<Void>)
     func itemAddedToFavorites(_ index: Int)
     func prepare()
     func loadMoreData()
-    func swipeActionTitle(at indexPath: IndexPath) -> String
 }
 
 final class BeersListViewModel: BeersListViewModelType {
@@ -58,14 +56,9 @@ final class BeersListViewModel: BeersListViewModelType {
     }
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
-        itemAddedToFavorites: Signal<IndexPath>, filtersTap: Signal<Void>,
-        resetFiltersTap: Signal<Void>) {
+        filtersTap: Signal<Void>, resetFiltersTap: Signal<Void>) {
         itemSelected
             .emit(onNext: weakly(self, type(of: self).itemSelected))
-            .disposed(by: disposeBag)
-        
-        itemAddedToFavorites
-            .emit(onNext: weakly(self, type(of: self).itemAddedToFavorites))
             .disposed(by: disposeBag)
         
         filtersTap
@@ -89,20 +82,6 @@ final class BeersListViewModel: BeersListViewModelType {
     func loadMoreData() {
         interactor.loadMoreData()
     }
-    
-    func swipeActionTitle(at indexPath: IndexPath) -> String {
-        let id = interactor.currentBeerInfos[indexPath.item].id
-        let isFavoriteItem = interactor.isFavoriteItem(beerID: Int(id))
-        if isFavoriteItem {
-            return NSLocalizedString(
-                "Beers list.Swipe action.Remove from favorite.Title",
-                comment: "Beers list: title for unfavorite swipe action")
-        } else {
-            return NSLocalizedString(
-                "Beers list.Swipe action.Add to favorite.Title",
-                comment: "Beers list: title for add to favorites swipe action")
-        }
-    }
 }
 
 // MARK: - Navigation & Actions
@@ -111,12 +90,7 @@ private extension BeersListViewModel {
         let id = interactor.currentBeerInfos[indexPath.item].id
         context.navigator.navigate(to: .beerDetails(id: Int(id)), in: .list)
     }
-    
-    func itemAddedToFavorites(at indexPath: IndexPath) {
-        let id = interactor.currentBeerInfos[indexPath.item].id
-        interactor.updateFavoriteBeersStorage(with: Int(id))
-    }
-    
+
     func showFilters() {
         let filtersModel = BeerFiltersBottomSheetViewModel(storage: storage, delegate: self)
         context.navigator.navigate(to: .beerFiltersBottomSheet(model: filtersModel), in: .list)
