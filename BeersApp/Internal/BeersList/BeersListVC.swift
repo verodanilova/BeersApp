@@ -13,11 +13,8 @@ import RxCocoa
 
 private struct Constants {
     let offset: CGFloat = 16.0
-    let filtersButtonHeight: CGFloat = 44.0
-    let filtersButtonWidthRatio: CGFloat = 0.4
     let headerViewHeight: CGFloat = 60
     let footerViewHeight: CGFloat = 60
-    let filtersButtonAnimationDuration: TimeInterval = 0.3
     let errorDisplayThrottle: RxTimeInterval = .seconds(4)
     let errorDisplayDuration: TimeInterval = 0.25
     let errorHidingDuration: TimeInterval = 0.25
@@ -30,7 +27,8 @@ class BeersListViewController: UIViewController {
     typealias Cell = BeersListItemCell
     
     private let tableView = UITableView()
-    private let filtersButton = UIButton()
+    private let filtersButton = FiltersButton()
+    private var baseHeaderView = BeerListBaseHeaderView()
     private var headerView = BeersListHeaderView()
     private var footerView: BeersListFooterView?
     
@@ -54,6 +52,22 @@ class BeersListViewController: UIViewController {
         
         viewModel?.prepare()
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard let header = tableView.tableHeaderView else {
+            return
+        }
+        
+        let size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+
+        if header.frame.size.height != size.height {
+            header.frame.size.height = size.height
+            self.tableView.tableHeaderView = header
+            self.tableView.layoutIfNeeded()
+        }
+    }
 }
 
 // MARK: - View configuration
@@ -62,8 +76,6 @@ private extension BeersListViewController {
         guard let style = style else { return }
         
         view.backgroundColor = style.backgroundColor
-        filtersButton.apply(style: style.filtersButtonStyle)
-        
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = style.tableViewBackgroundColor
@@ -77,37 +89,19 @@ private extension BeersListViewController {
             $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
         }
         
-        tableView.registerCell(BeersListItemCell.reuseId, BeersListItemCell.nibName)
+        tableView.registerCell(Cell.reuseId, Cell.nibName)
         
         let headerViewFrame = CGRect(x: 0, y: 0, width: view.frame.width,
             height: constants.headerViewHeight)
         headerView = BeersListHeaderView(frame: headerViewFrame)
         headerView.style = style?.headerStyle
+        baseHeaderView.style = style?.baseHeaderStyle
         
         let footerViewFrame = CGRect(x: 0, y: 0, width: view.frame.width,
             height: constants.footerViewHeight)
         self.footerView = BeersListFooterView(frame: footerViewFrame)
         footerView?.style = style?.footerStyle
         tableView.tableFooterView = footerView
-        
-        /* Filters button */
-        view.addSubview(filtersButton)
-        filtersButton.translatesAutoresizingMaskIntoConstraints = false
-        filtersButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-constants.offset)
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(constants.filtersButtonHeight)
-            $0.width.equalToSuperview().multipliedBy(constants.filtersButtonWidthRatio)
-        }
-        
-        let filtersButtonTitle = NSLocalizedString(
-            "Beers list.Filters button.Title",
-            comment: "Beers list: filters button title")
-        filtersButton.setTitle(filtersButtonTitle, for: .normal)
-        
-        filtersButton.rx.tap.asDriver()
-            .drive(onNext: { [weak self] _ in self?.feedbackGenerator.impactOccurred() })
-            .disposed(by: disposeBag)
     }
     
     func configureNavigationBar() {
@@ -144,9 +138,15 @@ private extension BeersListViewController {
             .emit(onNext: showError)
             .disposed(by: disposeBag)
                 
+        let filtersTapSignals = [filtersButton, baseHeaderView.filtersButton]
+            .map { $0.rx.tap.asSignal() }
+        Signal.merge(filtersTapSignals)
+            .emit(onNext: { [weak self] _ in self?.feedbackGenerator.impactOccurred() })
+            .disposed(by: disposeBag)
+        
         viewModel.bindViewEvents(
             itemSelected: tableView.rx.itemSelected.asSignal(),
-            filtersTap: filtersButton.rx.tap.asSignal(),
+            filtersTap: Signal.merge(filtersTapSignals),
             resetFiltersTap: headerView.resetButtonTap)
     }
     
@@ -159,7 +159,7 @@ private extension BeersListViewController {
         if show {
             tableView.tableHeaderView = headerView
         } else {
-            tableView.tableHeaderView = nil
+            tableView.tableHeaderView = baseHeaderView
         }
     }
 }
@@ -167,6 +167,9 @@ private extension BeersListViewController {
 // MARK: - UITableViewDelegate conformance
 extension BeersListViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        updateFiltersButtonState(offsetY: scrollView.contentOffset.y)
+        
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         let delta = maximumOffset - currentOffset
@@ -176,18 +179,16 @@ extension BeersListViewController: UITableViewDelegate {
         }
     }
     
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        UIView.animate(withDuration: constants.filtersButtonAnimationDuration) {
-            self.filtersButton.alpha = 0
-        } completion: { _ in
-            self.filtersButton.isHidden = true
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        filtersButton.isHidden = false
-        UIView.animate(withDuration: constants.filtersButtonAnimationDuration) {
-            self.filtersButton.alpha = 1
+    private func updateFiltersButtonState(offsetY: CGFloat) {
+        if offsetY > baseHeaderView.frame.height {
+            if navigationItem.rightBarButtonItems == nil {
+                let barFilters = UIBarButtonItem(customView: filtersButton)
+                navigationItem.setRightBarButtonItems([barFilters], animated: true)
+            }
+        } else {
+            if navigationItem.rightBarButtonItems != nil {
+                navigationItem.setRightBarButtonItems(nil, animated: true)
+            }
         }
     }
 }

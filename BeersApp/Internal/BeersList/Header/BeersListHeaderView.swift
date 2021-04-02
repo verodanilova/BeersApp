@@ -60,14 +60,14 @@ private extension BeersListHeaderView {
             "Beers list.Header.Filter info.Title",
             comment: "Beers list header: filters info text")
         textLabel.numberOfLines = 0
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(textLabel)
         textLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(constants.inset)
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview().offset(constants.inset)
+            $0.bottom.equalToSuperview()
             $0.trailing.equalTo(resetButton.snp.leading).inset(constants.inset)
         }
-        
+
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(separatorView)
         separatorView.snp.makeConstraints {

@@ -6,7 +6,7 @@
   
 */
 
-"Beers list.Navigation bar.Title" = "Beers";
+"Beers list.Title" = "All beers";
 "Beers list.Filters button.Title" = "Filters";
 "Beer list.Item.Alcohol.Title" = "Alc.";
 "Beer list.Item.Bitterness.Title" = "IBU";
