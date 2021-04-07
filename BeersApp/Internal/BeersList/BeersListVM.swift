@@ -14,11 +14,13 @@ import BeersCore
 protocol BeersListViewModelType {
     var items: Driver<[BeerListItem]> {get}
     var isInActivity: Driver<Bool> {get}
-    var showFiltersInfo: Driver<Bool> {get}
+    var headerFilters: Driver<HeaderFilters> {get}
     var errorOccurredSignal: Signal<Void> {get}
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
-        filtersTap: Signal<Void>, resetFiltersTap: Signal<Void>)
+                        filtersTap: Signal<Void>,
+                        resetFilterTap: Signal<FilterType>,
+                        resetFiltersTap: Signal<Void>)
     func itemAddedToFavorites(_ index: Int)
     func prepare()
     func loadMoreData()
@@ -33,8 +35,8 @@ final class BeersListViewModel: BeersListViewModelType {
     let isInActivity: Driver<Bool>
     let errorOccurredSignal: Signal<Void>
     
-    let showFiltersInfo: Driver<Bool>
-    private let showFiltersInfoRelay = BehaviorRelay<Bool>(value: false)
+    let headerFilters: Driver<HeaderFilters>
+    private let headerFiltersRelay = BehaviorRelay<HeaderFilters>(value: [:])
     
     private let context: Context
     private let interactor: BeersListInteractorType
@@ -47,7 +49,7 @@ final class BeersListViewModel: BeersListViewModelType {
         self.storage = BeerFiltersStorage()
         self.items = itemsRelay.asDriver()
         self.isInActivity = interactor.isInActivity
-        self.showFiltersInfo = showFiltersInfoRelay.asDriver()
+        self.headerFilters = headerFiltersRelay.asDriver()
         self.errorOccurredSignal = interactor.errorOccurredSignal
         
         interactor.listItems
@@ -56,13 +58,18 @@ final class BeersListViewModel: BeersListViewModelType {
     }
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
-        filtersTap: Signal<Void>, resetFiltersTap: Signal<Void>) {
+        filtersTap: Signal<Void>, resetFilterTap: Signal<FilterType>,
+        resetFiltersTap: Signal<Void>) {
         itemSelected
             .emit(onNext: weakly(self, type(of: self).itemSelected))
             .disposed(by: disposeBag)
         
         filtersTap
             .emit(onNext: weakly(self, type(of: self).showFilters))
+            .disposed(by: disposeBag)
+        
+        resetFilterTap
+            .emit(onNext: weakly(self, type(of: self).resetFilter))
             .disposed(by: disposeBag)
         
         resetFiltersTap
@@ -96,10 +103,19 @@ private extension BeersListViewModel {
         context.navigator.navigate(to: .beerFiltersBottomSheet(model: filtersModel), in: .list)
     }
     
+    func resetFilter(_ filterType: FilterType) {
+        storage.resetFilter(of: filterType)
+        if storage.hasSelectedFilters {
+            shouldApplyFilters()
+        } else {
+            resetFilters()
+        }
+    }
+    
     func resetFilters() {
         storage.resetFilters()
         interactor.resetFilters()
-        showFiltersInfoRelay.accept(false)
+        headerFiltersRelay.accept([:])
     }
 }
 
@@ -108,7 +124,32 @@ extension BeersListViewModel: BeerFiltersBottomSheetDelegate {
     func shouldApplyFilters() {
         if storage.hasSelectedFilters {
             interactor.loadBeersListWithFilters(storage: storage)
-            showFiltersInfoRelay.accept(true)
+            headerFiltersRelay.accept(makeHeaderFilters(from: storage))
         }
+    }
+    
+    private func makeHeaderFilters(from storage: BeerFiltersStorageType) -> HeaderFilters {
+        let configurator = HeaderFiltersConfigurator(storage: storage)
+        var filters: HeaderFilters = [:]
+        
+        if configurator.hasAlcoholFilter {
+            let format = NSLocalizedString(
+                "Beers list.Header.Filters.Alcohol.Format",
+                comment: "Beers list filters header: alcohol value format")
+            filters[.alcohol] = String(format: format, configurator.alcoholValue)
+        }
+        
+        if configurator.hasBitternessFilter {
+            let format = NSLocalizedString(
+                "Beers list.Header.Filters.Bitterness.Format",
+                comment: "Beers list filters header: bitterness value format")
+            filters[.bitterness] = String(format: format, configurator.bitternessValue)
+        }
+        
+        if configurator.hasColorFilter {
+            filters[.color] = configurator.colorValue
+        }
+        
+        return filters
     }
 }

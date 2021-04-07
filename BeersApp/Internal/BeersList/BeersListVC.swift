@@ -13,7 +13,6 @@ import RxCocoa
 
 private struct Constants {
     let offset: CGFloat = 16.0
-    let headerViewHeight: CGFloat = 60
     let footerViewHeight: CGFloat = 60
     let errorDisplayThrottle: RxTimeInterval = .seconds(4)
     let errorDisplayDuration: TimeInterval = 0.25
@@ -28,8 +27,8 @@ class BeersListViewController: UIViewController {
     
     private let tableView = UITableView()
     private let filtersButton = FiltersButton()
-    private var baseHeaderView = BeerListBaseHeaderView()
-    private var headerView = BeersListHeaderView()
+    private let baseHeaderView = BeerListBaseHeaderView()
+    private let filteredHeaderView = BeerListFilteredHeaderView()
     private var footerView: BeersListFooterView?
     
     var viewModel: BeersListViewModelType?
@@ -55,18 +54,7 @@ class BeersListViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        guard let header = tableView.tableHeaderView else {
-            return
-        }
-        
-        let size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-
-        if header.frame.size.height != size.height {
-            header.frame.size.height = size.height
-            self.tableView.tableHeaderView = header
-            self.tableView.layoutIfNeeded()
-        }
+        updateHeaderSize()
     }
 }
 
@@ -84,17 +72,13 @@ private extension BeersListViewController {
     func configureViewComponents() {
         /* Table view */
         view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
         }
         
         tableView.registerCell(Cell.reuseId, Cell.nibName)
-        
-        let headerViewFrame = CGRect(x: 0, y: 0, width: view.frame.width,
-            height: constants.headerViewHeight)
-        headerView = BeersListHeaderView(frame: headerViewFrame)
-        headerView.style = style?.headerStyle
+        filteredHeaderView.style = style?.filteredHeaderStyle
+        filteredHeaderView.delegate = self
         baseHeaderView.style = style?.baseHeaderStyle
         
         let footerViewFrame = CGRect(x: 0, y: 0, width: view.frame.width,
@@ -129,8 +113,8 @@ private extension BeersListViewController {
             .drive(onNext: updateActivityState)
             .disposed(by: disposeBag)
         
-        viewModel.showFiltersInfo
-            .drive(onNext: showFiltersInfo)
+        viewModel.headerFilters
+            .drive(onNext: updateHeader)
             .disposed(by: disposeBag)
         
         viewModel.errorOccurredSignal
@@ -138,8 +122,8 @@ private extension BeersListViewController {
             .emit(onNext: showError)
             .disposed(by: disposeBag)
                 
-        let filtersTapSignals = [filtersButton, baseHeaderView.filtersButton]
-            .map { $0.rx.tap.asSignal() }
+        let filtersTapSignals = [filtersButton.rx.tap.asSignal(),
+            baseHeaderView.filtersTap, filteredHeaderView.filtersTap]
         Signal.merge(filtersTapSignals)
             .emit(onNext: { [weak self] _ in self?.feedbackGenerator.impactOccurred() })
             .disposed(by: disposeBag)
@@ -147,7 +131,8 @@ private extension BeersListViewController {
         viewModel.bindViewEvents(
             itemSelected: tableView.rx.itemSelected.asSignal(),
             filtersTap: Signal.merge(filtersTapSignals),
-            resetFiltersTap: headerView.resetButtonTap)
+            resetFilterTap: filteredHeaderView.resetFilterTap,
+            resetFiltersTap: filteredHeaderView.resetButtonTap)
     }
     
     func updateActivityState(isInActivity: Bool, isEmptyList: Bool) {
@@ -155,12 +140,18 @@ private extension BeersListViewController {
         tableView.tableFooterView?.isHidden = !isInActivity
     }
     
-    func showFiltersInfo(_ show: Bool) {
-        if show {
-            tableView.tableHeaderView = headerView
-        } else {
+    func updateHeader(with headerFilters: HeaderFilters) {
+        tableView.tableHeaderView = nil
+        
+        if headerFilters.isEmpty {
             tableView.tableHeaderView = baseHeaderView
+        } else {
+            tableView.tableHeaderView = filteredHeaderView
+            filteredHeaderView.configure(with: headerFilters)
+            filteredHeaderView.setNeedsLayout()
         }
+
+        view.setNeedsLayout()
     }
 }
 
@@ -231,6 +222,23 @@ extension BeersListViewController {
             } completion: { _ in
                 errorView.removeFromSuperview()
             }
+        }
+    }
+}
+
+// MARK: - BeerListHeaderDelegate conformance
+extension BeersListViewController: BeerListHeaderDelegate {
+    func updateHeaderSize() {
+        guard let header = tableView.tableHeaderView else {
+            return
+        }
+        
+        let size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+
+        if header.frame.size.height != size.height {
+            header.frame.size.height = size.height
+            self.tableView.tableHeaderView = header
+            self.tableView.layoutIfNeeded()
         }
     }
 }

@@ -16,5 +16,6 @@ public protocol BeerFiltersStorageType: AnyObject {
     var hasSelectedFilters: Bool {get}
     
     func setValue(_ value: Double, for filterKind: BeerFilterKind)
+    func resetFilter(of type: FilterType)
     func resetFilters()
 }

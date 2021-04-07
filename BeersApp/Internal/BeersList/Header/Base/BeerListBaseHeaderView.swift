@@ -6,15 +6,20 @@
 //
 
 import UIKit
+import RxCocoa
 
 final class BeerListBaseHeaderView: UIView {
-    
-    let filtersButton = FiltersButton()
-    private let titleLabel = UILabel()
-    
+        
     var style: BeerListBaseHeaderStyleType? {
         didSet { applyStyle() }
     }
+    
+    var filtersTap: Signal<Void> {
+        filtersButton.rx.tap.asSignal()
+    }
+    
+    private let filtersButton = FiltersButton()
+    private let titleLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

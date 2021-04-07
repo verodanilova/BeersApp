@@ -23,9 +23,13 @@ protocol ButtonStyleType {
     
     /* Shadow */
     var shadowLayer: ButtonShadowLayer? {get}
+    
+    /* Image */
+    var image: ButtonImage? {get}
 }
 
 extension UIButton {
+    
     func apply(style: ButtonStyleType) {
         self.titleLabel?.font = style.titleFont
         self.tintColor = style.tintColor
@@ -37,13 +41,35 @@ extension UIButton {
         self.contentEdgeInsets = style.contentInsets
         self.layer.borderColor = style.borderColor?.cgColor
         self.layer.borderWidth = style.borderWidth
+        
         if let shadowLayer = style.shadowLayer {
-            self.layer.shadowColor = shadowLayer.color.cgColor
-            self.layer.shadowOpacity = shadowLayer.opacity
-            self.layer.shadowOffset = shadowLayer.offset
-            self.layer.shadowRadius = shadowLayer.radius
-            self.layer.masksToBounds = false
+            self.applyShadowLayer(shadowLayer)
         }
+        
+        if let buttonImage = style.image {
+            self.applyImage(buttonImage)
+        }
+    }
+}
+
+private extension UIButton {
+    
+    func applyShadowLayer(_ shadowLayer: ButtonShadowLayer) {
+        self.layer.shadowColor = shadowLayer.color.cgColor
+        self.layer.shadowOpacity = shadowLayer.opacity
+        self.layer.shadowOffset = shadowLayer.offset
+        self.layer.shadowRadius = shadowLayer.radius
+        self.layer.masksToBounds = false
+    }
+    
+    func applyImage(_ buttonImage: ButtonImage) {
+        let image = UIImage(named: buttonImage.name)?
+            .withRenderingMode(buttonImage.renderingMode)
+            .withTintColor(buttonImage.tintColor)
+        self.setImage(image, for: .normal)
+        self.imageEdgeInsets = buttonImage.insets
+        self.contentHorizontalAlignment = buttonImage.horizontalAlignment
+        self.imageView?.contentMode = buttonImage.contentMode
     }
 }
 
@@ -58,6 +84,7 @@ extension ButtonStyleType {
     var borderColor: UIColor? { return nil }
     var borderWidth: CGFloat { return 0  }
     var shadowLayer: ButtonShadowLayer? { return nil }
+    var image: ButtonImage? { return nil }
 }
 
 struct ButtonShadowLayer {
@@ -65,4 +92,13 @@ struct ButtonShadowLayer {
     let opacity: Float
     let offset: CGSize
     let radius: CGFloat
+}
+
+struct ButtonImage {
+    let name: String
+    let renderingMode: UIImage.RenderingMode
+    let tintColor: UIColor
+    let insets: UIEdgeInsets
+    let horizontalAlignment: UIControl.ContentHorizontalAlignment
+    let contentMode: UIView.ContentMode
 }

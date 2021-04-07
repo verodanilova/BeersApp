@@ -10,8 +10,12 @@
 "Beers list.Filters button.Title" = "Filters";
 "Beer list.Item.Alcohol.Title" = "Alc.";
 "Beer list.Item.Bitterness.Title" = "IBU";
-"Beers list.Header.Reset button.Title" = "Reset";
-"Beers list.Header.Filter info.Title" = "Filters applied.";
+"Beers list.Header.Reset button.Title" = "Reset all";
+"Beers list.Header.Filter info.Title" = "Filtered:";
+"Beers list.Header.Filters.Alcohol.Format" = "Alc. %@";
+"Beers list.Header.Filters.Bitterness.Format" = "IBU %@";
+"Beers list.Header.Filters.Color.Darker" = "darker than %@";
+"Beers list.Header.Filters.Color.Lighter" = "lighter than %@";
 "Beers list.Footer.Initial loading.Title" = "Loading beers list...";
 "Beers list.Footer.Loading more info.Title" = "Loading more beers...";
 "Beers list.Common error.Title" = "Oops.. Some error occurred 😢\nPlease try again later";

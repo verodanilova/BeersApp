@@ -14,7 +14,7 @@ protocol BeersListStyleType {
     var swipeActionBackgroundColor: UIColor {get}
     var itemStyle: BeersListItemStyleType {get}
     var baseHeaderStyle: BeerListBaseHeaderStyleType {get}
-    var headerStyle: BeersListHeaderStyleType {get}
+    var filteredHeaderStyle: BeerListFilteredHeaderStyleType {get}
     var footerStyle: BeersListFooterStyleType {get}
     var errorBackgroundColor: UIColor {get}
     var errorTextStyle: LabelStyleType {get}
@@ -36,8 +36,8 @@ struct BeersListStyle: BeersListStyleType {
     var baseHeaderStyle: BeerListBaseHeaderStyleType {
         BeerListBaseHeaderStyle()
     }
-    var headerStyle: BeersListHeaderStyleType {
-        return BeersListHeaderStyle()
+    var filteredHeaderStyle: BeerListFilteredHeaderStyleType {
+        return BeerListFilteredHeaderStyle()
     }
     var footerStyle: BeersListFooterStyleType {
         return BeersListFooterStyle()
