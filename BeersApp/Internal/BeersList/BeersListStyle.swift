@@ -47,7 +47,7 @@ struct BeersListStyle: BeersListStyleType {
     }
     var errorTextStyle: LabelStyleType {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 14, weight: .medium),
+            textFont: .regular(ofSize: 18),
             textColor: .white)
     }
 }
