@@ -6,17 +6,18 @@
   
 */
 
-"Tab bar.List item.Title" = "List";
-"Tab bar.Favorites item.Title" = "Favorites";
-
-"Beers list.Navigation bar.Title" = "Beers";
+"Beers list.Title" = "All beers";
 "Beers list.Filters button.Title" = "Filters";
-"Beers list.Header.Reset button.Title" = "Reset";
-"Beers list.Header.Filter info.Title" = "Filters applied.";
+"Beer list.Item.Alcohol.Title" = "Alc.";
+"Beer list.Item.Bitterness.Title" = "IBU";
+"Beers list.Header.Reset button.Title" = "Reset all";
+"Beers list.Header.Filter info.Title" = "Filtered:";
+"Beers list.Header.Filters.Alcohol.Format" = "Alc. %@";
+"Beers list.Header.Filters.Bitterness.Format" = "IBU %@";
+"Beers list.Header.Filters.Color.Darker" = "darker than %@";
+"Beers list.Header.Filters.Color.Lighter" = "lighter than %@";
 "Beers list.Footer.Initial loading.Title" = "Loading beers list...";
 "Beers list.Footer.Loading more info.Title" = "Loading more beers...";
-"Beers list.Swipe action.Add to favorite.Title" = "Add to favorites";
-"Beers list.Swipe action.Remove from favorite.Title" = "Unfavorite";
 "Beers list.Common error.Title" = "Oops.. Some error occurred 😢\nPlease try again later";
 
 "Beers list.Filters.Title" = "Filters";
@@ -35,15 +36,18 @@
 "Beers list.Filters.Color index info.To" = "up to %ld";
 "Beers list.Filters.Color index info.From-To" = "from %ld to %ld";
 
-"Beer details.Info.About.Title" = "About";
+"Beer details.Info.About.Title" = "Details";
 "Beer details.Info.Figures.Alcohol.Title" = "Alc.";
 "Beer details.Info.Figures.Alcohol.Volume.Format" = "%@%%";
 "Beer details.Info.Figures.Bitterness.Title" = "IBU";
 "Beer details.Info.Figures.Color.Title" = "EBC";
 "Beer details.Info.Figures.Placeholder" = "–";
-"Beer details.Food pairing.Title" = "Food pairing";
-"Beer details.Add to favorites button.Title" = "Add to favorites";
+"Beer details.Food pairing.Title" = "Perfect with";
 "Beer details.Remove from favorites button.Title" = "Unfavorite";
 
-"Favorites.Navigation bar.Title" = "Favorite beers";
-"Favorites.Swipe action.Remove from favorite.Title" = "Unfavorite";
+"Favorites.Beer Info.Figures.Placeholder" = "–";
+"Favorites.Beer Info.Figures.Alcohol.Volume.Format" = "%@%%";
+"Favorites.Beer Info.Figures.Alcohol.Title" = "Alc.";
+"Favorites.Beer Info.Figures.Bitterness.Title" = "IBU";
+"Favorites.Title" = "Your favorites";
+"Favorites.Description" = "There is no worse situation than sitting and remembering the beer name in a bar. Add it to the list so as not to lose!";

@@ -18,7 +18,7 @@ protocol BeerDetailsInfoStyleType {
     var colorValueViewStyle: ViewStyleType {get}
     var sectionTitleLabelStyle: LabelStyle {get}
     var sectionTextLabelStyle: LabelStyle {get}
-    var colorForBeerColorKind: (BeerColorKind) -> UIColor? {get}
+    var topCornerRadius: CGFloat {get}
 }
 
 struct BeerDetailsInfoStyle: BeerDetailsInfoStyleType {
@@ -27,25 +27,25 @@ struct BeerDetailsInfoStyle: BeerDetailsInfoStyleType {
     }
     var titleLabelStyle: LabelStyle {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 20, weight: .semibold),
-            textColor: .mineShaft)
+            textFont: .bold(ofSize: 24),
+            textColor: .freshEggplant)
     }
     var taglineLabelStyle: LabelStyle {
         return LabelStyle(
-            textFont: .italicSystemFont(ofSize: 16),
-            textColor: .sandDune)
+            textFont: .regular(ofSize: 20),
+            textColor: .mineShaft)
     }
     var separatorViewColor: UIColor {
         return .alto
     }
     var figuresTitleLabelStyle: LabelStyle {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 16, weight: .regular),
+            textFont: .regular(ofSize: 18),
             textColor: .sandDune)
     }
     var figuresIndexLabelStyle: LabelStyle {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 18, weight: .medium),
+            textFont: .semibold(ofSize: 20),
             textColor: .sandDune)
     }
     var colorValueViewStyle: ViewStyleType {
@@ -53,29 +53,13 @@ struct BeerDetailsInfoStyle: BeerDetailsInfoStyleType {
     }
     var sectionTitleLabelStyle: LabelStyle {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 18, weight: .medium),
+            textFont: .semibold(ofSize: 22),
             textColor: .mineShaft)
     }
     var sectionTextLabelStyle: LabelStyle {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 16, weight: .regular),
+            textFont: .regular(ofSize: 20),
             textColor: .mineShaft)
     }
-    var colorForBeerColorKind: (BeerColorKind) -> UIColor? = { kind in
-        switch kind {
-            case .paleStraw: return beerColors.paleStraw
-            case .straw: return beerColors.straw
-            case .paleGold: return beerColors.paleGold
-            case .deepGold: return beerColors.deepGold
-            case .paleAmber: return beerColors.paleAmber
-            case .mediumAmber: return beerColors.mediumAmber
-            case .deepAmber: return beerColors.deepAmber
-            case .amberBrown: return beerColors.amberBrown
-            case .brown: return beerColors.brown
-            case .rubyBrown: return beerColors.rubyBrown
-            case .deepBrown: return beerColors.deepBrown
-            case .black: return beerColors.black
-            case .unknown: return nil
-        }
-    }
+    var topCornerRadius: CGFloat { 32.0 }
 }

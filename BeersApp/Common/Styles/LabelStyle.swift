@@ -21,7 +21,7 @@ extension UILabel {
 }
 
 extension LabelStyleType {
-    var textFont: UIFont { return UIFont.systemFont(ofSize: 17) }
+    var textFont: UIFont { return .regular(ofSize: 17) }
     var textColor: UIColor { return .sandDune }
 }
 

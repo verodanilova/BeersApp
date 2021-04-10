@@ -14,7 +14,6 @@ class FiltersBottomSheetView: BottomSheetContentView {
     
     @IBOutlet private var panView: UIView!
     @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet private var separatorView: UIView!
     
     @IBOutlet private var alcoholUnitLabel: UILabel!
     @IBOutlet private var alcoholRangeSlider: RangeSlider!
@@ -59,7 +58,6 @@ private extension FiltersBottomSheetView {
         backgroundColor = style.backgroundColor
         panView.apply(style: style.panViewStyle)
         titleLabel.apply(style: style.titleLabelStyle)
-        separatorView.backgroundColor = style.separatorColor
         alcoholUnitLabel.apply(style: style.unitLabelStyle)
         alcoholRangeSlider.apply(style: style.sliderStyle)
         bitternessUnitLabel.apply(style: style.unitLabelStyle)

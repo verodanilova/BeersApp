@@ -13,22 +13,32 @@ protocol BeerDetailsStyleType {
     var imageContainerBackgroundColor: UIColor {get}
     var infoBackViewBackgroundColor: UIColor {get}
     var toFavoritesButtonStyle: ButtonStyleType {get}
+    var isFavoriteImage: UIImage? {get}
+    var isNotFavoriteImage: UIImage? {get}
     var infoViewStyle: BeerDetailsInfoStyleType {get}
     var foodPairingStyle: BeerDetailsFoodPairingStyleType {get}
 }
 
 struct BeerDetailsStyle: BeerDetailsStyleType {
     var backgroundColor: UIColor {
-        return .white
+        .albescentWhite
     }
     var imageContainerBackgroundColor: UIColor {
         return .clear
     }
     var infoBackViewBackgroundColor: UIColor {
-        return .white
+        return .clear
     }
     var toFavoritesButtonStyle: ButtonStyleType {
         return ToFavoritesButtonStyle()
+    }
+    var isFavoriteImage: UIImage? {
+        UIImage(named: "heart_filled_ic")?
+            .withTintColor(.freshEggplant, renderingMode: .automatic)
+    }
+    var isNotFavoriteImage: UIImage? {
+        UIImage(named: "heart_ic")?
+            .withTintColor(.sandDune, renderingMode: .automatic)
     }
     var infoViewStyle: BeerDetailsInfoStyleType {
         return BeerDetailsInfoStyle()
@@ -39,23 +49,13 @@ struct BeerDetailsStyle: BeerDetailsStyleType {
 }
 
 private struct ToFavoritesButtonStyle: ButtonStyleType {
-    var titleColorNormal: UIColor? {
-        return .mineShaft
-    }
-    var titleColorHighlighted: UIColor? {
-        return .sandDune
-    }
     var cornerRadius: CGFloat {
-        return 6
+        return 28
     }
     var backgroundColor: UIColor? {
-        return .gold
+        UIColor.white.withAlphaComponent(0.7)
     }
-    var shadowLayer: ButtonShadowLayer? {
-        return ButtonShadowLayer(
-            color: .sandDune,
-            opacity: 0.4,
-            offset: CGSize(width: 0, height: 2),
-            radius: 4)
+    var contentInsets: UIEdgeInsets {
+        UIEdgeInsets(top: 17, left: 16, bottom: 15, right: 16)
     }
 }

@@ -16,16 +16,12 @@ public final class BeerInfo: NSManagedObject, Decodable {
     @NSManaged public var tagline: String?
     @NSManaged public var beerDescription: String?
     @NSManaged public var imageURL: URL?
-    @NSManaged public var foodPairingsRaw: NSOrderedSet?
+    @NSManaged public var foodPairings: [String]
     
     @NSManaged public var alcoholIndex: Double /* ABV */
     @NSManaged public var bitternessIndex: Double /* IBU */
     @NSManaged public var colorIndex: Double /* EBC */
-    
-    public var foodPairings: [String] {
-        return foodPairingsRaw?.array as? [String] ?? []
-    }
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name, tagline, description
         case imageURL = "image_url"
@@ -52,8 +48,7 @@ public final class BeerInfo: NSManagedObject, Decodable {
         self.alcoholIndex = (try? container.decode(Double.self, forKey: .alcohol)) ?? 0.0
         self.bitternessIndex = (try? container.decode(Double.self, forKey: .bitterness)) ?? 0.0
         self.colorIndex = (try? container.decode(Double.self, forKey: .color)) ?? 0.0
-        let foodPairings = try? container.decode([String].self, forKey: .foodPairings)
-        self.foodPairingsRaw = NSOrderedSet(array: foodPairings ?? [])
+        self.foodPairings = (try? container.decode([String].self, forKey: .foodPairings)) ?? []
     }
 }
 

@@ -12,30 +12,31 @@ import BeersCore
 
 
 protocol BeersListViewModelType {
-    var items: Driver<[BeersListItemViewModelType]> {get}
+    var items: Driver<[BeerListItem]> {get}
     var isInActivity: Driver<Bool> {get}
-    var showFiltersInfo: Driver<Bool> {get}
+    var headerFilters: Driver<HeaderFilters> {get}
     var errorOccurredSignal: Signal<Void> {get}
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
-        itemAddedToFavorites: Signal<IndexPath>, filtersTap: Signal<Void>,
-        resetFiltersTap: Signal<Void>)
+                        filtersTap: Signal<Void>,
+                        resetFilterTap: Signal<FilterType>,
+                        resetFiltersTap: Signal<Void>)
+    func itemAddedToFavorites(_ index: Int)
     func prepare()
     func loadMoreData()
-    func swipeActionTitle(at indexPath: IndexPath) -> String
 }
 
 final class BeersListViewModel: BeersListViewModelType {
     typealias Context = NavigatorContext & BeersListInteractor.Context
     
-    let items: Driver<[BeersListItemViewModelType]>
-    private let itemsRelay = BehaviorRelay<[BeersListItemViewModelType]>(value: [])
+    let items: Driver<[BeerListItem]>
+    private let itemsRelay = BehaviorRelay<[BeerListItem]>(value: [])
     
     let isInActivity: Driver<Bool>
     let errorOccurredSignal: Signal<Void>
     
-    let showFiltersInfo: Driver<Bool>
-    private let showFiltersInfoRelay = BehaviorRelay<Bool>(value: false)
+    let headerFilters: Driver<HeaderFilters>
+    private let headerFiltersRelay = BehaviorRelay<HeaderFilters>(value: [:])
     
     private let context: Context
     private let interactor: BeersListInteractorType
@@ -48,33 +49,37 @@ final class BeersListViewModel: BeersListViewModelType {
         self.storage = BeerFiltersStorage()
         self.items = itemsRelay.asDriver()
         self.isInActivity = interactor.isInActivity
-        self.showFiltersInfo = showFiltersInfoRelay.asDriver()
+        self.headerFilters = headerFiltersRelay.asDriver()
         self.errorOccurredSignal = interactor.errorOccurredSignal
         
         interactor.listItems
-            .map { $0.map { BeersListItemViewModel(item: $0) } }
             .drive(itemsRelay)
             .disposed(by: disposeBag)
     }
     
     func bindViewEvents(itemSelected: Signal<IndexPath>,
-        itemAddedToFavorites: Signal<IndexPath>, filtersTap: Signal<Void>,
+        filtersTap: Signal<Void>, resetFilterTap: Signal<FilterType>,
         resetFiltersTap: Signal<Void>) {
         itemSelected
             .emit(onNext: weakly(self, type(of: self).itemSelected))
-            .disposed(by: disposeBag)
-        
-        itemAddedToFavorites
-            .emit(onNext: weakly(self, type(of: self).itemAddedToFavorites))
             .disposed(by: disposeBag)
         
         filtersTap
             .emit(onNext: weakly(self, type(of: self).showFilters))
             .disposed(by: disposeBag)
         
+        resetFilterTap
+            .emit(onNext: weakly(self, type(of: self).resetFilter))
+            .disposed(by: disposeBag)
+        
         resetFiltersTap
             .emit(onNext: weakly(self, type(of: self).resetFilters))
             .disposed(by: disposeBag)
+    }
+    
+    func itemAddedToFavorites(_ index: Int) {
+        let id = interactor.currentBeerInfos[index].id
+        interactor.updateFavoriteBeersStorage(with: Int(id))
     }
     
     func prepare() {
@@ -84,20 +89,6 @@ final class BeersListViewModel: BeersListViewModelType {
     func loadMoreData() {
         interactor.loadMoreData()
     }
-    
-    func swipeActionTitle(at indexPath: IndexPath) -> String {
-        let id = interactor.currentBeerInfos[indexPath.item].id
-        let isFavoriteItem = interactor.isFavoriteItem(beerID: Int(id))
-        if isFavoriteItem {
-            return NSLocalizedString(
-                "Beers list.Swipe action.Remove from favorite.Title",
-                comment: "Beers list: title for unfavorite swipe action")
-        } else {
-            return NSLocalizedString(
-                "Beers list.Swipe action.Add to favorite.Title",
-                comment: "Beers list: title for add to favorites swipe action")
-        }
-    }
 }
 
 // MARK: - Navigation & Actions
@@ -106,21 +97,25 @@ private extension BeersListViewModel {
         let id = interactor.currentBeerInfos[indexPath.item].id
         context.navigator.navigate(to: .beerDetails(id: Int(id)), in: .list)
     }
-    
-    func itemAddedToFavorites(at indexPath: IndexPath) {
-        let id = interactor.currentBeerInfos[indexPath.item].id
-        interactor.updateFavoriteBeersStorage(with: Int(id))
-    }
-    
+
     func showFilters() {
         let filtersModel = BeerFiltersBottomSheetViewModel(storage: storage, delegate: self)
         context.navigator.navigate(to: .beerFiltersBottomSheet(model: filtersModel), in: .list)
     }
     
+    func resetFilter(_ filterType: FilterType) {
+        storage.resetFilter(of: filterType)
+        if storage.hasSelectedFilters {
+            shouldApplyFilters()
+        } else {
+            resetFilters()
+        }
+    }
+    
     func resetFilters() {
         storage.resetFilters()
         interactor.resetFilters()
-        showFiltersInfoRelay.accept(false)
+        headerFiltersRelay.accept([:])
     }
 }
 
@@ -129,7 +124,32 @@ extension BeersListViewModel: BeerFiltersBottomSheetDelegate {
     func shouldApplyFilters() {
         if storage.hasSelectedFilters {
             interactor.loadBeersListWithFilters(storage: storage)
-            showFiltersInfoRelay.accept(true)
+            headerFiltersRelay.accept(makeHeaderFilters(from: storage))
         }
+    }
+    
+    private func makeHeaderFilters(from storage: BeerFiltersStorageType) -> HeaderFilters {
+        let configurator = HeaderFiltersConfigurator(storage: storage)
+        var filters: HeaderFilters = [:]
+        
+        if configurator.hasAlcoholFilter {
+            let format = NSLocalizedString(
+                "Beers list.Header.Filters.Alcohol.Format",
+                comment: "Beers list filters header: alcohol value format")
+            filters[.alcohol] = String(format: format, configurator.alcoholValue)
+        }
+        
+        if configurator.hasBitternessFilter {
+            let format = NSLocalizedString(
+                "Beers list.Header.Filters.Bitterness.Format",
+                comment: "Beers list filters header: bitterness value format")
+            filters[.bitterness] = String(format: format, configurator.bitternessValue)
+        }
+        
+        if configurator.hasColorFilter {
+            filters[.color] = configurator.colorValue
+        }
+        
+        return filters
     }
 }

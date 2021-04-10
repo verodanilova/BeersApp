@@ -47,6 +47,20 @@ public final class BeerFiltersStorage: BeerFiltersStorageType {
         }
     }
     
+    public func resetFilter(of type: FilterType) {
+        switch type {
+            case .alcohol:
+                alcoholLowerValue = nil
+                alcoholUpperValue = nil
+            case .bitterness:
+                bitternessLowerValue = nil
+                bitternessUpperValue = nil
+            case .color:
+                colorLowerValue = nil
+                colorUpperValue = nil
+        }
+    }
+    
     public func resetFilters() {
         alcoholLowerValue = nil
         alcoholUpperValue = nil

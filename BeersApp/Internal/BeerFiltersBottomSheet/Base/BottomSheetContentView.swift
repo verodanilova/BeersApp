@@ -10,7 +10,7 @@ import UIKit
 
 private struct Constants {
     let roundingCorners: UIRectCorner = [.topLeft, .topRight]
-    let cornerRadii = CGSize(width: 16, height: 16)
+    let cornerRadii = CGSize(width: 32, height: 32)
 }
 private let constants = Constants()
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3092AC28A5635A58195E67BF /* Pods_BeersCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892F69EE45248ADD94D4755F /* Pods_BeersCore.framework */; };
+		4C0302A92621FE1400D81A3C /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0302A82621FE1400D81A3C /* FilterType.swift */; };
 		4C5D4755260662140051EFA2 /* BeersCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C5D4753260662140051EFA2 /* BeersCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C5D4782260662780051EFA2 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D4763260662780051EFA2 /* APIClient.swift */; };
 		4C5D4783260662780051EFA2 /* DataRequest+InsertableFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D4764260662780051EFA2 /* DataRequest+InsertableFromJSON.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		17D95EDAC51E12E4EF29EFAF /* Pods-BeersCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeersCore.release.xcconfig"; path = "Target Support Files/Pods-BeersCore/Pods-BeersCore.release.xcconfig"; sourceTree = "<group>"; };
+		4C0302A82621FE1400D81A3C /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
 		4C5D4750260662140051EFA2 /* BeersCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeersCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5D4753260662140051EFA2 /* BeersCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeersCore.h; sourceTree = "<group>"; };
 		4C5D4754260662140051EFA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5D47B0260663940051EFA2 /* BeerFilterKind.swift */,
+				4C0302A82621FE1400D81A3C /* FilterType.swift */,
 				4C5D47CD26066CC60051EFA2 /* BeerFiltersStorage.swift */,
 			);
 			path = FiltersStorage;
@@ -359,6 +362,7 @@
 			files = (
 				4C5D478E260662780051EFA2 /* ResponseRootArrayEnvelope.swift in Sources */,
 				4C5D4783260662780051EFA2 /* DataRequest+InsertableFromJSON.swift in Sources */,
+				4C0302A92621FE1400D81A3C /* FilterType.swift in Sources */,
 				4C5D4798260662780051EFA2 /* GetBeersListRequest.swift in Sources */,
 				4C5D478B260662780051EFA2 /* MultiFetchedResultsControllerDelegate.swift in Sources */,
 				4C5D47A32606633C0051EFA2 /* BeerFiltersStorageType.swift in Sources */,

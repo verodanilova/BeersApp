@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "star@2x.png",
+      "filename" : "favorites_ic@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "star@3x.png",
+      "filename" : "favorites_ic@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

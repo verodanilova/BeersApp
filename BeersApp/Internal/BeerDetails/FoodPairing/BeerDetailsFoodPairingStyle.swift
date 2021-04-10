@@ -8,14 +8,18 @@
 import UIKit
 
 protocol BeerDetailsFoodPairingStyleType {
+    var pairingBackgroundColor: UIColor {get}
     var titleLabelStyle: LabelStyleType {get}
     var chipStyle: ButtonStyleType {get}
 }
 
 struct BeerDetailsFoodPairingStyle: BeerDetailsFoodPairingStyleType {
+    var pairingBackgroundColor: UIColor {
+        .white
+    }
     var titleLabelStyle: LabelStyleType {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 18, weight: .medium),
+            textFont: .semibold(ofSize: 22),
             textColor: .mineShaft)
     }
     var chipStyle: ButtonStyleType {
@@ -24,11 +28,12 @@ struct BeerDetailsFoodPairingStyle: BeerDetailsFoodPairingStyleType {
 }
 
 private struct ChipButtonStyle: ButtonStyleType {
-    var titleFont: UIFont { .systemFont(ofSize: 16, weight: .regular) }
+    var titleFont: UIFont { .regular(ofSize: 20) }
     var titleColorNormal: UIColor? { .mineShaft }
     var titleColorHighlighted: UIColor? { .sandDune }
     var cornerRadius: CGFloat { 18.0 }
     var backgroundColor: UIColor? { .white }
+    var contentInsets: UIEdgeInsets { UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10) }
     var borderColor: UIColor? { .alto }
     var borderWidth: CGFloat { 1.0 }
 }

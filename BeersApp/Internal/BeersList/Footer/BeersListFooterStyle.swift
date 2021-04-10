@@ -23,7 +23,7 @@ struct BeersListFooterStyle: BeersListFooterStyleType {
     }
     var footerTextStyle: LabelStyle {
         return LabelStyle(
-            textFont: .systemFont(ofSize: 16, weight: .regular),
+            textFont: .regular(ofSize: 18),
             textColor: .sandDune)
     }
 }
